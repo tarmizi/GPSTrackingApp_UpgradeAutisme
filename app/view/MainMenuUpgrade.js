@@ -34,7 +34,7 @@
                         //width: 55,
                         // html: '<font size="3" color="white">Welcome!<br>Tarmizi@Hotmail.my<br>Last Login:19/3/1983 12:14AM</font>',
                         id: 'MainMenuUserLabel',
-                        html: '<font size="3" color="white">Welcome!<br>Tarmizi@Hotmail.my</font>',
+                        html: '<font size="3" color="white">Welcome!<br>Mizi</font>',
                         //ui: 'plain',
                     },
             //{
