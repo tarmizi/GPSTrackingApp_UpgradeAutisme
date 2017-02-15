@@ -13,14 +13,57 @@
 
         items: [
 
+            //{
 
+            //    xtype: 'toolbar',
+            //   // title: '<font size="4.5" color="white">Virtual Boundary Map</font>',
+            //    docked: 'top',
+            //    id: 'toolbarMainMenuUpgradeTop',
+            //    //  hidden:true,
+            //    items:
+            //           [
+
+
+            //               {
+            //                   xtype: 'button',
+            //                   id: 'MainMenuUserLabel',
+            //                   html: '<font size="3" color="white">Welcome!<br>Mizi</font>',
+            //                   ui: 'plain',
+
+            //               },
+            //                  {
+            //                      xtype: 'spacer'
+            //                  },
+            //            {
+            //                xtype: 'button',
+            //                id: 'btnMainMenuIconNotification',
+            //                height: 45,
+            //                width: 45,
+            //                html: '<div ><img src="resources/icons/Notification.png" width="35" height="35" alt="Company Name"></div>',
+            //                ui: 'plain',
+            //            },
+            //        {
+            //            xtype: 'button',
+            //            id: 'btnMainMenuIconNotificationText',
+            //            height: 25,
+            //            width: 25,
+            //            text: '10',
+            //            //html: '<div ><img src="resources/icons/notificationIcon.png" width="45" height="45" alt="Company Name"></div>',
+            //            ui: 'decline',
+            //        }
+
+
+
+            //           ]
+
+            //},
 
 
 
 
             {
                 xtype: 'container',
-                //  top:100,
+             
                 layout: {
                     type: 'vbox',
                     pack: 'left'
@@ -62,30 +105,30 @@
 
             {
                 xtype: 'container',
-                //  top:100,
+            
                 layout: {
                     type: 'hbox',
                     pack: 'right'
 
                 },
                 items: [
-                     {
-                         xtype: 'button',
-                         id: 'btnMainMenuIconPictureProfile',
-                         height: 55,
-                         width: 55,
-                         html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
-                         ui: 'plain',
-                         handler: function () {
+                     //{
+                     //    xtype: 'button',
+                     //    id: 'btnMainMenuIconPictureProfile',
+                     //    height: 55,
+                     //    width: 55,
+                     //    html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
+                     //    ui: 'plain',
+                     //    handler: function () {
 
-                         }
-                     },
+                     //    }
+                     //},
                     {
                         xtype: 'button',
                         id: 'btnMainMenuIconNotification',
-                        height: 55,
-                        width: 55,
-                        html: '<div ><img src="resources/icons/Notification.png" width="45" height="45" alt="Company Name"></div>',
+                        height: 45,
+                        width: 45,
+                        html: '<div ><img src="resources/icons/Notification.png" width="35" height="35" alt="Company Name"></div>',
                         ui: 'plain',
                     },
                     {
@@ -101,11 +144,18 @@
                 ]
             },
 
-
+            {
+             
+                margin:'30 0 0 0',
+                id: 'MainMenuUserLabelLIne',
+                html: '<font size="1" color="white">_______________________________________________________________________________________________________________</font>',
+                //ui: 'plain',
+            },
 
             {
                 xtype: 'container',
                 //  top:100,
+                margin:'0 0 0 -5',
                 layout: {
                     type: 'vbox',
                     pack: 'center',
@@ -204,7 +254,7 @@
                      },
                      {
                          xtype: 'spacer',
-                         width:30
+                         width:40
                      },
                       {
                           xtype: 'button',
@@ -232,7 +282,7 @@
   
     {
         xtype: 'container',
-      margin:'10 0 0 0',
+      margin:'10 -20 0 0',
         layout: {
             type: 'hbox',
             pack: 'center',
@@ -249,12 +299,12 @@
             {
                 xtype: 'button',
                 id: 'btnMainMenuTraceVirtualBoundaryAlert',
-                // margin: '0 -215 153 0',
+                margin: '0 -25 0 0',
 
-                height: 100,
+                height: 110,
                 width: 100,
                 //  margin: '0 -13 220 0',
-                html: '<div ><img src="resources/icons/UogradeAutismeIcon/TraceVirtualBoundaryAlert.png" width="100" height="100" alt="Company Name"></div>',
+                html: '<div ><img src="resources/icons/UogradeAutismeIcon/TraceVirtualBoundaryAlert.png" width="100" height="110" alt="Company Name"></div>',
 
                 
              
@@ -273,16 +323,16 @@
             },
             {
                 xtype: 'spacer',
-                width: 30
+                width: 65
             },
           {
               xtype: 'button',
               id: 'btnMainMenuRealTimeTracking',
-
-              height: 110,
-              width: 110,
+            //  margin: '0 0 0 -25',
+              height: 115,
+              width: 120,
               //  margin: '0 -13 220 0',
-              html: '<div ><img src="resources/icons/UogradeAutismeIcon/RealTimeTracking.png" width="110" height="110" alt="Company Name"></div>',
+              html: '<div ><img src="resources/icons/UogradeAutismeIcon/RealTimeTracking.png" width="120" height="115" alt="Company Name"></div>',
 
               ui: 'plain',
               handler: function () {
@@ -404,22 +454,19 @@
           },
           {
               xtype: 'spacer',
-              width: 30
+              width: 40
           },
              {
                  xtype: 'button',
-                 id: 'btnMainMenuUserManual',
+                 id: 'btnMainMenuAboutSystem',
                  // margin: '0 -215 153 0',
                  height: 90,
-                 width: 90,
-                 html: '<div ><img src="resources/icons/UogradeAutismeIcon/UserManual.png" width="80" height="80" alt="Company Name"></div>',
+                 width: 80,
+                 html: '<div ><img src="resources/icons/UogradeAutismeIcon/AboutSystem.png" width="70" height="80" alt="Company Name"></div>',
                  ui: 'plain',
                  handler: function () {
 
-                     //   SettingFenceAddNewfenceShow();
-                     isFirstLoadListOfTraceAlertFence = 'no';
-                     // ada kat class SettingFenceListOfGeoFence
-                     loadListOfGeofence();
+                  
 
 
                  }
