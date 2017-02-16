@@ -812,10 +812,10 @@ function drawgefenceSettinggeofence(typeshape, pathxy, pathlenght) {
 
         }
 
-    }
+    }else
     if (typeshape == 'polygon') {
         //arraygeofence.push(new google.maps.LatLng(this.lat, this.lng));
-
+      
         var polysplit = pathxy.split('),');
 
 
@@ -854,8 +854,7 @@ function drawgefenceSettinggeofence(typeshape, pathxy, pathlenght) {
             //fillColor: "#FF8800",
             //fillOpacity: 0.35
         });
-        polygonpathsSettinggeofence.setMap(mapgeofenceSettinggeofence);
-
+     
         countshapeSettinggeofence = countshapeSettinggeofence + 1;
 
         shapetypeSettinggeofence = "polygon";
@@ -869,6 +868,8 @@ function drawgefenceSettinggeofence(typeshape, pathxy, pathlenght) {
 
 
         window.setTimeout(function () {
+           
+            polygonpathsSettinggeofence.setMap(mapgeofenceSettinggeofence);
 
           //  var ctr = new google.maps.LatLng(polyboundsy, polyboundsx);
          //   var bounds = new google.maps.LatLngBounds();
@@ -972,12 +973,13 @@ function loadSettingFenceDrawMap(ID, TrackItem, TrackID, AccountNo, FencePath, S
         Ext.getCmp('SettingDrawFence_DaySetting').setValue(DaySetting);
         Ext.getCmp('SettingDrawFence_Status').setValue(Status);
         Ext.getCmp('SettingDrawFence_Length').setValue(FenceLength);
-
+        ClearShapeFromDrawFence();
+        deleteAllSelectedShapeSettinggeofence();
+       
+        drawgefenceSettinggeofence(ShapeType, FencePath, FenceLength)
     }, 500);
   
-    ClearShapeFromDrawFence();
-    deleteAllSelectedShapeSettinggeofence();
-    drawgefenceSettinggeofence(ShapeType, FencePath, FenceLength)
+ 
 }
 
 var draw_circleSettingDrawFence

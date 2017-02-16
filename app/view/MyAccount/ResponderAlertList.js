@@ -56,6 +56,7 @@ Ext.define('MyGPS.view.MyAccount.ResponderAlertList', {
                         Ext.getCmp('ViewlastLocuseracc').setHidden(true);
                         Ext.getCmp('Backuseracc').setHidden(true);
                         Ext.getCmp('btnBackResponderAlert').setHidden(false);
+                        Ext.getCmp('BackMyAccountDetails').setHidden(true);
                         //alert((record.get('ID')));
                       loadsingletapResponderAlert((record.get('ID')));
                        

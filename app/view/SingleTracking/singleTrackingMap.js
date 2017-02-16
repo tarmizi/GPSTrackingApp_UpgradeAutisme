@@ -47,6 +47,8 @@ var maxSpeed;
 var MarkerGeolocationID;
 var PanMapAfterPointChange = '1';
 var singleTrackingMap_DeviceID;
+
+var drawingManagerSingleTrackingMap;
 Ext.define('MyGPS.view.SingleTracking.singleTrackingMap', {
 
 
@@ -192,6 +194,37 @@ Ext.define('MyGPS.view.SingleTracking.singleTrackingMap', {
                     maxSpeed = 0;
                     singleTrackingMapchecklong = '000';
                     geocoderLiveTracking = new google.maps.Geocoder();
+
+
+                    drawingManagerSingleTrackingMap = new google.maps.drawing.DrawingManager({                     
+                        drawingControl: false,
+                        drawingControlOptions: {
+                            position: google.maps.ControlPosition.TOP_LEFT,
+                            drawingModes: [
+                               google.maps.drawing.OverlayType.POLYGON,
+                              google.maps.drawing.OverlayType.CIRCLE
+                            ]
+                        },
+                        polygonOptions: {
+                            //editable: true
+                            strokeColor: "#FF004D",
+                            // strokeOpacity: 0.8,
+                            strokeWeight: 2,
+                            fillColor: "#FF004D",
+                            fillOpacity: 0.5
+                        },
+                       
+                        circleOptions: {
+                            fillColor: '#FF004D',
+                            fillOpacity: 0.5,
+                            strokeWeight: 2,
+                            clickable: false,
+                            editable: true,
+                            zIndex: 1
+                        }
+                    });
+
+
 
                 }
 

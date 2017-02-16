@@ -82,6 +82,7 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                                xtype: 'button',
                                //right: -7,
                                //top: 1,
+                               hidden:true,
                                id: 'btnMyAccountTopAccInfo',
                                html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
                                //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',
@@ -112,16 +113,34 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                   align: 'right',
               },
               items: [
+                   //{
+                   //    xtype: 'button',
 
+                   //    id: 'BackMyAccountDetail',
+                   //    //ui: 'action',
+                   //    //text: "Back",
+                   //    height: 40,
+                   //    width: 40,
+
+                   //    html: '<div ><img src="resources/icons/WhiteBackIcon.png" width="30" height="30" alt="Company Name"></div>',
+                   //    ui: 'plain',
+                   //    handler: function (btn) {
+                   //        Ext.getCmp('mainView').setActiveItem(1);
+
+                   //    }
+
+                   //},
 
 
                    {
 
-                       ui: 'action',
+                       ui: 'plain',
                        xtype: 'button',
                        id: 'BackMyAccountDetails',
-                       text: 'Back',
+                       height: 40,
+                       width: 40,
 
+                       html: '<div ><img src="resources/icons/WhiteBackIcon.png" width="30" height="30" alt="Company Name"></div>',
                        // hidden:true,
                        handler: function () {
                            if(tabActive == 'AccInfo')
@@ -139,10 +158,13 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
               
                 {
                    
-                    ui: 'action',
+                    ui: 'plain',
                     xtype: 'button',
                     id: 'Backuseracc',
-                    text: 'Back',
+                    height: 40,
+                    width: 40,
+
+                    html: '<div ><img src="resources/icons/WhiteBackIcon.png" width="30" height="30" alt="Company Name"></div>',
                    
                    // hidden:true,
                     handler: function () {
@@ -151,7 +173,7 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                         Ext.getCmp('ViewlastLocuseracc').setHidden(true);
                         Ext.getCmp('useraccStartlivetracking').setHidden(true);
                         Ext.getCmp('BackuserTracerDev').setHidden(true);
-                       
+                        Ext.getCmp('BackMyAccountDetails').setHidden(false);
                         //if (markerUserAcc) {
                         //    markerUserAcc.setMap(null);
                         //}
@@ -165,7 +187,7 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                               ui: 'round',
                               xtype: 'button',
                               id: 'BackuserTracerDev',
-                              text: 'Back',
+                              text: 'BackTracerDev',
                              hidden: true,
                               handler: function () {
                                   Ext.getCmp('basicform').setActiveItem(4);
@@ -199,17 +221,20 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                       },
           {
 
-              ui: 'action',
+              ui: 'plain',
               xtype: 'button',
               id: 'btnBackResponderAlert',
-              text: 'Back',
+              height: 40,
+              width: 40,
+
+              html: '<div ><img src="resources/icons/WhiteBackIcon.png" width="30" height="30" alt="Company Name"></div>',
              hidden: true,
               handler: function () {
                   Ext.getCmp('useraccStartlivetracking').setHidden(true);
                   Ext.getCmp('ViewlastLocuseracc').setHidden(true);
                   Ext.getCmp('Backuseracc').setHidden(true);
                   Ext.getCmp('btnBackResponderAlert').setHidden(true);
-
+                  Ext.getCmp('BackMyAccountDetails').setHidden(false);
                   //Ext.getStore('ResponderAlertGetByAcc').getProxy().setExtraParams({
                   //    AccNo: Ext.getCmp('AccNo').getValue(),
                   //});
@@ -525,74 +550,7 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                                                    clearIcon: true
                                                },
                                              
-                                             //{
-                                             //    xtype: 'button',
-                                             //    style: 'margin: .5em',
-                                             //    id: 'UserAccViewItembtn',
-                                             //   // hidden: true,
-                                             //    text: 'Tracking Items',
-                                             //    handler: function () {
-                                             //        Ext.getStore('TrackingItemList').getProxy().setExtraParams({
-                                             //            AccNo: AAccountNo,
-                                             //        });
-                                             //        Ext.StoreMgr.get('TrackingItemList').load();
-                                             //        Ext.Viewport.mask({ xtype: 'loadmask', message: 'Fetching data,Please Wait..' });
-                                             //        var task = Ext.create('Ext.util.DelayedTask', function () {
-                                             //            Ext.getStore('TrackingItemList').getProxy().setExtraParams({
-                                             //                AccNo: AAccountNo,
-                                             //            });
-                                             //            Ext.StoreMgr.get('TrackingItemList').load();
-                                             //          //  var myStore = Ext.getStore('TrackingItemList');
-                                             //            //  var co = myStore.getCount() - 1;
-                                             //           // var countListItem = myStore.getCount();
-                                                       
-                                             //            //if (countListItem >= 1) {
-                                                             
-                                             //            //}
-                                             //            //if (countListItem == 0) {
-                                             //            //    //Ext.Msg.alert('Info', 'No Trackies Item,,Please add new Item');
-                                             //            //    if ((messageboxss())) {
-                                             //            //        Ext.Viewport.add(messageboxss('No Trackies Item'));
-                                             //            //    }
-                                             //            //    Ext.getCmp('basicform').setActiveItem(3);
-                                             //            //}
-                                             //            Ext.Viewport.unmask();
-                                             //        });
-                                             //        task.delay(1000);
-                                             //        Ext.getCmp('basicform').setActiveItem(2);
-                                                   
-
-                                             //    }
-                                             //},
-                                                 //{
-                                                 //    xtype: 'button',
-                                                 //    style: 'margin: .5em',
-                                                 //    id: 'UserAccViewResponderAlertbtn',
-                                                 //    hidden: true,
-                                                 //    text: 'Responder Alerted',
-                                                 //    handler: function () {
-                                                 //        Ext.getCmp('useraccStartlivetracking').setHidden(true);
-                                                 //        Ext.getCmp('ViewlastLocuseracc').setHidden(true);
-                                                 //        Ext.getCmp('Backuseracc').setHidden(true);
-
-                                                 //        Ext.getStore('ResponderAlertGetByAcc').getProxy().setExtraParams({
-                                                 //            AccNo: Ext.getCmp('AccNo').getValue(),
-                                                 //        });
-                                                 //        Ext.StoreMgr.get('ResponderAlertGetByAcc').load();
-
-                                                 //        Ext.Viewport.mask({ xtype: 'loadmask', message: 'Fetching data,Please Wait..' });
-                                                 //        var task = Ext.create('Ext.util.DelayedTask', function () {
-                                                 //            Ext.getStore('ResponderAlertGetByAcc').getProxy().setExtraParams({
-                                                 //                AccNo: Ext.getCmp('AccNo').getValue(),
-                                                 //            });
-                                                 //            Ext.StoreMgr.get('ResponderAlertGetByAcc').load();
-                                                 //            //  alert(Ext.getCmp('AccNo').getValue());
-                                                 //            Ext.Viewport.unmask();
-                                                 //        });
-                                                 //        task.delay(1000);
-                                                 //        Ext.getCmp('basicform').setActiveItem(7);
-                                                 //    }
-                                                 //},
+                                       
 
                                
                                      {
@@ -870,14 +828,14 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                            {
                                tabActive = 'TrackingItems';
                            Ext.getStore('TrackingItemList').getProxy().setExtraParams({
-                               AccNo: AAccountNo,
+                               AccNo: GetCurrentUserAccountNo(),
                            });
                            Ext.StoreMgr.get('TrackingItemList').load();
                            setTimeout(function () {
                                    
                             
                                    Ext.getStore('TrackingItemList').getProxy().setExtraParams({
-                                       AccNo: AAccountNo,
+                                       AccNo: GetCurrentUserAccountNo(),
                                    });
                                    Ext.StoreMgr.get('TrackingItemList').load();
                            }, 500);
@@ -907,14 +865,14 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                                   tabActive = 'ResponderAlert';
                               Ext.getStore('ResponderAlertGetByAcc').getProxy().setExtraParams({
                                   // AccNo: Ext.getCmp('AccNo').getValue(),
-                                  AccNo: AAccountNo,
+                                  AccNo: GetCurrentUserAccountNo(),
                               });
                               Ext.StoreMgr.get('ResponderAlertGetByAcc').load();
 
                               Ext.Viewport.mask({ xtype: 'loadmask', message: 'Fetching data,Please Wait..' });
                               var task = Ext.create('Ext.util.DelayedTask', function () {
                                   Ext.getStore('ResponderAlertGetByAcc').getProxy().setExtraParams({
-                                      AccNo: AAccountNo,
+                                      AccNo: GetCurrentUserAccountNo(),
                                   });
                                   Ext.StoreMgr.get('ResponderAlertGetByAcc').load();
                                   //  alert(Ext.getCmp('AccNo').getValue());
@@ -1094,7 +1052,7 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                                                      {
                                                          xtype: 'textfield',
                                                          id: 'AgeDetails',
-                                                         label: 'Age',
+                                                         label: 'Ages',
                                                          //disabled: true,
                                                          //placeHolder: 'Tom Roy',
                                                          autoCapitalize: true,
@@ -1102,7 +1060,53 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                                                          clearIcon: true
                                                      },
                                                       
-                                                     
+                                                       {
+                                                           xtype: 'container',
+                                                           id: 'ContainerbtnTrackingItemDetail',
+
+                                                           //  hidden:true,
+                                                           defaults: {
+                                                               xtype: 'button',
+                                                               style: 'margin: .5em',
+                                                               flex: 1
+                                                           },
+                                                           layout: {
+                                                               type: 'hbox'
+                                                           },
+                                                           items: [
+                                                               {
+                                                                   text: 'Save',
+                                                                   scope: this,
+                                                                   id: 'TrackItemsavebtn',
+                                                                   // disabled: true,
+                                                                   // hasDisabled: true,
+                                                                   handler: function () {
+
+                                                                       Ext.Viewport.mask({ xtype: 'loadmask', message: 'Saving...' });
+                                                                       var task = Ext.create('Ext.util.DelayedTask', function () {
+                                                                           TrackingItemsInsertUpdate(Ext.getCmp('IDDetails').getValue(), Ext.getCmp('AccountNoDetails').getValue(),
+                                                                         'SImNumber', Ext.getCmp('TrackIDDetails').getValue(), Ext.getCmp('GpsDeviceIDDetails').getValue(), 'TrackItemTypeDetails',Ext.getCmp('TrackItemDetails').getValue(),
+                                                                         Ext.getCmp('GpsModelDetails').getValue()
+                                                                         , 'TrackingModeDetails', 'Active', 1, GetCurrentUserName(), GetCurrentUserName(), Ext.getCmp('GenderDetails').getValue(), Ext.getCmp('RiskDetails').getValue(), Ext.getCmp('AgeDetails').getValue(), PatImage64);
+                                                                           //                                          
+                                                                           Ext.Viewport.unmask();
+                                                                       });
+                                                                       task.delay(1000);
+
+                                                                   }
+                                                               },
+                                                               {
+                                                                   text: 'Edit',
+                                                                   hidden: true,
+                                                                   handler: function () {
+                                                                       Ext.getCmp('OperationDetails').setValue("Edit");
+                                                                       btnstatus = 'E';
+                                                                       // Ext.getCmp('basicform').reset();
+                                                                   }
+                                                               }
+                                                           ]
+
+                                                       }
 
                                                  
 
@@ -1113,7 +1117,7 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
 
                                          },
                                           
-
+                                        
 
 
 

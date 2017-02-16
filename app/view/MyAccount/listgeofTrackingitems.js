@@ -21,7 +21,8 @@ Ext.define('MyGPS.view.MyAccount.listgeofTrackingitems', {
              {
                  xtype: 'label',
                  // id: 'Queue_GetDetailQueueLabel',
-                 html: 'Registered GPS tracking Item(s)<br><b><font size="2">*Single Tap for show Item Details<br>*Double Tap for view last location</font></b>'
+                 //  html: 'Registered GPS tracking Item(s)<br><b><font size="2">*Single Tap for show Item Details<br>*Double Tap for view last location</font></b>'
+                 html: 'Registered GPS tracking Item(s)<br><b><font size="2">*Single Tap for show Item Detail</font></b>'
              },
 
             {
@@ -57,15 +58,16 @@ Ext.define('MyGPS.view.MyAccount.listgeofTrackingitems', {
                         SingleDeviceID = (record.get('DeviceID'));
                         TrackingItems = (record.get('TrackItem'));
                         Ext.getCmp('useraccStartlivetracking').setHidden(true);
-                        Ext.getCmp('ViewlastLocuseracc').setHidden(false);
+                        Ext.getCmp('BackMyAccountDetails').setHidden(true);
+                        Ext.getCmp('ViewlastLocuseracc').setHidden(false);  
                         Ext.getCmp('Backuseracc').setHidden(false);
                         Ext.getStore('TrackingItemDetailstore').getProxy().setExtraParams({
-                            AccNo: AAccountNo,
+                            AccNo: GetCurrentUserAccountNo(),
                             TrackID: SingleTrackIDlistofTrackingItem,
                             DeviceID: SingleDeviceID
                         });
                         Ext.StoreMgr.get('TrackingItemDetailstore').load();
-                        loadsingletap(SingleTrackIDlistofTrackingItem, AAccountNo);
+                        loadsingletap(SingleTrackIDlistofTrackingItem);
 
                     }
                 },
@@ -95,13 +97,13 @@ function loaddoubletap() {
 
 }
 
-function loadsingletap(ID, acc) {
+function loadsingletap(ID) {
     // alert(ID + '' + acc);
 
     //(AccNo, TrackID, DeviceID);
 
     Ext.getStore('TrackingItemDetailstore').getProxy().setExtraParams({
-        AccNo: acc,
+        AccNo: GetCurrentUserAccountNo(),
         TrackID: ID,
         DeviceID: SingleDeviceID
     });
@@ -109,7 +111,7 @@ function loadsingletap(ID, acc) {
     Ext.Viewport.mask({ xtype: 'loadmask', message: 'Fetching data,Please Wait..' });
     var task = Ext.create('Ext.util.DelayedTask', function () {
         Ext.getStore('TrackingItemDetailstore').getProxy().setExtraParams({
-            AccNo: acc,
+            AccNo: GetCurrentUserAccountNo(),
             TrackID: ID,
             DeviceID: SingleDeviceID,
             //DeviceID: SingleDeviceID

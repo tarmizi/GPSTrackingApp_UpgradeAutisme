@@ -155,8 +155,14 @@ function SettingFenceDrawFenceMenu() {
                            html: '<div ><img src="resources/icons/GeofenceAlertOutOfFence.png" width="55" height="55" alt="Company Name"></div>',
                            ui: 'plain',
                            handler: function () {
-
-                               SettingFencePanelSettingInfoSaveShow();
+                               SettingFencePanelSettingInfoHide();
+                               SettingFenceDrawFenceMenuHide();
+                               Ext.getCmp('mainView').setActiveItem(12);
+                               var currentTime = new Date()
+                               var month = currentTime.getMonth() + 1;
+                               var day = currentTime.getDate();
+                               var year = currentTime.getFullYear();
+                               LoadListOfTraceAlertFence(year, month);
                            }
                        },
 

@@ -1,6 +1,8 @@
-﻿
+﻿var boundstatus = 'yes';
 var _singleTrackingMapVirtualFence_Menu;
 var _isSingleTrackingMapVirtualFence_MenuInitialized = 'no';
+var drawCircleCountSingleTrackingMapDrawFence = 0;
+
 Ext.define('MyGPS.view.SingleTracking.SingleTrackingMapVirtualFence_Menus', {
 
 });
@@ -102,33 +104,49 @@ function SingleTrackingMapVirtualFence_Menu() {
 
                 {
                     xtype: 'button',
-                    id: 'btnSingleTrackingMapVirtualFence_MenuStreetView',
+                    id: 'btnSingleTrackingMapVirtualFence_LocateRound',
                     height: 62,
                     width: 65,
                     //  html: '<div ><img src="resources/icons/OverViewMapRound.png" width="55" height="55" alt="Company Name"></div>',
-                    html: '<div ><img src="resources/icons/StreetViewRound.png" width="55" height="55" alt="Company Name"></div>',
+                    html: '<div ><img src="resources/icons/LocateRound.png" width="55" height="55" alt="Company Name"></div>',
                     ui: 'plain',
                     handler: function () {
-
                         SingleTrackingMapVirtualFenceMenuHide();
+                        SingleTrackingMapVirtualFence_BurgerMenuShow();
+                        _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
+                        console.log(geolocationisOn);
+                        if (geolocationisOn == 'no') {
 
-                        stopClocksingleTrackingMaps();
-                        Ext.getCmp('mainView').setActiveItem(9);
+                            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Detecting Location..Please Wait.' });
+                            var task = Ext.create('Ext.util.DelayedTask', function () {
+                                geolocationisOn = 'yes';
+                                geolocate('yes');
+                                Ext.Viewport.unmask();
+                            });
+                            task.delay(500);
 
-                        Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
-                            TrackID: singleTrackingMap_DeviceID,
-                            AccountNo: AAccountNo
-                        });
-                        Ext.StoreMgr.get('singlesignalTrackingstore').load();
-                        loadSingleTrackingStreetViewMap();
-                        Ext.Viewport.mask({ xtype: 'loadmask', message: 'Searching Point..Please Wait.' });
-                        var task = Ext.create('Ext.util.DelayedTask', function () {
-                            Ext.Viewport.remove(_singleTrackingMapStreetView_Menu);
-                            this.overlay = Ext.Viewport.add(SingleTrackingMapStreetView_Menu());
-                            this.overlay.show();
-                            Ext.Viewport.unmask();
-                        });
-                        task.delay(800);
+                            return;
+                        }
+                        if (geolocationisOn == 'yes') {
+                            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Remove GeoLocation..Please Wait.' });
+                            var task = Ext.create('Ext.util.DelayedTask', function () {
+                                geolocationisOn = 'no';
+
+
+                                singleTrackingMap.setCenter(boundreboundlatlongsingleTrackingMap)
+                                singleTrackingMap.setZoom(8);
+                                boundstatus = 'no';
+
+                                Ext.Viewport.unmask();
+                            });
+                            task.delay(500);
+
+                           
+
+                            return;
+
+                        }
+
 
 
                     }
@@ -145,7 +163,7 @@ function SingleTrackingMapVirtualFence_Menu() {
                        SingleTrackingMapVirtualFence_BurgerMenuShow();
                        _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
                        // Ext.Viewport.remove(_SingleTrackingMap_Menu);
-
+                      
                        if (boundstatus == 'yes') {
                            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Re-center Map View' });
                            var task = Ext.create('Ext.util.DelayedTask', function () {
@@ -159,12 +177,15 @@ function SingleTrackingMapVirtualFence_Menu() {
 
                        }
                        if (boundstatus == 'no') {
-                           Ext.Viewport.mask({ xtype: 'loadmask', message: 'Bounds Map to Point..' });
+                           Ext.Viewport.mask({ xtype: 'loadmask', message: 'Re Map to Point..' });
                            var task = Ext.create('Ext.util.DelayedTask', function () {
 
-                               var bounds = new google.maps.LatLngBounds();
-                               bounds.extend(boundreboundlatlongsingleTrackingMap);
-                               singleTrackingMap.fitBounds(bounds);
+                               //var bounds = new google.maps.LatLngBounds();
+                               //bounds.extend(boundreboundlatlongsingleTrackingMap);
+                               //singleTrackingMap.fitBounds(bounds);
+
+                               singleTrackingMap.setCenter(boundreboundlatlongsingleTrackingMap)
+                               singleTrackingMap.setZoom(18);
                                boundstatus = 'yes';
                                Ext.Viewport.unmask();
                            });
@@ -204,6 +225,25 @@ function SingleTrackingMapVirtualFence_Menu() {
                             SingleTrackingMapVirtualFenceMenuHide();
                             SingleTrackingMapVirtualFence_BurgerMenuShow();
                             _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
+
+
+
+                            drawCircleCountSingleTrackingMapDrawFence = drawCircleCountSingleTrackingMapDrawFence + 1;
+                            // loadGeofenceResponderAlert();
+                            if (drawCircleCountSingleTrackingMapDrawFence == 1) {
+                                // btnGeofenceDrawCircleEvent.setHtml('<div ><img src="resources/icons/drawcircle2.png" width="45" height="45" alt="Company Name"></div>');
+                                drawingManagerSingleTrackingMap.setDrawingMode(google.maps.drawing.OverlayType.CIRCLE);
+
+                            } else if (drawCircleCountSingleTrackingMapDrawFence == 2) {
+                                //   btnGeofenceDrawCircleEvent.setHtml('<div ><img src="resources/icons/drawcircle.png" width="45" height="45" alt="Company Name"></div>');
+                                drawingManagerSingleTrackingMap.setDrawingMode(null);
+                                drawCircleCountSingleTrackingMapDrawFence = 0;
+
+                            }
+
+
+
+
 
 
                         }
