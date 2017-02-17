@@ -1002,3 +1002,81 @@ function drawFence(FencePath, ShapeType, pathlenght) {
         });
     }
 }
+
+var markerSettingFenceMap;
+var imageMarkerSettingFenceMap;
+
+
+function settingFenceMapLocatingPoint(ImeiNo) {
+   
+
+  
+
+
+    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Ploting Point.......' });
+    var task = Ext.create('Ext.util.DelayedTask', function () {
+        Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
+            TrackID: ImeiNo,
+            AccountNo: GetCurrentUserAccountNo()
+        });
+        Ext.StoreMgr.get('singlesignalTrackingstore').load();
+
+
+    });
+    task.delay(500);
+
+
+
+
+
+
+    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Ploting Point..Please Wait.' });
+    var task = Ext.create('Ext.util.DelayedTask', function () {
+        Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
+            TrackID: ImeiNo,
+            AccountNo: GetCurrentUserAccountNo()
+        });
+        Ext.StoreMgr.get('singlesignalTrackingstore').load();
+        var myStore = Ext.getStore('singlesignalTrackingstore');
+        var modelRecord = myStore.getAt(0);
+        var Latitude = modelRecord.get('Latitude');
+        var Longitude = modelRecord.get('Longitude');
+
+        var positions = new google.maps.LatLng(Latitude, Longitude);
+
+        imageMarkerSettingFenceMap = {
+            url: ip + 'pulseRed.gif', // url
+            scaledSize: new google.maps.Size(80, 80), // scaled size
+            //  origin: new google.maps.Point(0, 0), // origin
+            anchor: new google.maps.Point(40, 40) // anchor
+        };
+
+
+
+        markerSettingFenceMap = new MarkerWithLabel({
+            position: positions,
+            //  position: boundreboundlatlongsingleTrackingMap,
+            icon: imageMarkerSettingFenceMap,
+            flat: true,
+            draggable: false,
+            optimized: false,
+            map: singleTrackingMap,
+
+            labelAnchor: new google.maps.Point(70, 13),
+            labelClass: "labelsMark",// the CSS class for the label
+            map: mapgeofenceSettinggeofence,
+            // title: valSingleTrackID
+        });
+
+
+
+        mapgeofenceSettinggeofence.setCenter(positions)
+        mapgeofenceSettinggeofence.setZoom(16);
+        Ext.Viewport.setMasked(false);
+
+    });
+    task.delay(1000);
+
+    
+
+}

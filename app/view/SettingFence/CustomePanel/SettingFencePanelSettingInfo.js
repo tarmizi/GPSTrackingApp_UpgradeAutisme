@@ -275,7 +275,7 @@ function SettingFencePanelSettingInfo() {
                                      // labelWidth: '40%',
                                      //store: 'multipletrackingitemselectFID',
                                      store: 'TrackingItemList',
-                                     valueField: 'TrackID',
+                                     valueField: 'DeviceID',
                                      displayField: 'TrackItem',
                                      //listeners: {
                                      //    change: function () {

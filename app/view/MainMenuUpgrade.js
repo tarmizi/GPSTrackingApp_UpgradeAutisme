@@ -336,6 +336,7 @@
 
               ui: 'plain',
               handler: function () {
+
                   _DataStore_TrackingItemListStore_AccountNo.getProxy().setExtraParams({
                       AccNo: GetCurrentUserAccountNo()
 

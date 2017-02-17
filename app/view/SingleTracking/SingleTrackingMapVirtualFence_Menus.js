@@ -2,7 +2,7 @@
 var _singleTrackingMapVirtualFence_Menu;
 var _isSingleTrackingMapVirtualFence_MenuInitialized = 'no';
 var drawCircleCountSingleTrackingMapDrawFence = 0;
-
+var drawPolyCountSingleTrackingMapDrawFence = 0;
 Ext.define('MyGPS.view.SingleTracking.SingleTrackingMapVirtualFence_Menus', {
 
 });
@@ -210,6 +210,22 @@ function SingleTrackingMapVirtualFence_Menu() {
                        _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
 
 
+
+
+
+
+
+
+
+                       drawPolyCountSingleTrackingMapDrawFence = drawPolyCountSingleTrackingMapDrawFence + 1;
+                       if (drawPolyCountSingleTrackingMapDrawFence == 1) {
+                           drawingManagerSingleTrackingMap.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
+
+                       } else if (drawPolyCountSingleTrackingMapDrawFence == 2) {
+                           drawingManagerSingleTrackingMap.setDrawingMode(null);
+                           drawPolyCountSingleTrackingMapDrawFence = 0;
+
+                       }
                    }
                },
 

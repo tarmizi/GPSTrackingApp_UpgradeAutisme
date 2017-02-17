@@ -149,20 +149,27 @@ function SettingFenceDrawFenceMenu() {
 
                        {
                            xtype: 'button',
-                           id: 'btnsettingFenceDrawFenceMenuAlertOutOfFence',
+                           id: 'btnsettingFenceDrawFenceMenuFindGPSTrackitem',
                            height: 62,
                            width: 65,
-                           html: '<div ><img src="resources/icons/GeofenceAlertOutOfFence.png" width="55" height="55" alt="Company Name"></div>',
+                           html: '<div ><img src="resources/icons/SetVirtualBoundaryFindGPS.png" width="55" height="55" alt="Company Name"></div>',
                            ui: 'plain',
                            handler: function () {
-                               SettingFencePanelSettingInfoHide();
-                               SettingFenceDrawFenceMenuHide();
-                               Ext.getCmp('mainView').setActiveItem(12);
-                               var currentTime = new Date()
-                               var month = currentTime.getMonth() + 1;
-                               var day = currentTime.getDate();
-                               var year = currentTime.getFullYear();
-                               LoadListOfTraceAlertFence(year, month);
+                               
+                              
+                               var ImeiNo = Ext.getCmp('SettingDrawFence_TrackItem').getValue();
+
+                               settingFenceMapLocatingPoint(ImeiNo);
+
+
+                        
+                              
+
+
+
+
+
+                          
                            }
                        },
 
@@ -174,6 +181,7 @@ function SettingFenceDrawFenceMenu() {
                     html: '<div ><img src="resources/icons/multipleMapTrackingSettingLayerCreateLayerDelete.png" width="55" height="55" alt="Company Name"></div>',
                     ui: 'plain',
                     handler: function () {
+                      
 
                         Ext.Msg.show({
                             title: 'DELETE V.BOUNDARY',
