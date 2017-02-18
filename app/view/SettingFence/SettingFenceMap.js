@@ -24,7 +24,7 @@ var geofencetravellengthkmSettinggeofence;
 var geofenceLengthSettinggeofence;
 var alertisplaySettinggeofence;
 var geoFenceDateSettinggeofence;
-
+var public_ImeiNo;
 
 Ext.define('MyGPS.view.SettingFence.SettingFenceMap', {
 
@@ -66,6 +66,11 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceMap', {
                                // html: '<div ><img src="resources/icons/hideGeofence.png" width="33" height="23" alt="Company Name"></div>',
                                ui: 'plain',
                                handler: function () {
+
+
+                              
+                                   DeletemarkerSettingFenceMap();
+
                                    Ext.getCmp('mainView').setActiveItem(1);
                                    SettingFencePanelSettingInfoHide();
                                    SettingFenceDrawFenceMenuHide();
@@ -82,7 +87,10 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceMap', {
                                //right: -7,
                                //top: 1,
                                id: 'btnSettingFenceMapAccInfo',
-                               html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
+                               margin: '5 5 0 0',
+                               height: 53,
+                               width: 60,
+                               html: '<div ><img src="resources/icons/UogradeAutismeIcon/UserManual.png" width="50" height="43" alt="Company Name"></div>',
                                //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',
                                ui: 'plain',
                                handler: function () {
@@ -140,6 +148,8 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceMap', {
                                html: '<div ><img src="resources/icons/WhiteBackIcon.png" width="33" height="33" alt="Company Name"></div>',
                                ui: 'plain',
                                handler: function () {
+                                
+                                   DeletemarkerSettingFenceMap();
                                    loadListOfGeofence();
                                    SettingFenceDrawFenceMenuHide();
                                }
@@ -1005,15 +1015,18 @@ function drawFence(FencePath, ShapeType, pathlenght) {
 
 var markerSettingFenceMap;
 var imageMarkerSettingFenceMap;
-
+var markerSettingFenceMapArr = [];
+var markerPreviousImeiNo='00';
 
 function settingFenceMapLocatingPoint(ImeiNo) {
    
 
-  
+    if (markerPreviousImeiNo != ImeiNo && isFirstSettingFenceMapLoad =='no') {
+        DeletemarkerSettingFenceMap();
+        markerPreviousImeiNo = ImeiNo;
+    }
 
-
-    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Ploting Point.......' });
+    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Locating Kids.......' });
     var task = Ext.create('Ext.util.DelayedTask', function () {
         Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
             TrackID: ImeiNo,
@@ -1030,7 +1043,7 @@ function settingFenceMapLocatingPoint(ImeiNo) {
 
 
 
-    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Ploting Point..Please Wait.' });
+    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Locating Kids..Please Wait.' });
     var task = Ext.create('Ext.util.DelayedTask', function () {
         Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
             TrackID: ImeiNo,
@@ -1060,7 +1073,7 @@ function settingFenceMapLocatingPoint(ImeiNo) {
             flat: true,
             draggable: false,
             optimized: false,
-            map: singleTrackingMap,
+        
 
             labelAnchor: new google.maps.Point(70, 13),
             labelClass: "labelsMark",// the CSS class for the label
@@ -1068,10 +1081,11 @@ function settingFenceMapLocatingPoint(ImeiNo) {
             // title: valSingleTrackID
         });
 
-
-
+        markerSettingFenceMapArr.push(markerSettingFenceMap);
+        isFirstSettingFenceMapLoad = 'no';
         mapgeofenceSettinggeofence.setCenter(positions)
         mapgeofenceSettinggeofence.setZoom(16);
+       
         Ext.Viewport.setMasked(false);
 
     });
@@ -1079,4 +1093,22 @@ function settingFenceMapLocatingPoint(ImeiNo) {
 
     
 
+}
+
+
+function DeletemarkerSettingFenceMap() {
+    //Find and remove the marker from the Array
+
+    console.log("DELETEEEExxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+    //markerSettingFenceMap.setMap(null);
+    //mapgeofenceSettinggeofence.setMap(null);
+
+    for (var i = 0; i < markerSettingFenceMapArr.length; i++) {
+             
+            markerSettingFenceMapArr[i].setMap(null);
+
+            //Remove the marker from array.
+            //markerSettingFenceMapArr.splice(i, 1);
+     
+    }
 }

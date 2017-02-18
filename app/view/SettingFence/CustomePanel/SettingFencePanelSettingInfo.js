@@ -116,7 +116,8 @@ function SettingFencePanelSettingInfo() {
                                html: '<div ><img src="resources/icons/WhiteBackIcon.png" width="33" height="33" alt="Company Name"></div>',
                                ui: 'plain',
                                handler: function () {
-                                 
+                                   var ImeiNo = public_ImeiNo;
+                                   DeletemarkerSettingFenceMap(ImeiNo);
                                    SettingFenceDrawFenceMenuHide();
                                    SettingFencePanelSettingInfoHide();
                                    loadListOfGeofence();
@@ -295,7 +296,7 @@ function SettingFencePanelSettingInfo() {
                                      id: 'SettingDrawFence_FenceName',
                                      labelWrap: true,
                                      // disabled: true,
-                                     // placeHolder: 'C01'
+                                     placeHolder: 'Virtual Boundary Name'
 
                                  },
                              {

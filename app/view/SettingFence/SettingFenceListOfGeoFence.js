@@ -10,7 +10,7 @@ var SettingDrawFence_DaySetting = '-1';
 var SettingDrawFence_Status='-1';
 var SettingDrawFence_Length='-1'
 var isClickAddNewSettingFenceButton = 'no';
-
+var isFirstSettingFenceMapLoad;
 
 
 
@@ -63,7 +63,10 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                                //right: -7,
                                //top: 1,
                                id: 'btnSettingFenceListOfGeoFenceHomeAccInfo',
-                               html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
+                               margin: '5 5 0 0',
+                               height: 53,
+                               width: 60,
+                               html: '<div ><img src="resources/icons/UogradeAutismeIcon/UserManual.png" width="50" height="43" alt="Company Name"></div>',
                                //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',
                                ui: 'plain',
                                handler: function () {
@@ -115,7 +118,7 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
 
            {
                xtype: 'button',
-
+               hidden:true,
                id: 'SettingAutoFenceTraceAlert',
                //ui: 'action',
                //text: "Back",
@@ -157,7 +160,7 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                    ui: 'plain',
                    handler: function (btn) {
                        Ext.getCmp('mainView').setActiveItem(13);
-                     
+                       isFirstSettingFenceMapLoad = 'yes';
                        isClickAddNewSettingFenceButton = 'yes';
                        SettingFencePanelSettingInfoShow();
                        SettingFenceDrawFenceMenuShow();
