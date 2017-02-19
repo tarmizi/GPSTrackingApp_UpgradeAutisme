@@ -3,6 +3,7 @@ var _singleTrackingMapVirtualFence_Menu;
 var _isSingleTrackingMapVirtualFence_MenuInitialized = 'no';
 var drawCircleCountSingleTrackingMapDrawFence = 0;
 var drawPolyCountSingleTrackingMapDrawFence = 0;
+var _isWPSpanelshow = 'no';
 Ext.define('MyGPS.view.SingleTracking.SingleTrackingMapVirtualFence_Menus', {
 
 });
@@ -19,7 +20,7 @@ function SingleTrackingMapVirtualFence_Menu() {
       id: '_SingleTrackingMapVirtualFence_MenuID',
       draggable: false,
       right: -5,
-      bottom: 362,
+      bottom: 237,
       zIndex: 10,
       // bottom: 165,
 
@@ -53,6 +54,7 @@ function SingleTrackingMapVirtualFence_Menu() {
                       id: 'btnSingleTrackingMapVirtualFence_MenuChangeMaps',
                       height: 62,
                       width: 65,
+                 
                       // hidden:true,
                       // html: '<div ><img src="resources/icons/streetviewIcon.png" width="45" height="45" alt="Company Name"></div>',
                       //   html: '<div ><img src="resources/icons/GPSListRound.png" width="55" height="55" alt="Company Name"></div>',
@@ -63,6 +65,7 @@ function SingleTrackingMapVirtualFence_Menu() {
 
                           SingleTrackingMapVirtualFenceMenuHide();
                           _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
+                          
                           ////  Ext.Viewport.remove(_SingleTrackingMap_Menu);
 
                           countMapChange = countMapChange + 1;
@@ -91,7 +94,7 @@ function SingleTrackingMapVirtualFence_Menu() {
                               countMapChange = 0;
                           }
                           SingleTrackingMapVirtualFence_BurgerMenuShow();
-
+                          _singleTrackingMapVirtualFence_BurgerMenuIsInitialized = 'yes';
                           Ext.Viewport.mask({ xtype: 'loadmask', message: changeMsg });
                           var task = Ext.create('Ext.util.DelayedTask', function () {
 
@@ -102,66 +105,66 @@ function SingleTrackingMapVirtualFence_Menu() {
                       }
                   },
 
-                {
-                    xtype: 'button',
-                    id: 'btnSingleTrackingMapVirtualFence_LocateRound',
-                    height: 62,
-                    width: 65,
-                    //  html: '<div ><img src="resources/icons/OverViewMapRound.png" width="55" height="55" alt="Company Name"></div>',
-                    html: '<div ><img src="resources/icons/LocateRound.png" width="55" height="55" alt="Company Name"></div>',
-                    ui: 'plain',
-                    handler: function () {
-                        SingleTrackingMapVirtualFenceMenuHide();
-                        SingleTrackingMapVirtualFence_BurgerMenuShow();
-                        _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
-                        console.log(geolocationisOn);
-                        if (geolocationisOn == 'no') {
+                //{
+                //    xtype: 'button',
+                //    id: 'btnSingleTrackingMapVirtualFence_LocateRound',
+                //    height: 62,
+                //    width: 65,
+                //    html: '<div ><img src="resources/icons/LocateRound.png" width="55" height="55" alt="Company Name"></div>',
+                //    ui: 'plain',
+                //    handler: function () {
+                //        SingleTrackingMapVirtualFenceMenuHide();
+                //        SingleTrackingMapVirtualFence_BurgerMenuShow();
+                //        _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
+                //        console.log(geolocationisOn);
+                //        if (geolocationisOn == 'no') {
 
-                            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Detecting Location..Please Wait.' });
-                            var task = Ext.create('Ext.util.DelayedTask', function () {
-                                geolocationisOn = 'yes';
-                                geolocate('yes');
-                                Ext.Viewport.unmask();
-                            });
-                            task.delay(500);
+                //            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Detecting Location..Please Wait.' });
+                //            var task = Ext.create('Ext.util.DelayedTask', function () {
+                //                geolocationisOn = 'yes';
+                //                geolocate('yes');
+                //                Ext.Viewport.unmask();
+                //            });
+                //            task.delay(500);
 
-                            return;
-                        }
-                        if (geolocationisOn == 'yes') {
-                            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Remove GeoLocation..Please Wait.' });
-                            var task = Ext.create('Ext.util.DelayedTask', function () {
-                                geolocationisOn = 'no';
+                //            return;
+                //        }
+                //        if (geolocationisOn == 'yes') {
+                //            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Remove GeoLocation..Please Wait.' });
+                //            var task = Ext.create('Ext.util.DelayedTask', function () {
+                //                geolocationisOn = 'no';
 
 
-                                singleTrackingMap.setCenter(boundreboundlatlongsingleTrackingMap)
-                                singleTrackingMap.setZoom(8);
-                                boundstatus = 'no';
+                //                singleTrackingMap.setCenter(boundreboundlatlongsingleTrackingMap)
+                //                singleTrackingMap.setZoom(8);
+                //                boundstatus = 'no';
 
-                                Ext.Viewport.unmask();
-                            });
-                            task.delay(500);
+                //                Ext.Viewport.unmask();
+                //            });
+                //            task.delay(500);
 
                            
 
-                            return;
+                //            return;
 
-                        }
+                //        }
 
 
 
-                    }
-                },
+                //    }
+                //},
                {
                    xtype: 'button',
                    id: 'btnSingleTrackingMapVirtualFence_MenuZoomPoints',
                    height: 62,
                    width: 65,
-                   html: '<div ><img src="resources/icons/NearMeRound.png" width="55" height="55" alt="Company Name"></div>',
+                   html: '<div ><img src="resources/icons/SetVirtualBoundaryFindGPS.png" width="55" height="55" alt="Company Name"></div>',
                    ui: 'plain',
                    handler: function () {
                        SingleTrackingMapVirtualFenceMenuHide();
                        SingleTrackingMapVirtualFence_BurgerMenuShow();
                        _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
+                       _singleTrackingMapVirtualFence_BurgerMenuIsInitialized = 'yes';
                        // Ext.Viewport.remove(_SingleTrackingMap_Menu);
                       
                        if (boundstatus == 'yes') {
@@ -197,17 +200,17 @@ function SingleTrackingMapVirtualFence_Menu() {
                    }
                },
 
-               {
-                   xtype: 'button',
-                   id: 'btnSingleTrackingMapVirtualFence_MenuCreateLayerPolygon',
-                   height: 62,
-                   width: 65,
-                   html: '<div ><img src="resources/icons/multipleMapTrackingSettingLayerCreateLayerPolygon.png" width="55" height="55" alt="Company Name"></div>',
-                   ui: 'plain',
-                   handler: function () {
-                       SingleTrackingMapVirtualFenceMenuHide();
-                       SingleTrackingMapVirtualFence_BurgerMenuShow();
-                       _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
+               //{
+               //    xtype: 'button',
+               //    id: 'btnSingleTrackingMapVirtualFence_MenuCreateLayerPolygon',
+               //    height: 62,
+               //    width: 65,
+               //    html: '<div ><img src="resources/icons/multipleMapTrackingSettingLayerCreateLayerPolygon.png" width="55" height="55" alt="Company Name"></div>',
+               //    ui: 'plain',
+               //    handler: function () {
+               //        SingleTrackingMapVirtualFenceMenuHide();
+               //        SingleTrackingMapVirtualFence_BurgerMenuShow();
+               //        _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
 
 
 
@@ -217,67 +220,79 @@ function SingleTrackingMapVirtualFence_Menu() {
 
 
 
-                       drawPolyCountSingleTrackingMapDrawFence = drawPolyCountSingleTrackingMapDrawFence + 1;
-                       if (drawPolyCountSingleTrackingMapDrawFence == 1) {
-                           drawingManagerSingleTrackingMap.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
+               //        drawPolyCountSingleTrackingMapDrawFence = drawPolyCountSingleTrackingMapDrawFence + 1;
+               //        if (drawPolyCountSingleTrackingMapDrawFence == 1) {
+               //            drawingManagerSingleTrackingMap.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
 
-                       } else if (drawPolyCountSingleTrackingMapDrawFence == 2) {
-                           drawingManagerSingleTrackingMap.setDrawingMode(null);
-                           drawPolyCountSingleTrackingMapDrawFence = 0;
+               //        } else if (drawPolyCountSingleTrackingMapDrawFence == 2) {
+               //            drawingManagerSingleTrackingMap.setDrawingMode(null);
+               //            drawPolyCountSingleTrackingMapDrawFence = 0;
 
-                       }
-                   }
-               },
+               //        }
+               //    }
+               //},
 
+
+               //     {
+               //         xtype: 'button',
+               //         id: 'btnSingleTrackingMapVirtualFence_MenuCreateLayerCircle',
+               //         height: 62,
+               //         width: 65,
+               //         html: '<div ><img src="resources/icons/multipleMapTrackingSettingLayerCreateLayerCircle.png" width="55" height="55" alt="Company Name"></div>',
+               //         ui: 'plain',
+               //         handler: function () {
+               //             SingleTrackingMapVirtualFenceMenuHide();
+               //             SingleTrackingMapVirtualFence_BurgerMenuShow();
+               //             _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
+
+
+
+               //             drawCircleCountSingleTrackingMapDrawFence = drawCircleCountSingleTrackingMapDrawFence + 1;
+               //             // loadGeofenceResponderAlert();
+               //             if (drawCircleCountSingleTrackingMapDrawFence == 1) {
+               //                 // btnGeofenceDrawCircleEvent.setHtml('<div ><img src="resources/icons/drawcircle2.png" width="45" height="45" alt="Company Name"></div>');
+               //                 drawingManagerSingleTrackingMap.setDrawingMode(google.maps.drawing.OverlayType.CIRCLE);
+
+               //             } else if (drawCircleCountSingleTrackingMapDrawFence == 2) {
+               //                 //   btnGeofenceDrawCircleEvent.setHtml('<div ><img src="resources/icons/drawcircle.png" width="45" height="45" alt="Company Name"></div>');
+               //                 drawingManagerSingleTrackingMap.setDrawingMode(null);
+               //                 drawCircleCountSingleTrackingMapDrawFence = 0;
+
+               //             }
+
+
+
+
+
+
+               //         }
+               //     },
 
                     {
                         xtype: 'button',
-                        id: 'btnSingleTrackingMapVirtualFence_MenuCreateLayerCircle',
+                        id: 'btnSingleTrackingMapVirtualFence_WPSmarkermenuicon',
                         height: 62,
                         width: 65,
-                        html: '<div ><img src="resources/icons/multipleMapTrackingSettingLayerCreateLayerCircle.png" width="55" height="55" alt="Company Name"></div>',
+                        html: '<div ><img src="resources/icons/WPSmarkermenuicon1.png" width="55" height="55" alt="Company Name"></div>',
                         ui: 'plain',
                         handler: function () {
                             SingleTrackingMapVirtualFenceMenuHide();
                             SingleTrackingMapVirtualFence_BurgerMenuShow();
                             _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
-
-
-
-                            drawCircleCountSingleTrackingMapDrawFence = drawCircleCountSingleTrackingMapDrawFence + 1;
-                            // loadGeofenceResponderAlert();
-                            if (drawCircleCountSingleTrackingMapDrawFence == 1) {
-                                // btnGeofenceDrawCircleEvent.setHtml('<div ><img src="resources/icons/drawcircle2.png" width="45" height="45" alt="Company Name"></div>');
-                                drawingManagerSingleTrackingMap.setDrawingMode(google.maps.drawing.OverlayType.CIRCLE);
-
-                            } else if (drawCircleCountSingleTrackingMapDrawFence == 2) {
-                                //   btnGeofenceDrawCircleEvent.setHtml('<div ><img src="resources/icons/drawcircle.png" width="45" height="45" alt="Company Name"></div>');
-                                drawingManagerSingleTrackingMap.setDrawingMode(null);
-                                drawCircleCountSingleTrackingMapDrawFence = 0;
-
+                            _singleTrackingMapVirtualFence_BurgerMenuIsInitialized = 'yes';
+                            if (_isWPSpanelshow == 'no')
+                            {
+                                SingleTrackingWPSListButtonHide();
+                                SingleTrackingWPSListShow();
+                                _isWPSpanelshow = 'yes';
+                                return;
                             }
-
-
-
-
-
-
-                        }
-                    },
-
-                    {
-                        xtype: 'button',
-                        id: 'btnSingleTrackingMapVirtualFence_MenuCreateLayerDelete',
-                        height: 62,
-                        width: 65,
-                        html: '<div ><img src="resources/icons/multipleMapTrackingSettingLayerCreateLayerDelete.png" width="55" height="55" alt="Company Name"></div>',
-                        ui: 'plain',
-                        handler: function () {
-                            SingleTrackingMapVirtualFenceMenuHide();
-                            SingleTrackingMapVirtualFence_BurgerMenuShow();
-                            _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
-
-
+                            if (_isWPSpanelshow == 'yes') {
+                                SingleTrackingWPSListButtonShow();
+                                SingleTrackingWPSListHide();
+                                _isWPSpanelshow = 'no';
+                                return;
+                            }
                         }
                     },
 
@@ -290,10 +305,8 @@ function SingleTrackingMapVirtualFence_Menu() {
                   id: 'btnSingleTrackingMapVirtualFence_MenuBack',
                   height: 62,
                   width: 65,
-                  margin: '-62 63 0 0',
-                  //  html: '<div ><img src="resources/icons/OverViewMapRound.png" width="55" height="55" alt="Company Name"></div>',
-                  //  html: '<div ><img src="resources/icons/GPSListRound.png" width="55" height="55" alt="Company Name"></div>',
-
+                 // margin: '-62 63 0 0',
+                 
                   html: '<div ><img src="resources/icons/BackStreetViewRound.png" width="55" height="55" alt="Company Name"></div>',
 
                   ui: 'plain',
@@ -304,7 +317,7 @@ function SingleTrackingMapVirtualFence_Menu() {
                       DeselectMultipleTrackingList();
                       stopClocksingleTrackingMaps();
                       markersingleTrackingMap.setMap(null);
-                                       
+                      DeleteToleranceLayer();
                       Ext.getCmp('mainView').setActiveItem(1);
 
                       if(_isSingleTrackingWPSListButtonClicked=='yes')

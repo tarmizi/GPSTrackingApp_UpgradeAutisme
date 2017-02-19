@@ -282,7 +282,7 @@
   
     {
         xtype: 'container',
-      margin:'10 -20 0 0',
+      margin:'10 -25 0 0',
         layout: {
             type: 'hbox',
             pack: 'center',
@@ -299,12 +299,12 @@
             {
                 xtype: 'button',
                 id: 'btnMainMenuTraceVirtualBoundaryAlert',
-                margin: '0 -25 0 0',
+                margin: '0 -40 0 0',
 
-                height: 110,
-                width: 100,
+                height: 115,
+                width: 105,
                 //  margin: '0 -13 220 0',
-                html: '<div ><img src="resources/icons/UogradeAutismeIcon/TraceVirtualBoundaryAlert.png" width="100" height="110" alt="Company Name"></div>',
+                html: '<div ><img src="resources/icons/UogradeAutismeIcon/TraceVirtualBoundaryAlert.png" width="105" height="115" alt="Company Name"></div>',
 
                 
              
@@ -323,7 +323,7 @@
             },
             {
                 xtype: 'spacer',
-                width: 65
+                width: 75
             },
           {
               xtype: 'button',
@@ -357,10 +357,12 @@
 
 
                                       var count = _DataStore_TrackingItemListStore_AccountNo.getCount();
+                                    
                                       Ext.getCmp('MultiTrackingListLabelTop').setHtml('<u>Registered GPS tracking items</u><br><b>Found :' + count + ' Items</b>');
                                       if (count == 1) {
 
                                           var IMEI_no = store.get('DeviceID');
+                                   
                                           loadmarkerSingleTrackingMap(IMEI_no);
                                           Ext.getCmp('mainView').setActiveItem(2);
 
@@ -443,10 +445,10 @@
               xtype: 'button',
               id: 'btnMainMenuLogOut',
               //  margin: '0 -134 115 0',
-              height: 90,
-              width: 90,
+              height: 105,
+              width: 100,
               //  margin: '0 -13 220 0',
-              html: '<div ><img src="resources/icons/UogradeAutismeIcon/LogOut.png" width="80" height="80" alt="Company Name"></div>',
+              html: '<div ><img src="resources/icons/UogradeAutismeIcon/UserManual.png" width="90" height="95" alt="Company Name"></div>',
 
               ui: 'plain',
               handler: function () {

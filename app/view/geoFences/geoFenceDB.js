@@ -617,37 +617,6 @@ function CheckingAutoTimerDuplicate(ID, IDK, TrackID, AccountNo, FencePath, Shap
         }
 }
 
-function AutoFenceTimerDelete(ID, AccountNo) {
-
-    Ext.Ajax.request({
-
-        url: document.location.protocol + '//' + document.location.host + '/AutoFenceTimer/AutoFenceTimerDelete',
-
-        params: {
-
-            ID: ID,
-            AccountNo: AccountNo,
-
-
-        },
-        success: function (result, request) {
-            Ext.Msg.alert('Success', 'Record has been Delete');
-            Ext.getCmp('SettingDrawFence_ID').setValue('0');
-            //if ((messageboxss())) {
-            //    Ext.Viewport.add(messageboxss('Delete Succesfully'));
-            //    //   Ext.getCmp('GeofenceInfopanel').setHtml('<table class="tblgpssummary">  <tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 13px; color: #fff; text-align: center;  valign:top; height:20%">DISABLED</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;  valign:top;  height:20% ">Fence Status</td> </tr>    <tr > <td class="tdspeedmax">{Speed}</td> <td class="tdspeedmax">120km/h</td></tr> <tr > <td class="tdspeed">Curr. Speed</td> <td class="tdspeed">Max Speed</td></tr> <tr> <td colspan="2" class="tdspeedmax">10/13/2015 2:06:56AM</td> </tr>  </table>');
-            //}
-            ////  Ext.getCmp('GeofenceInfopanel').setHtml('<table>  <tr> <td colspan="2" font-weight: bold; style="background-color: #57A0DC;  font-size: 15px; color: #fff; text-align: center;">DISABLED</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;">Status</td> </tr></table>');
-            //  console.log(document.location.protocol + '//' + document.location.host + '/TrackingAppAPI/GeoFence/GeofenceInsert')
-        },
-        failure: function (result, request) {
-            Ext.Msg.alert('Error', request);
-            //if ((messageboxss())) {
-            //    Ext.Viewport.add(messageboxss('Error,' + request));
-            //}
-        }
-    });
-}
 
 
 

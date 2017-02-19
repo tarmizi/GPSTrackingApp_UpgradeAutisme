@@ -72,6 +72,7 @@ function SingleTrackingWPSList() {
                          //   html: '<div ><img src="resources/icons/DetailsPoint.png" width="45" height="45" alt="Company Name"></div>',
                          ui: 'plain',
                          handler: function () {
+                             _isWPSpanelshow = 'no';
                              SingleTrackingWPSListHide();
                              SingleTrackingWPSListButtonShow();
                          }
@@ -100,10 +101,29 @@ function SingleTrackingWPSList() {
                            //   html: '<div ><img src="resources/icons/DetailsPoint.png" width="45" height="45" alt="Company Name"></div>',
                            ui: 'plain',
                            handler: function () {
+                               _isWPSpanelshow = 'no';
                                SingleTrackingWPSListHide();
                                SingleTrackingWPSListButtonShow();
                            }
                        },
+
+
+
+                           {
+                               xtype: 'button',
+                               id: 'btnSingleTrackingWPSListAPNCountdetected',
+                               height: 180,
+                               width: 210,
+                               margin: '-103 0 0 35',
+                               html: '<font size="2.5" color="black"><b>(4)</b></font>',
+                               //   html: '<div ><img src="resources/icons/DetailsPoint.png" width="45" height="45" alt="Company Name"></div>',
+                               ui: 'plain',
+                               handler: function () {
+                                   _isWPSpanelshow = 'no';
+                                   SingleTrackingWPSListHide();
+                                   SingleTrackingWPSListButtonShow();
+                               }
+                           },
 
           ]
 

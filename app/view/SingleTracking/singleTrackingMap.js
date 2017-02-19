@@ -233,7 +233,7 @@ Ext.define('MyGPS.view.SingleTracking.singleTrackingMap', {
 
 
 
-function loadmarkerSingleTrackingMap(SingleTrackID) {
+function loadmarkerSingleTrackingMap(IMEI_no) {
     singleTrackingMapchecklong = '000';
 
     //Disabled for Alzhemier Project
@@ -241,7 +241,7 @@ function loadmarkerSingleTrackingMap(SingleTrackID) {
     // SingleTrackingMap_MillageCountShow();
 
     Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
-        TrackID: SingleTrackID,
+        TrackID: IMEI_no,
         AccountNo: GetCurrentUserAccountNo()
     });
     Ext.StoreMgr.get('singlesignalTrackingstore').load();
@@ -249,7 +249,7 @@ function loadmarkerSingleTrackingMap(SingleTrackID) {
     Ext.Viewport.mask({ xtype: 'loadmask', message: 'Ploting Point..Please Wait.' });
     var task = Ext.create('Ext.util.DelayedTask', function () {
         Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
-            TrackID: SingleTrackID,
+            TrackID: IMEI_no,
             AccountNo: GetCurrentUserAccountNo()
         });
         Ext.StoreMgr.get('singlesignalTrackingstore').load();
@@ -268,7 +268,7 @@ function loadmarkerSingleTrackingMap(SingleTrackID) {
     task.delay(1000);
 
     // stopClocksingleTrackingMapsStreetView();
-    startsingleTrackingMaps('start', SingleTrackID);
+    startsingleTrackingMaps('start', IMEI_no);
 
 }
 
@@ -278,9 +278,9 @@ var clickedsingleTrackingMap = false;
 var singleTrackingMapsec = 0;
 var timer = 0;
 
-function startsingleTrackingMaps(val, SingleTrackID) {
-    var valSingleTrackID = SingleTrackID;
-    singleTrackingMap_DeviceID = SingleTrackID;
+function startsingleTrackingMaps(val, IMEI_no) {
+    var valSingleTrackID = IMEI_no;
+    singleTrackingMap_DeviceID = IMEI_no;
     console.log(singleTrackingMap_DeviceID + ':singleTrackingMap_DeviceID');
     //this.overlay = Ext.Viewport.add(SingleTrackingMapPointIfo())
     //this.overlay.show();
@@ -288,11 +288,11 @@ function startsingleTrackingMaps(val, SingleTrackID) {
     if (val == 'start') {
         timer = setInterval(function () {
             singleTrackingMapsec = singleTrackingMapsec + 1;
-            //console.log("Running:" + singleTrackingMapsec);
+            console.log("Running:" + singleTrackingMapsec);
             //console.log(valSingleTrackID + ':vvvvvvvvvvvvvvvXXXX');
             if (singleTrackingMapsec == 1) {
                 Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
-                    TrackID: valSingleTrackID,
+                    TrackID: IMEI_no,
                     AccountNo: GetCurrentUserAccountNo()
                 });
                 Ext.StoreMgr.get('singlesignalTrackingstore').load();
@@ -304,7 +304,7 @@ function startsingleTrackingMaps(val, SingleTrackID) {
                         var modelRecord = myStore.getAt(0);
                         var Latitude = modelRecord.get('Latitude');
                         var Longitude = modelRecord.get('Longitude');
-                        var IMEI_no = modelRecord.get('IMEI_no');
+                        var IMEIno = modelRecord.get('IMEI_no');
                         var Speed = modelRecord.get('Speed');
                         var BatteryReading = modelRecord.get('BatteryReading');
                         var DateDT = modelRecord.get('DateDT');
@@ -335,7 +335,8 @@ function startsingleTrackingMaps(val, SingleTrackID) {
 
 
                         Direction = parseFloat(modelRecord.get('Direction'));
-
+                        _TrackingItemsConfigDeviceID = IMEIno;
+                        _TrackID = TrackID;
                         //  bPicture = modelRecord.get('Picture');
                         // console.log('SelectedMarker:' + SelectedMarker);
                         var SelectedMarker = 'Standard';
@@ -406,10 +407,11 @@ function startsingleTrackingMaps(val, SingleTrackID) {
 
 
 
-
+                       
                         if (singleTrackingMapchecklong == Longitude)
                         { return }
-                        setToleranceLayer(Latitude, Longitude);
+                        
+                        SetToleranceLayer(Latitude, Longitude);
 
 
 
@@ -535,10 +537,24 @@ function startsingleTrackingMaps(val, SingleTrackID) {
 
                         google.maps.event.addListener(markersingleTrackingMap, 'mousedown',
              function (event) {
-                 _TrackingItemsConfigDeviceID = IMEI_no;
-                 Ext.Viewport.remove(_singleTrackingMap_PointInfo);
-                 this.overlay = Ext.Viewport.add(SingleTrackingMapPointIfo());
-                 this.overlay.show();
+               
+                 stopClocksingleTrackingMaps();
+                 SingleTrackingMap_PointInfoShow();
+
+               
+                 Ext.Viewport.mask({ xtype: 'loadmask', message: 'Loading Picture...' });
+                 var task = Ext.create('Ext.util.DelayedTask', function () {
+
+                     LoadPointInfoPicture();
+
+
+                     Ext.Viewport.unmask();
+                 });
+                 task.delay(500);
+
+                 //Ext.Viewport.remove(_singleTrackingMap_PointInfo);
+                 //this.overlay = Ext.Viewport.add(SingleTrackingMapPointIfo());
+                 //this.overlay.show();
                  // setsingleTrackingMapDetails();
                  //   Ext.getCmp('GeofenceDetailpanelHeader').setHtml('<table width=100%>  <tr> <td colspan="2" font-weight: bold; style="background-color: #57A0DC;  font-size: 15px; color: #fff; text-align: center;">Fetching..</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;"><img height="127" width="134" src=' + bPicture + '></td> </tr></table>');
 
@@ -767,21 +783,18 @@ function setTrackingInfoPanel(strTrackID, strTrackItem, strSpeed, strTime, strTr
 }
 
 
+var previousLatitute='000';
+var isSetToleranceLayerFirst = 'yes';
+var ToleranceLayerArr = [];
+var reclosePointInfo = 'no';
+function SetToleranceLayer(Latitude, Longitude) {
+    if (previousLatitute != Latitude && isSetToleranceLayerFirst == 'no') {
+        DeleteToleranceLayer();
+        previousLatitute = Latitude;
+    }
 
-
-
-function setToleranceLayer(Latitude, Longitude) {
-    //var cityCircle = new google.maps.Circle({
-    //    strokeColor: '#FF0000',
-    //    strokeOpacity: 0.8,
-    //    strokeWeight: 2,
-    //    fillColor: '#FF0000',
-    //    fillOpacity: 0.35,
-    //    map: map,
-    //    center: citymap[city].center,
-    //    radius: Math.sqrt(citymap[city].population) * 100
-    //});
-
+    if (reclosePointInfo == 'yes')
+    { console.log('reclosePointInfo DeletebToleranceLayer'); reclosePointInfo = 'no'; DeleteToleranceLayer(); }
     console.log('setToleranceLayer');
 
     var center = new google.maps.LatLng(Latitude, Longitude);
@@ -795,6 +808,26 @@ function setToleranceLayer(Latitude, Longitude) {
         fillOpacity: 0.35,
         map: singleTrackingMap
     });
+    ToleranceLayerArr.length = 0;
+    ToleranceLayerArr.push(draw_circle);
+    isSetToleranceLayerFirst = 'no';
 }
 
 
+
+function DeleteToleranceLayer() {
+    //Find and remove the marker from the Array
+
+    console.log("DELETEEEE");
+    //markerSettingFenceMap.setMap(null);
+    //mapgeofenceSettinggeofence.setMap(null);
+
+    for (var i = 0; i < ToleranceLayerArr.length; i++) {
+
+        ToleranceLayerArr[i].setMap(null);
+
+        //Remove the marker from array.
+        //markerSettingFenceMapArr.splice(i, 1);
+
+    }
+}

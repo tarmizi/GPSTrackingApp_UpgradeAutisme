@@ -7,6 +7,7 @@
 		    { name: 'CreatedDate' },
             { name: 'TrackItem' },
             { name: 'TrackID' },
+               { name: 'DeviceID' },            
             { name: 'AccountNo' },
             { name: 'FencePath' },
 

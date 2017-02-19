@@ -58,8 +58,27 @@ Ext.define('MyGPS.view.SingleTracking.singleTrackingOverViewMap', {
                                // html: '<div ><img src="resources/icons/hideGeofence.png" width="33" height="23" alt="Company Name"></div>',
                                ui: 'plain',
                                handler: function () {
-                                   // MultipleGeocodeAdd.length; = 0;
-                                   HideAllSingleTrackinMapStreetViewHome_CustomePanel();
+                                 
+                                   // HideAllSingleTrackinMapStreetViewHome_CustomePanel();
+                                   SingleTrackingMapVirtualFenceMenuHide();
+                                   trackingid.length = 0;
+                                   DeselectMultipleTrackingList();
+                                   stopClocksingleTrackingMaps();
+                                   markersingleTrackingMap.setMap(null);
+                                   DeleteToleranceLayer();
+                                   Ext.getCmp('mainView').setActiveItem(1);
+
+                                   if (_isSingleTrackingWPSListButtonClicked == 'yes') {
+                                       SingleTrackingWPSListButtonHide();
+                                   }
+                                   if (_isSingleTrackingWPSListClicked == 'yes') {
+                                       SingleTrackingWPSListHide();
+                                   }
+
+                                   if(_singleTrackingMapVirtualFence_BurgerMenuIsInitialized == 'yes')
+                                   {
+                                       SingleTrackingMapVirtualFence_BurgerMenuHide();
+                                   }
                                }
 
 
@@ -609,17 +628,25 @@ Ext.define('MyGPS.view.SingleTracking.singleTrackingOverViewMap', {
 function HideAllSingleTrackinMapStreetViewHome_CustomePanel()
 {
    
-    SingleTrackingMap_MillageCountHide();
-    SingleTrackingMap_SpeedMeterHide();
+    //SingleTrackingMap_MillageCountHide();
+   // SingleTrackingMap_SpeedMeterHide();
    
-   
+
+    
+
+
+
+
+
+
+
     trackingid.length = 0;
     stopClocksingleTrackingMaps();
     HideSingleTrackingMapMenu();
     markersingleTrackingMap.setMap(null);
     markersingleTrackingMapTop.setMap(null);
     DeselectMultipleTrackingList();
-
+   
     if (_singleTrackingMap_BurgeMenuIsInitialized =='yes')
     {
         SingleTrackingMap_BurgeMenuHide();

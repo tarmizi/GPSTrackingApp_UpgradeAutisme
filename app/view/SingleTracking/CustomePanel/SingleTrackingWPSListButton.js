@@ -73,8 +73,8 @@ function SingleTrackingWPSListButton() {
                          ui: 'plain',
                          handler: function () {
                           
-                             SingleTrackingWPSListButtonHide();
-                             SingleTrackingWPSListShow();
+                             //SingleTrackingWPSListButtonHide();
+                             //SingleTrackingWPSListShow();
                          }
                      },
               

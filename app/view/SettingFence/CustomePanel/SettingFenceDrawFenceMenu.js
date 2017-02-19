@@ -155,11 +155,20 @@ function SettingFenceDrawFenceMenu() {
                            html: '<div ><img src="resources/icons/SetVirtualBoundaryFindGPS.png" width="55" height="55" alt="Company Name"></div>',
                            ui: 'plain',
                            handler: function () {
-                               
-                              
-                               var ImeiNo = Ext.getCmp('SettingDrawFence_TrackItem').getValue();
+                               console.log('SettingFenceBtnAddNew_or_ListofGeofence():' + SettingFenceBtnAddNew_or_ListofGeofence)
+                               if (SettingFenceBtnAddNew_or_ListofGeofence == 'BtnAddNew')
+                               {
+                                   var ImeiNo = Ext.getCmp('SettingDrawFence_TrackItem').getValue();
 
-                               settingFenceMapLocatingPoint(ImeiNo);
+                                   settingFenceMapLocatingPoint(ImeiNo);
+                                 
+                               } else
+                               {
+                                  
+                                   var ImeiNo = GetCurrentImeiNo();
+                                   settingFenceMapLocatingPoint(ImeiNo);
+                               }
+                              
 
 
                         

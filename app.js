@@ -44,8 +44,8 @@ Ext.application({
        'TraceAlertFence.TraceAlertFenceMap', 'TraceAlertFence.ListOfTraceAlertFence', 'TraceAlertFence.CustomePanel.TraceAlertFenceHistoryInfo', 'custompanel.master_usermanual', 
    'SingleTracking.singleTrackingMap', 'SingleTracking.listSingleTrackingitem', 'SingleTracking.singleTrackingOverViewMap', 'custompanel.singleTrackingMap_Search', 'Login', 'MainMenuUpgrade', 'MainPage',
    'MultipleTracking.multiTrackingItemsList', 'MultipleTracking.multiTrackingMap', 'MultiPleTracking.CustomePanel.MultipleMapTrackingMenu', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSettingLayer', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSearchLocation', 'MultiPleTracking.API.MultipleTrackingAPI',
-    'MultiPleTracking.CustomePanel.MultiMapTrackingLayerNameCfmBox', 'custompanel.SingleTrackingMap_PointInfo', 'Config.User.UserConfig', 'Config.TrackingItems.TrackingItemsConfig', 'Config.TrackingHistoryMap.TrackingHistoryMapConfig',    
-   'SettingFence.CustomePanel.SettingFenceSearchLocation', 'SettingFence.CustomePanel.SettingFenceDrawFenceMenu', 'SettingFence.CustomePanel.SettingFenceAddNewfence', 'SettingFence.CustomePanel.SettingFencePanelSettingInfo', 'SingleTracking.CustomePanel.SingleTrackingWPSList',
+    'MultiPleTracking.CustomePanel.MultiMapTrackingLayerNameCfmBox', 'Config.User.UserConfig', 'Config.TrackingItems.TrackingItemsConfig', 'Config.TrackingHistoryMap.TrackingHistoryMapConfig',
+   'SettingFence.CustomePanel.SettingFenceSearchLocation', 'SettingFence.CustomePanel.SettingFenceDrawFenceMenu', 'SettingFence.CustomePanel.SettingFenceAddNewfence', 'SettingFence.CustomePanel.SettingFencePanelSettingInfo', 'SingleTracking.CustomePanel.SingleTrackingWPSList','SingleTracking.CustomePanel.SingleTrackingMap_PointInfo',
    'SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu', 'SingleTracking.CustomePanel.SingleTrackingWPSListButton', 'SingleTracking.SingleTrackingMapVirtualFence_Menus'],
 
 

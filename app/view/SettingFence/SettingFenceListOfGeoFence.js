@@ -11,7 +11,7 @@ var SettingDrawFence_Status='-1';
 var SettingDrawFence_Length='-1'
 var isClickAddNewSettingFenceButton = 'no';
 var isFirstSettingFenceMapLoad;
-
+var SettingFenceBtnAddNew_or_ListofGeofence;
 
 
 Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
@@ -55,26 +55,26 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
 
                },
 
-                 {
-                     xtype: 'spacer'
-                 },
-                           {
-                               xtype: 'button',
-                               //right: -7,
-                               //top: 1,
-                               id: 'btnSettingFenceListOfGeoFenceHomeAccInfo',
-                               margin: '5 5 0 0',
-                               height: 53,
-                               width: 60,
-                               html: '<div ><img src="resources/icons/UogradeAutismeIcon/UserManual.png" width="50" height="43" alt="Company Name"></div>',
-                               //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',
-                               ui: 'plain',
-                               handler: function () {
+                 //{
+                 //    xtype: 'spacer'
+                 //},
+                 //          {
+                 //              xtype: 'button',
+                 //              //right: -7,
+                 //              //top: 1,
+                 //              id: 'btnSettingFenceListOfGeoFenceHomeAccInfo',
+                 //              margin: '5 5 0 0',
+                 //              height: 53,
+                 //              width: 60,
+                 //              html: '<div ><img src="resources/icons/UogradeAutismeIcon/UserManual.png" width="50" height="43" alt="Company Name"></div>',
+                 //              //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',
+                 //              ui: 'plain',
+                 //              handler: function () {
 
 
 
-                               }
-                           },
+                 //              }
+                 //          },
 
 
            ]
@@ -90,7 +90,20 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
     },
     items:
         [
-           
+            {
+
+
+                xtype: 'button',
+                id: 'btnSettingFenceCountRecord',
+
+                html: '<font size="2" color="white">0 Record</font>',
+                ui: 'plain',
+                handler: function () {
+
+                  
+
+                }
+            },
 
 
 
@@ -162,6 +175,7 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                        Ext.getCmp('mainView').setActiveItem(13);
                        isFirstSettingFenceMapLoad = 'yes';
                        isClickAddNewSettingFenceButton = 'yes';
+                       SettingFenceBtnAddNew_or_ListofGeofence = 'BtnAddNew';
                        SettingFencePanelSettingInfoShow();
                        SettingFenceDrawFenceMenuShow();
                      //  SettingFencePanelSettingInfoSaveShow();
@@ -323,10 +337,13 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                         // });
                         // Ext.StoreMgr.get('singlesignalstore').load();
                         // TrackItem, TrackID, AccountNo, FencePath, ShapeType, FenceAreaName, TimeFrom, TimeTo, DaySetting, Status
+                        SettingFenceBtnAddNew_or_ListofGeofence = 'ListofGeofence';
                         Ext.getCmp('mainView').setActiveItem(13);
                         var ID = (records.get('ID'));
                         var TrackItem = (records.get('TrackItem'));
                         var TrackID = (records.get('TrackID'));
+                        var ImeiNo = (records.get('DeviceID'));
+                        
                         var AccountNo = (records.get('AccountNo'));
                         var FencePath = (records.get('FencePath'));
                         var ShapeType = (records.get('ShapeType'));
@@ -337,7 +354,7 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                         var Status = (records.get('Status'));
                         var FenceLength = (records.get('FenceLength'));
                         isClickAddNewSettingFenceButton = 'no';
-
+                        _CurrentImeiNo = ImeiNo;
 
                          SettingDrawFence_ID = ID;
                          SettingDrawFence_TrackItem = TrackItem;
@@ -425,9 +442,15 @@ function loadListOfGeofence()
             AccNo: GetCurrentUserAccountNo(),
         });
         Ext.StoreMgr.get('AutoFenceTimerGetByAcc').load();
+        var myStore = Ext.getStore('AutoFenceTimerGetByAcc');
+        var count = myStore.getCount();
+        
+
+       
+        _CountDevice = count;
         Ext.getCmp('mainView').setActiveItem(4);
 
-     
+        Ext.getCmp('btnSettingFenceCountRecord').setHtml('<font size="2" color="white">' + count + ' Record(s)</font>');
 
 
 

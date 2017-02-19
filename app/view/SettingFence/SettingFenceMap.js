@@ -79,26 +79,26 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceMap', {
 
 
                            },
-                              {
-                                  xtype: 'spacer'
-                              },
-                           {
-                               xtype: 'button',
-                               //right: -7,
-                               //top: 1,
-                               id: 'btnSettingFenceMapAccInfo',
-                               margin: '5 5 0 0',
-                               height: 53,
-                               width: 60,
-                               html: '<div ><img src="resources/icons/UogradeAutismeIcon/UserManual.png" width="50" height="43" alt="Company Name"></div>',
-                               //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',
-                               ui: 'plain',
-                               handler: function () {
+                           //   {
+                           //       xtype: 'spacer'
+                           //   },
+                           //{
+                           //    xtype: 'button',
+                           //    //right: -7,
+                           //    //top: 1,
+                           //    id: 'btnSettingFenceMapAccInfo',
+                           //    margin: '5 5 0 0',
+                           //    height: 53,
+                           //    width: 60,
+                           //    html: '<div ><img src="resources/icons/UogradeAutismeIcon/UserManual.png" width="50" height="43" alt="Company Name"></div>',
+                           //    //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',
+                           //    ui: 'plain',
+                           //    handler: function () {
 
 
 
-                               }
-                           },
+                           //    }
+                           //},
 
 
 
@@ -775,7 +775,7 @@ var arraygeofenceSettinggeofencePolygonBounds = [];
 function drawgefenceSettinggeofence(typeshape, pathxy, pathlenght) {
     //alert(typeshape + pathxy + pathlenght);
 
-    console.log(typeshape);
+    console.log(typeshape+'500');
     arraygeofenceSettinggeofence.length = 0;
     if (typeshape == 'circle') {
         var globalFileTypeId = pathxy.split(',');
@@ -966,14 +966,19 @@ function loadSettingFenceDrawMap(ID, TrackItem, TrackID, AccountNo, FencePath, S
     SettingFencePanelSettingInfoShow();
 
 
-    setTimeout(function () {
+
+
+
+    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Drawing Fence...Please Wait' });
+    var task = Ext.create('Ext.util.DelayedTask', function () {
+
         Ext.getCmp('SettingDrawFence_ID').setValue(ID);
 
-        Ext.getCmp('SettingDrawFence_TrackItem').setHidden(true);      
+        Ext.getCmp('SettingDrawFence_TrackItem').setHidden(true);
 
         Ext.getCmp('SettingDrawFence_TrackItem_loadDB').setValue(TrackItem);
         Ext.getCmp('SettingDrawFence_TrackItem_loadDB').setHidden(false);
-  
+
         Ext.getCmp('SettingDrawFence_AccountNo').setValue(AccountNo);
         Ext.getCmp('SettingDrawFence_FencePath').setValue(FencePath);
         Ext.getCmp('SettingDrawFence_ShapeType').setValue(ShapeType);
@@ -985,9 +990,22 @@ function loadSettingFenceDrawMap(ID, TrackItem, TrackID, AccountNo, FencePath, S
         Ext.getCmp('SettingDrawFence_Length').setValue(FenceLength);
         ClearShapeFromDrawFence();
         deleteAllSelectedShapeSettinggeofence();
-       
+
         drawgefenceSettinggeofence(ShapeType, FencePath, FenceLength)
-    }, 500);
+
+
+
+
+
+
+        Ext.Viewport.unmask();
+    });
+    task.delay(800);
+
+
+    //setTimeout(function () {
+     
+    //}, 1000);
   
  
 }
@@ -1080,7 +1098,7 @@ function settingFenceMapLocatingPoint(ImeiNo) {
             map: mapgeofenceSettinggeofence,
             // title: valSingleTrackID
         });
-
+        markerSettingFenceMapArr.length = 0;
         markerSettingFenceMapArr.push(markerSettingFenceMap);
         isFirstSettingFenceMapLoad = 'no';
         mapgeofenceSettinggeofence.setCenter(positions)
@@ -1111,4 +1129,37 @@ function DeletemarkerSettingFenceMap() {
             //markerSettingFenceMapArr.splice(i, 1);
      
     }
+}
+
+
+function AutoFenceTimerDelete(ID, AccountNo) {
+
+    Ext.Ajax.request({
+
+        url: document.location.protocol + '//' + document.location.host + '/AutoFenceTimer/AutoFenceTimerDelete',
+
+        params: {
+
+            ID: ID,
+            AccountNo: AccountNo,
+
+
+        },
+        success: function (result, request) {
+            Ext.Msg.alert('Success', 'Record has been Delete');
+            Ext.getCmp('SettingDrawFence_ID').setValue('0');
+            //if ((messageboxss())) {
+            //    Ext.Viewport.add(messageboxss('Delete Succesfully'));
+            //    //   Ext.getCmp('GeofenceInfopanel').setHtml('<table class="tblgpssummary">  <tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 13px; color: #fff; text-align: center;  valign:top; height:20%">DISABLED</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;  valign:top;  height:20% ">Fence Status</td> </tr>    <tr > <td class="tdspeedmax">{Speed}</td> <td class="tdspeedmax">120km/h</td></tr> <tr > <td class="tdspeed">Curr. Speed</td> <td class="tdspeed">Max Speed</td></tr> <tr> <td colspan="2" class="tdspeedmax">10/13/2015 2:06:56AM</td> </tr>  </table>');
+            //}
+            ////  Ext.getCmp('GeofenceInfopanel').setHtml('<table>  <tr> <td colspan="2" font-weight: bold; style="background-color: #57A0DC;  font-size: 15px; color: #fff; text-align: center;">DISABLED</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;">Status</td> </tr></table>');
+            //  console.log(document.location.protocol + '//' + document.location.host + '/TrackingAppAPI/GeoFence/GeofenceInsert')
+        },
+        failure: function (result, request) {
+            Ext.Msg.alert('Error', request);
+            //if ((messageboxss())) {
+            //    Ext.Viewport.add(messageboxss('Error,' + request));
+            //}
+        }
+    });
 }

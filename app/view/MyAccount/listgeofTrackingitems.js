@@ -166,11 +166,65 @@ function loadsingletap(ID) {
         //Ext.getCmp('Backuseracc').setHidden(false);
         Ext.Viewport.unmask();
     });
-    task.delay(2000);
+    task.delay(1000);
+    loadsingletapImage(ID);
+
+
+}
+
+
+
+
+
+function loadsingletapImage(ID) {
+    // alert(ID + '' + acc);
+
+    //(AccNo, TrackID, DeviceID);
+
+    Ext.getStore('TrackingItemDetailstore').getProxy().setExtraParams({
+        AccNo: GetCurrentUserAccountNo(),
+        TrackID: ID,
+        DeviceID: SingleDeviceID
+    });
+    Ext.StoreMgr.get('TrackingItemDetailstore').load();
+    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Loadimage,Please Wait..' });
+    var task = Ext.create('Ext.util.DelayedTask', function () {
+        Ext.getStore('TrackingItemDetailstore').getProxy().setExtraParams({
+            AccNo: GetCurrentUserAccountNo(),
+            TrackID: ID,
+            DeviceID: SingleDeviceID,
+            //DeviceID: SingleDeviceID
+        });
+        Ext.StoreMgr.get('TrackingItemDetailstore').load();
+        var myStore = Ext.getStore('TrackingItemDetailstore');
+       
+        var modelRecord = myStore.getAt(0);
+    
+        Ext.getCmp('Pictureprofile').setSrc(modelRecord.get('Picture'));
+       
+
+
+
+
+        Ext.Viewport.unmask();
+    });
+    task.delay(1000);
 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 function disabledbox() {
     //Ext.getCmp('GpsDeviceIDDetails').disabled(true);

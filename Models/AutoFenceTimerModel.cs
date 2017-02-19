@@ -31,7 +31,12 @@ namespace TrackingInfo.Models
             get;
             set;
         }
-
+        public string DeviceID
+        {
+            get;
+            set;
+        }
+        
         public string AccountNo
         {
             get;
@@ -128,6 +133,7 @@ namespace TrackingInfo.Models
                             _result.CreatedDate = _SQLDataReader["CreatedDate"].ToString();
                             _result.TrackItem = _SQLDataReader["TrackItem"].ToString();
                             _result.TrackID = _SQLDataReader["TrackID"].ToString();
+                            _result.DeviceID = _SQLDataReader["DeviceID"].ToString();
                             _result.AccountNo = _SQLDataReader["AccountNo"].ToString();
                             _result.FencePath = _SQLDataReader["FencePath"].ToString();
                             _result.ShapeType = _SQLDataReader["ShapeType"].ToString();
