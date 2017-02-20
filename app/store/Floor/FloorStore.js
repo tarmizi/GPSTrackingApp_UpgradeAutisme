@@ -8,7 +8,7 @@ var _DataStore_FloorStore_GetAll = Ext.create('Ext.data.Store', {
     id: 'FloorStoreID',
     proxy: {
         type: 'ajax',
-        url: document.location.protocol + '//' + document.location.host + '/Floor/FloorGetAll',
+        url: document.location.protocol + '//' + document.location.host + '/API/Floor/FloorGetAll',
         //url: document.location.protocol + '//' + document.location.host + '/MilageCountAlertHistory/MilageCountAlertHistoryLoadByDeviceIDAccNo',
         actionMethods: {
             read: 'GET'

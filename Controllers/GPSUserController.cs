@@ -38,6 +38,26 @@ namespace TrackingInfo.Controllers
             return Json(new { success = success, message = _Message, total = data.Count, results = data }, JsonRequestBehavior.AllowGet);
         }
 
+
+        [HttpGet]
+
+        public JsonResult GPSUserCheckUserName(string US)
+        {
+            bool success = true;
+            string _Message = string.Empty;
+            List<GPSuserModel> data = new List<GPSuserModel>();
+            try
+            {
+                data = GPSuserModel.GPSUser_CheckUserName(US);
+            }
+            catch (Exception ex)
+            {
+                _Message = ex.Message;
+                success = false;
+            }
+
+            return Json(new { success = success, message = _Message, total = data.Count, results = data }, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
 
         public JsonResult GetUserByAccNo(string AccountNo)

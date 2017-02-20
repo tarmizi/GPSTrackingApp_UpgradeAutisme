@@ -9,7 +9,7 @@
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/Layer/LayerGetAll',
+            url: document.location.protocol + '//' + document.location.host + '/API/Layer/LayerGetAll',
             actionMethods: {
                 read: 'GET'
             },

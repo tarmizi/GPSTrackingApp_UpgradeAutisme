@@ -12,7 +12,7 @@
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/RegisterAccount/GetlatestAcc',
+            url: document.location.protocol + '//' + document.location.host + '/API/RegisterAccount/GetlatestAcc',
             actionMethods: {
                 read: 'GET'
             },

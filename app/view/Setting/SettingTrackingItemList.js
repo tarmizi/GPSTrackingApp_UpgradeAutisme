@@ -1,52 +1,5 @@
 ﻿Ext.define('MyGPS.view.Setting.SettingTrackingItemList', {
-    //extend: 'Ext.Panel', //Ext.navigation.View
-    //xtype: 'TrackingItemListXtype',
-    //id: 'TrackingItemListID',
-    //requires: [
-    //    'Ext.dataview.List',
-    //    'Ext.data.Store'
-    //],
-    //config: {
-    //    style: ' background-color:white;',
-    //    layout: 'vbox', //  add a layout
-    //    items:
-    //    [
-    //         {
-    //             xtype: 'label',
-    //             // id: 'Queue_GetDetailQueueLabel',
-    //             html: 'Registered GPS tracking kids<br>Under this Account'
-    //         },
-
-    //        {
-    //            xtype: 'list',
-    //            flex: 1,
-    //               store: _DataStore_TrackingItemListStore_AccountNo,
-    //          //  store: 'TrackingItemList',
-    //            id: 'TrackingItemListMainSetting',
-    //            mode: 'SINGLE',
-    //            itemTpl: '<div class="myContent">' +
-    //             '<div><b>{TrackItem}</b></div>' +
-    //             '<div>{TrackID}</div>' +
-    //                  //'<div>{GPSSimNumber}</div>' +
-    //              '<div style="display: none;">{DeviceID}</div>' +
-    //             '</div>',
-    //            height: '100%',
-    //            listeners: {
-
-    //                itemsingletap: function (list, idx, target, records, evt) {
-                    
-    //                },
-    //                deselect: function (list, records) {
-    //                    //var value_to_remove = records.get('DeviceID');
-    //                    //listSingleTrackingitemtrackingid.splice(listSingleTrackingitemtrackingid.indexOf(value_to_remove), 1);
-
-
-    //                }
-    //            },
-
-    //        }
-    //    ]
-    //}
+  
 
 });
 

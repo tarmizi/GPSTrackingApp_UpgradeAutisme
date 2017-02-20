@@ -16,7 +16,7 @@ function Layer_InsertUpdate(LayerID, LayerPath, LayerName, LayerType, LayerLengt
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/Layer/LayerInsertUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/Layer/LayerInsertUpdate',
 
         params: {
 

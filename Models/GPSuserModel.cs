@@ -196,6 +196,53 @@ namespace TrackingInfo.Models
             return _Value;
         }
 
+        public static List<GPSuserModel> GPSUser_CheckUserName(string US)
+        {
+            List<GPSuserModel> _Value = new List<GPSuserModel>();
+            //SqlConnection _SQLConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["DentalAppConn"].ConnectionString);
+            SqlConnection _SQLConnection = SQLConnectionString.BuildConnection();
+            using (SqlConnection _DBConnection = _SQLConnection)
+            {
+                SqlCommand _SQLCommand = new SqlCommand();
+                _SQLCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                _SQLCommand.CommandTimeout = 0;
+                using (_SQLCommand)
+                {
+                    try
+                    {
+                        _SQLCommand.Connection = _DBConnection;
+                        _SQLCommand.CommandText = "GPSUser_CheckUserName";
+                        _SQLCommand.Parameters.AddWithValue("@UserName", US);
+                      
+                        //  _SQLCommand.Parameters.AddWithValue("@count", count);
+                        _DBConnection.Open();
+                        SqlDataReader _SQLDataReader = _SQLCommand.ExecuteReader();
+                        GPSuserModel _result;
+                        while (_SQLDataReader.Read())
+                        {
+                            _result = new GPSuserModel();                      
+                            _result.UserName = _SQLDataReader["UserName"].ToString();                          
+
+
+                            _Value.Add(_result);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+
+                    finally
+                    {
+                        _DBConnection.Close();
+
+                    }
+
+                }
+
+            }
+            return _Value;
+        }
 
 
         public static List<GPSuserModel> Get_UserbyAccNo(string AccountNo)

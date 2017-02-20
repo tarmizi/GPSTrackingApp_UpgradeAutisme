@@ -8,7 +8,7 @@ var _DataStore_SectorStore_GetAll = Ext.create('Ext.data.Store', {
     id: 'SectorStoreID',
     proxy: {
         type: 'ajax',
-        url: document.location.protocol + '//' + document.location.host + '/Sector/SectorGetAll',
+        url: document.location.protocol + '//' + document.location.host + '/API/Sector/SectorGetAll',
         //url: document.location.protocol + '//' + document.location.host + '/MilageCountAlertHistory/MilageCountAlertHistoryLoadByDeviceIDAccNo',
         actionMethods: {
             read: 'GET'

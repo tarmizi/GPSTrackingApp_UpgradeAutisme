@@ -16,7 +16,7 @@ Ext.define('MyGPS.store.GeofenceAlertHistoryStore', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/GeofenceAlertHistory/GeofenceAlertHistoryByTrackID',
+            url: document.location.protocol + '//' + document.location.host + '/API/GeofenceAlertHistory/GeofenceAlertHistoryByTrackID',
             actionMethods: {
                 read: 'GET'
             },

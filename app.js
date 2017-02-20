@@ -10,6 +10,11 @@
     will need to resolve manually.
 */
 var backKeyDown;
+
+Ext.Loader.setPath({
+   
+    'ast': 'astCommon'
+});
 Ext.application({
     name: 'MyGPS',
 
@@ -18,8 +23,7 @@ Ext.application({
            'Ext.form.*',
          'Ext.field.*',
          'Ext.Img',
-         'Ext.app.History',
- 
+         'Ext.app.History', 
          'Ext.Map'
     ],
 
@@ -37,16 +41,16 @@ Ext.application({
     //'custompanel.dockOverViewMap', 'SingleTrackingStreetView.SingleTrackingStreetViewMap', 'custompanel.SingleTrackingMap_MilageCountAlertHistoryDetail', 'custompanel.SingelTrackingMap_MillageCountInfo', 'custompanel.SingleTrackingMap_SpeedMeter', 'custompanel.SingleTrackingMapStreetView_MiniMap', 'custompanel.singleStreetViewTrackingMap_rightpanel', 'custompanel.singleTrackingMap_Search', 'custompanel.SingleTrackingMap_Menu', 'custompanel.SingelTrackingMap_MillageCount', 'Login', 'MainMenu', 'MainPage', 'mapsendcommands', 'sendcommand', 'TrackieItemSendCommand', 'custompanel.multiTracking_InfoPanel', 'MultipleTracking.multiTrackingItemsList', 'MultipleTracking.multiTrackingMap', 'custompanel.burgerMenu', 'custompanel.SingleTrackingMap_PointInfo', 'custompanel.SingleTrackingMapStreetView_Menu',
     //'Setting.MainSetting', 'Setting.MilageCountSetting', 'Setting.SettingTrackingItemList', 'Setting.SettingResponderAlert', 'Config.User.UserConfig', 'Config.TrackingItems.TrackingItemsConfig', 'TrackingHistory.TrackingHistoryMap', 'TrackingHistory.TrackingHistoryCreateria', 'TrackingHistory.TrackingHistoryMapInfoPanel', 'Config.TrackingHistoryMap.TrackingHistoryMapConfig', 'TrackingHistory.TrackingHistoryMapPlayTrackedPanel', 'TrackingHistory.TrackingHistoryMapTravelRangePanel', 'SettingFence.CustomePanel.SettingFencePanelSettingInfo', 'MultiPleTracking.CustomePanel.MultipleMapTrackingMenu', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSettingLayer', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSearchLocation', 'MultiPleTracking.API.MultipleTrackingAPI',
     //'MultiPleTracking.CustomePanel.MultiMapTrackingLayerNameCfmBox', 'SettingFence.CustomePanel.SettingFenceSearchLocation', 'SettingFence.CustomePanel.SettingFenceDrawFenceMenu', 'SettingFence.CustomePanel.SettingFenceAddNewfence', 'SingleTracking.CustomePanel.SingleTrackingWPSList', 'SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu', 'SingleTracking.CustomePanel.SingleTrackingWPSListButton', 'SingleTracking.SingleTrackingMapVirtualFence_Menus'],
+    //'regAccount',
 
-
-    views: ['MyAccount.UserAcc', 'MyAccount.singlesummary', 'MyAccount.singlesummarypanel', 'MyAccount.listgeofTrackingitems', 'MyAccount.ResponderAlertList', 'regAccount', 'functionality.funct', 'functionality.routine',
+    views: ['MyAccount.UserAcc', 'MyAccount.RegistrationForm', 'MyAccount.singlesummary', 'MyAccount.singlesummarypanel', 'MyAccount.listgeofTrackingitems', 'MyAccount.ResponderAlertList','functionality.funct', 'functionality.routine',
        'geoFences.holdergeofence', 'geoFences.geofence', 'geoFences.listgeofenceitem', 'geoFences.geoFenceDB', 'SettingFence.SettingFenceMap', 'SettingFence.SettingFenceListOfGeoFence',   
        'TraceAlertFence.TraceAlertFenceMap', 'TraceAlertFence.ListOfTraceAlertFence', 'TraceAlertFence.CustomePanel.TraceAlertFenceHistoryInfo', 'custompanel.master_usermanual', 
    'SingleTracking.singleTrackingMap', 'SingleTracking.listSingleTrackingitem', 'SingleTracking.singleTrackingOverViewMap', 'custompanel.singleTrackingMap_Search', 'Login', 'MainMenuUpgrade', 'MainPage',
    'MultipleTracking.multiTrackingItemsList', 'MultipleTracking.multiTrackingMap', 'MultiPleTracking.CustomePanel.MultipleMapTrackingMenu', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSettingLayer', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSearchLocation', 'MultiPleTracking.API.MultipleTrackingAPI',
     'MultiPleTracking.CustomePanel.MultiMapTrackingLayerNameCfmBox', 'Config.User.UserConfig', 'Config.TrackingItems.TrackingItemsConfig', 'Config.TrackingHistoryMap.TrackingHistoryMapConfig',
    'SettingFence.CustomePanel.SettingFenceSearchLocation', 'SettingFence.CustomePanel.SettingFenceDrawFenceMenu', 'SettingFence.CustomePanel.SettingFenceAddNewfence', 'SettingFence.CustomePanel.SettingFencePanelSettingInfo', 'SingleTracking.CustomePanel.SingleTrackingWPSList','SingleTracking.CustomePanel.SingleTrackingMap_PointInfo',
-   'SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu', 'SingleTracking.CustomePanel.SingleTrackingWPSListButton', 'SingleTracking.SingleTrackingMapVirtualFence_Menus'],
+   'SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu', 'SingleTracking.CustomePanel.SingleTrackingWPSListButton', 'SingleTracking.SingleTrackingMapVirtualFence_Menus', 'connection', 'markerwithlabel'],
 
 
 
@@ -101,18 +105,18 @@ Ext.application({
 
 
  
-//    backTo: function () {
-//        alert('Back');
-//    //var historyArray = myApp.app.getHistory().getActions();
-//    //for (var i = historyArray.length; i > 0; i--) {
-//    //    if (pageName === historyArray [i - 1].getUrl()) {
-//    //        var steps = historyArray.length - i;
-//    //        for (var i = 0; i < steps; i++)
-//    //            myApp.app.getHistory().getActions().pop();
-//    //        history.go(-steps)
-//    //    }
-//    //}
-//},
+    backTo: function () {
+        alert('Back');
+    //var historyArray = myApp.app.getHistory().getActions();
+    //for (var i = historyArray.length; i > 0; i--) {
+    //    if (pageName === historyArray [i - 1].getUrl()) {
+    //        var steps = historyArray.length - i;
+    //        for (var i = 0; i < steps; i++)
+    //            myApp.app.getHistory().getActions().pop();
+    //        history.go(-steps)
+    //    }
+    //}
+},
 });
 
 

@@ -8,7 +8,7 @@
         id: 'RegisteredAccount_LoadByAccountNoID',
         proxy: {
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/RegisterAccount/RegisteredAccount_LoadByAccNo',
+            url: document.location.protocol + '//' + document.location.host + '/API/RegisterAccount/RegisteredAccount_LoadByAccNo',
             actionMethods: {
                 read: 'GET'
             },

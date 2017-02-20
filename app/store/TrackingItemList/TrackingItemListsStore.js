@@ -8,7 +8,7 @@ var _DataStore_TrackingItemListStore_AccountNo = Ext.create('Ext.data.Store', {
     id: 'TrackingItemList_LoadByAccountNoID',
     proxy: {
         type: 'ajax',
-        url: document.location.protocol + '//' + document.location.host + '/TrackingItem/GetTrackingItem',
+        url: document.location.protocol + '//' + document.location.host + '/API/TrackingItem/GetTrackingItem',
         //url: document.location.protocol + '//' + document.location.host + '/MilageCountAlertHistory/MilageCountAlertHistoryLoadByDeviceIDAccNo',
         actionMethods: {
             read: 'GET'

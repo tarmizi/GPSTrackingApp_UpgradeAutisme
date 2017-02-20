@@ -8,7 +8,7 @@ var _DataStore_BuildingStore_GetAll = Ext.create('Ext.data.Store', {
     id: 'BuildingStoreID',
     proxy: {
         type: 'ajax',
-        url: document.location.protocol + '//' + document.location.host + '/Building/BuildingGetAll',
+        url: document.location.protocol + '//' + document.location.host + '/API/Building/BuildingGetAll',
         //url: document.location.protocol + '//' + document.location.host + '/MilageCountAlertHistory/MilageCountAlertHistoryLoadByDeviceIDAccNo',
         actionMethods: {
             read: 'GET'

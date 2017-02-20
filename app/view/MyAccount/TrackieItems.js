@@ -177,18 +177,6 @@ function loadsingletap2(ID,acc)
 
 
         Ext.getCmp('basicform').setActiveItem(4);
-
-
-
-
-
-       
-
-       // alert(SingleDeviceID + "c" + SingleTrackID);
-        //   alert(co);
-        //Ext.getCmp('InfoSingleSummaryUserAcc').setHtml('<table class="tblcurrentlocation"> <tr> <td class="tdgpslabel" colspan="2"><font size="2"><center><b>Tracking Item Summary (ID:' + SingleTrackID + ')</b></center></font></td></tr><tr> <td class="tdgpslabel">Last Tracked On</td> <td class="tdgpslabel">22-1-2015 20:21</td></tr><tr> <td class="tdgpslabel">Last Tracked By</td> <td class="tdgpslabel">Mizi</td></tr><tr> <td class="tdgpslabel">LIcence Status</td> <td class="tdgpslabel">Activated</td></tr></table>');
-        //Ext.getCmp('useraccStartlivetracking').setHidden(false);
-        //Ext.getCmp('Backuseracc').setHidden(false);
         Ext.Viewport.unmask();
     });
     task.delay(1000);
@@ -198,21 +186,5 @@ function loadsingletap2(ID,acc)
 }
 
 function disabledbox2() {
-    //Ext.getCmp('GpsDeviceIDDetails').disabled(true);
-    //Ext.getCmp('IDDetails').disabled(true);
-    //Ext.getCmp('AccountNoDetails').disabled(true);
-    //Ext.getCmp('TrackIDDetails').disabled(true);
-    //Ext.getCmp('TrackItemDetails').disabled(true);
-    //Ext.getCmp('TrackItemTypeDetails').disabled(true);
-    //Ext.getCmp('GPSSimNumberDetails').disabled(true);
-    //Ext.getCmp('GpsModelDetails').disabled(true);
-    //Ext.getCmp('TrackingModeDetails').disabled(true);
-    //Ext.getCmp('CreatedDateDetails').disabled(true);
-    //Ext.getCmp('CreatedByDetails').disabled(true);
-    //Ext.getCmp('ModifiedDateDetails').disabled(true);
-    //Ext.getCmp('ModifiedbyDetails').disabled(true);
-    //Ext.getCmp('StatusDetails').disabled(true);
-    //Ext.getCmp('ExpiredDateDetails').disabled(true);
-    //Ext.getCmp('TermDetails').disabled(true);
-
+   
 }

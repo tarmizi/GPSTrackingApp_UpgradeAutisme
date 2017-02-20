@@ -16,7 +16,7 @@ Ext.define('MyGPS.store.RegisterAccountStore', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/RegisterAccount/GetAccount',
+            url: document.location.protocol + '//' + document.location.host + '/API/RegisterAccount/GetAccount',
             actionMethods: {
                 read: 'GET'
             },

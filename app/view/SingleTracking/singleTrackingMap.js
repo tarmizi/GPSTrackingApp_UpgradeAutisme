@@ -288,7 +288,7 @@ function startsingleTrackingMaps(val, IMEI_no) {
     if (val == 'start') {
         timer = setInterval(function () {
             singleTrackingMapsec = singleTrackingMapsec + 1;
-            console.log("Running:" + singleTrackingMapsec);
+            //console.log("Running:" + singleTrackingMapsec);
             //console.log(valSingleTrackID + ':vvvvvvvvvvvvvvvXXXX');
             if (singleTrackingMapsec == 1) {
                 Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({

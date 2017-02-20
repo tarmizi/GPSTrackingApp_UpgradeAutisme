@@ -10,7 +10,7 @@ Ext.define('MyGPS.store.GeofenceAlertHistoryGetByAcc', {
         proxy: {
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/GeofenceAlertHistory/GeofenceAlertHistoryByAccNo',
+            url: document.location.protocol + '//' + document.location.host + '/API/GeofenceAlertHistory/GeofenceAlertHistoryByAccNo',
           
             reader: {
                 type: 'json',

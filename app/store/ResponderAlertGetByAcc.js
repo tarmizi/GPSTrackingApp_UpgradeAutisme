@@ -10,7 +10,7 @@ Ext.define('MyGPS.store.ResponderAlertGetByAcc', {
         proxy: {
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/ResponderAlert/GetResponderAlertByAccNo',
+            url: document.location.protocol + '//' + document.location.host + '/API/ResponderAlert/GetResponderAlertByAccNo',
           
             reader: {
                 type: 'json',

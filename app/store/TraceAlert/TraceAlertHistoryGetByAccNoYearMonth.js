@@ -9,7 +9,7 @@ Ext.define('MyGPS.store.TraceAlert.TraceAlertHistoryGetByAccNoYearMonth', {
         proxy: {
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/GeofenceAlertHistory/GeofenceAlertHistoryByAccNoYearMonth',
+            url: document.location.protocol + '//' + document.location.host + '/API/GeofenceAlertHistory/GeofenceAlertHistoryByAccNoYearMonth',
 
             reader: {
                 type: 'json',

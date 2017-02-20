@@ -138,12 +138,7 @@ Ext.define('MyGPS.view.Login', {
                         text: 'Register',
                         handler: function () {
                         
-                            if (!this.overlay) {
-                                this.overlay = Ext.Viewport.add(_regForm
-                            );
-
-                            }
-                            this.overlay.show();
+                            RegistrationFormShow();
                         },
 
 

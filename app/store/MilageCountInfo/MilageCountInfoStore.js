@@ -8,7 +8,7 @@ var _DataStore_MilageCountInfoStore_LoadByDeviceIDAccountNo = Ext.create('Ext.da
     id: 'MilageCountInfoStore_LoadByAccountNoDeviceID',
     proxy: {
         type: 'ajax',
-        url: document.location.protocol + '//' + document.location.host + '/MilageCountInfo/MilageCountInfoLoadByAccountNoDeviceID',
+        url: document.location.protocol + '//' + document.location.host + '/API/MilageCountInfo/MilageCountInfoLoadByAccountNoDeviceID',
         actionMethods: {
             read: 'GET'
         },

@@ -272,33 +272,6 @@ Ext.define('MyGPS.view.geoFences.geofence', {
                     radiuse = 0;
                     shapetype = "none";
                     checklongGeofence='000',
-                    //  Listen Click Event to draw Polygon
-                    //google.maps.event.addListener(mapgeofence, 'mousedown', function (event) {
-                    //    polyCoordinates[count] = event.latLng;
-                    //    createPolyline(polyCoordinates);
-                    //    count++;
-                    //});
-
-
-                    ////google.maps.event.addListener(mapgeofence, 'dblclick', function (event) {
-                    ////    alert("xxx");
-                    ////    if (Path) {
-                    ////        Path.setMap(null);
-                    ////    }
-
-                    ////   // google.maps.event.clearListeners(mapgeofence, 'mousedown');
-                    ////});
-
-                    //google.maps.event.addListener(mapgeofence, 'click', function (event) {
-                    //    alert("xxx");
-                    //  //  google.maps.event.removeListener(mapgeofence, 'mousedown');
-                    //});
-
-                    // google.maps.event.clearListeners(map, 'bounds_changed');
-
-
-
-
 
 
                     drawingManager = new google.maps.drawing.DrawingManager({
@@ -334,31 +307,12 @@ Ext.define('MyGPS.view.geoFences.geofence', {
                         }
                     });
 
-                    //drawingManager = new google.maps.drawing.DrawingManager({
-                    //    drawingMode: google.maps.drawing.OverlayType.POLYGON,
-                    //    markerOptions: {
-                    //        draggable: true
-                    //    },
-                    //    polylineOptions: {
-                    //        editable: true
-                    //    },
-
-
-                    //    map: mapgeofence
-                    //});
-
+                   
 
 
 
                     drawingManager.setMap(mapgeofence);
 
-
-                    //google.maps.event.addListener(drawingManager, 'polygoncomplete', function (event) {
-                    //    if (event.type == google.maps.drawing.OverlayType.POLYGON) {
-                    //        var radius = event.overlay.getRadius();
-                    //        alert(radius);
-                    //    }
-                    //});
 
 
                     google.maps.event.addListener(drawingManager, 'polygoncomplete', function (polygon) {
@@ -612,45 +566,6 @@ Ext.define('MyGPS.view.geoFences.geofence', {
 
 
 
-
-
-
-                    // Clear the current selection when the drawing mode is changed, or when the
-                    // map is clicked.
-
-
-                    //google.maps.event.addListener(drawingManager, 'drawingmode_changed', clearSelection);
-                    //google.maps.event.addListener(mapgeofence, 'click', clearSelection);
-
-
-                    //          google.maps.event.addListener(multimarker, 'mousedown',
-                    //function (event) {
-
-                    //var triangleCoords = [
-                    //  new google.maps.LatLng(33.5362475, -111.9267386),
-                    //  new google.maps.LatLng(33.5104882, -111.9627875),
-                    //  new google.maps.LatLng(33.5004686, -111.9027061)
-                    //];
-
-                    //// Construct the polygon
-                    //bermudaTriangle = new google.maps.Polygon({
-                    //    paths: triangleCoords,
-                    //    draggable: true, // turn off if it gets annoying
-                    //    editable: true,
-                    //    strokeColor: '#FF0000',
-                    //    strokeOpacity: 0.8,
-                    //    strokeWeight: 2,
-                    //    fillColor: '#FF0000',
-                    //    fillOpacity: 0.35
-                    //});
-
-
-
-                    //bermudaTriangle.setMap(mapgeofence);
-                    //google.maps.event.addListener(bermudaTriangle, "dragend", getPolygonCoords);
-                    //google.maps.event.addListener(bermudaTriangle.getPath(), "insert_at", getPolygonCoords);
-                    //google.maps.event.addListener(bermudaTriangle.getPath(), "remove_at", getPolygonCoords);
-                    //google.maps.event.addListener(bermudaTriangle.getPath(), "set_at", getPolygonCoords);
 
 
 
@@ -1038,43 +953,7 @@ var _valuepanelgeofenceinfo =
                     ui: 'plain',
                     handler: function (btn) {
 
-                        //Ext.Msg.show({
-                        //    title: 'DELETE GEOFENCE',
-                        //    message: 'Delete Geofence for this item?',
-                        //    width: 500,
-                        //    buttons: Ext.MessageBox.YESNO,
-                        //    iconCls: Ext.MessageBox.INFO,
-                        //    fn: function (buttonId) {
-                        //        if (buttonId == "yes") {
-                        //            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Deleting V.Boundary' });
-                        //            var task = Ext.create('Ext.util.DelayedTask', function () {
-                        //                Ext.getCmp('sound1').stop();
-                        //                _GeofenceAlertSoundPanel.hide();
-                        //                alertisplay = "no";
-                        //                alertison = "no";
-                        //               // Ext.getCmp('GeofenceInfopanel').setHtml('<table>  <tr> <td colspan="2" font-weight: bold; style="background-color: #57A0DC;  font-size: 15px; color: #fff; text-align: center;">DISABLED</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;">Status</td> </tr></table>');
-                        //                DeleteGeoFences(AAccountNo, SingleTrackID);
-                        //                shapetype = "none";
-                        //                deleteAllSelectedShape();
-                        //                coorshape = '';
-                        //                Geofence_OutOfFence_Respond(AAccountNo, SingleTrackID);
-                        //                Ext.Viewport.unmask();
-                        //                Ext.getCmp('Infogeofenceinfo').setHtml('<table class="tblheadetrackedhistory"><tr > <td class="tdgpsdata">GeoFences Info</td> <td class="tdgpsdata"></td></tr></table>                           <br>   <table class="tblmasterhistory"> <tr> <td class="tdgpslabel">Tracking ID</td> <td class="tdgpslabel">' + SingleTrackID + '</td></tr><tr> <td class="tdgpslabel">Track Item</td> <td class="tdgpslabel">' + trackingItems + '</td></tr><tr> <td class="tdgpslabel">Geofence Length</td> <td class="tdgpslabel">Disabled</td></tr><tr> <td class="tdgpslabel">Geofence Alert</td> <td class="tdgpslabel">Disabled</td></tr></table>');
-                        //                //Ext.Msg.alert("Disabled Geofence..");
-                        //                if ((messageboxss())) {
-                        //                    Ext.Viewport.add(messageboxss('Disabled Geofence'));
-                        //                }
-                                       
-                        //            });
-                        //            task.delay(1000);
-                        //            Ext.getCmp('GeofenceInfopanel').setHtml('<table>  <tr> <td colspan="2" font-weight: bold; style="background-color: #57A0DC;  font-size: 15px; color: #fff; text-align: center;">DISABLED</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;">Status</td> </tr></table>');
-                        //        }
-
-
-                        //    }
-                        //});
-
-                        ///////////////
+                        
 
 
                         if (!dialogboxdeletegeofence) {
@@ -1678,89 +1557,6 @@ function DeleteMarker(id) {
     }
 
 
-    ////////////
-    //var _GeofenceInfopanel =
-    //    Ext.create('Ext.Panel', {
-
-    //        xtype: 'panel',
-    //        // style: 'background-color:#57A0DC',
-    //        height: 55,
-    //        //width: 320,
-    //        //  centered: true,
-    //        // height: '10%',
-    //        width: 92,
-    //        // centered: false,
-    //        id: 'GeofenceInfopanels',
-    //        draggable: false,
-
-    //        right: 4,
-    //        top: 58,
-
-
-    //        showAnimation: {
-    //            type: 'slide',
-    //            direction: 'down',
-    //            duration: 350,
-    //            easing: 'ease-out',
-
-    //        },
-    //        hideAnimation: {
-    //            type: null,
-    //            direction: null,
-    //            duration: 650,
-    //            easing: null,
-    //            out: null
-
-    //        },
-
-
-    //        //right: 1,
-    //        //bottom: 1,
-    //        style: 'background-color: #57A0DC;',
-    //        //showAnimation: {
-    //        //    type: 'slide',
-    //        //    direction: 'down',
-    //        //    duration: 350,
-    //        //    easing: 'ease-out',
-
-    //        //},
-    //        //hideAnimation: {
-    //        //    type: 'slide',
-    //        //    direction: 'up',
-    //        //    duration: 650,
-    //        //    easing: 'ease-out',
-    //        //    out: true
-    //        //},
-
-
-    //        items: {
-
-    //            //   html: '<table class="tblmasterhistory"><tr > <td class="tdgpsdata">WTP 2681</td> <td class="tdgpsdata">Proton Persona</td></tr> <tr > <td class="tdgpslabel">Tracked ID</td> <td class="tdgpslabel">Tracked Item</td></tr><tr > <td class="tdgpsdata">WTP 2681</td> <td class="tdgpsdata">Proton Persona</td></tr> <tr > <td class="tdgpslabel">Tracked ID</td> <td class="tdgpslabel">Tracked Item</td></tr><tr > <td class="tdgpslabel">Tracked ID</td> <td class="tdgpslabel">Tracked Item</td></tr></table>',
-    //            id: 'GeofenceInfopanel',
-    //            //  html: 'Point',
-    //            // html: '<table>  <tr> <td colspan="2" font-weight: bold; style="background-color: #57A0DC;  font-size: 15px; color: #fff; text-align: center;">ENABLED</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;">Status</td> </tr>    <tr > <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;   font-weight: normal;">80km/h</td> </tr> <tr> <td colspan="2" style="background-color: #57A0DC; font-weight: bold; font-size: 10px; color: #fff; text-align: center;  ">10:02:06 AM</td> </tr>  </table>',
-    //            html: '<table>  <tr> <td colspan="2" font-weight: bold; style="background-color: #57A0DC;  font-size: 15px; color: #fff; text-align: center;">ENABLED</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;">Status</td> </tr></table>',
-
-    //        }
-
-
-
-    //    });
-
-
-
-
-
-
-
-
-    ///////
-
-
-
-
-
-    /////////////////////////////////////////////////
     var _GeofenceAlertSoundPanel =
         Ext.create('Ext.Panel', {
             xtype: 'panel',

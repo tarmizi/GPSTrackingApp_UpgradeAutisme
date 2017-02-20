@@ -1,2 +1,2 @@
 // @tag full-page
-// @require D:\SSC_PROJECT\AlzhemierGPS\app.js
+// @require D:\SSC_PROJECT_BUILD\UpgradeAutisme\app.js

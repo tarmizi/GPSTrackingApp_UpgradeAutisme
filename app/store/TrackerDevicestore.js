@@ -9,7 +9,7 @@
         proxy: {
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/TrackerDevice/GetTrackerDevice',
+            url: document.location.protocol + '//' + document.location.host + '/API/TrackerDevice/GetTrackerDevice',
 
             // url: 'http://192.168.0.105:9007/TrackingAppAPI/TrackingItem/GetTrackingItem?AccNo=C01',
             //url: 'http://localhost:9007/TrackingAppAPI/TrackingItem/GetTrackingItem?AccNo=C01',

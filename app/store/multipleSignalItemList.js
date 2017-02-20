@@ -8,7 +8,7 @@
         proxy: {
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/Signals/GetSignalsMultiple?AccNo=C02',
+            url: document.location.protocol + '//' + document.location.host + '/API/Signals/GetSignalsMultiple?AccNo=C02',
 
            // url: 'http://192.168.0.105:9007/TrackingAppAPI/Signals/GetSignals?DeviceID=MNP-1933',
 

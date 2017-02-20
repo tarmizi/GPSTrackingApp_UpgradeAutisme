@@ -13,7 +13,7 @@ Ext.define('MyGPS.store.geoFenceActiveStore', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/GeoFence/GeofenceActive',
+            url: document.location.protocol + '//' + document.location.host + '/API/GeoFence/GeofenceActive',
             actionMethods: {
                 read: 'GET'
             },

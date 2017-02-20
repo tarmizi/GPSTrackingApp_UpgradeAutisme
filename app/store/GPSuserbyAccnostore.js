@@ -16,7 +16,7 @@ Ext.define('MyGPS.store.GPSuserbyAccnostore', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/GPSUser/GetUserByAccNo',
+            url: document.location.protocol + '//' + document.location.host + '/API/GPSUser/GetUserByAccNo',
             actionMethods: {
                 read: 'GET'
             },

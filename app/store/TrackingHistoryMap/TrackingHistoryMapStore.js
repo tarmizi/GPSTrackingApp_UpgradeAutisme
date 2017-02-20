@@ -18,7 +18,7 @@ Ext.define('MyGPS.store.TrackingHistoryMap.TrackingHistoryMapStore', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/Signals/SignalHistoryLoadByCreateria',
+            url: document.location.protocol + '//' + document.location.host + '/API/Signals/SignalHistoryLoadByCreateria',
             actionMethods: {
                 read: 'GET'
             },

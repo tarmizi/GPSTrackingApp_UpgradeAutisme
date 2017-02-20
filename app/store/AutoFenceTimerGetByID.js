@@ -10,7 +10,7 @@ Ext.define('MyGPS.store.AutoFenceTimerGetByID', {
         proxy: {
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/AutoFenceTimer/GetAutoFenceTimerByID',
+            url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/GetAutoFenceTimerByID',
           
             reader: {
                 type: 'json',

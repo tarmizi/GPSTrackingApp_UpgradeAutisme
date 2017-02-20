@@ -21,61 +21,6 @@ Ext.define('MyGPS.view.functionality.funct', {
 
 
 
-function InsertGPSuserloginreg(UserName, Password, Version, Status, AccountNo, RegisterBy, UpdateBy, LoginIP, LoginType, Browser, OS,
-    EmailReg) {
-
-    Ext.Ajax.request({
-
-        url: document.location.protocol + '//' + document.location.host + '/GPSUser/GPSuserInsert',
-
-        params: {
-
-            UserName: UserName,
-            Password: Password,
-            Version: Version,
-            Status: Status,
-            AccountNo: AccountNo,
-            RegisterBy: RegisterBy,
-            UpdateBy: UpdateBy,
-            LoginIP: LoginIP,
-            LoginType: LoginType,
-            Browser: Browser,
-            OS: OS,
-            EmailReg: EmailReg
-
-
-        },
-        success: function (result, request) {
-    _regForm.hide();
-            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Registration Success...' });
-            var task = Ext.create('Ext.util.DelayedTask', function () {
-               // var txt = Ext.getCmp('containerdental');
-               // txt.list.select(10);
-                // Ext.Msg.alert('Success', 'Please Login');
-            
-               if (loginviewTag == 'loginview') {
-                    
-                    
-                    Ext.getCmp('userNameTextField').setValue(Ext.getCmp('loginregGpsusr').getValue());
-                    Ext.getCmp('passwordTextField').setValue(Ext.getCmp('loginregGpspwd').getValue());
-                } else {
-                    Ext.getCmp('loginuserNameTextField').setValue(Ext.getCmp('loginregGpsusr').getValue());
-                    Ext.getCmp('loginpasswordTextField').setValue(Ext.getCmp('loginregGpspwd').getValue());
-                }
-                Ext.Msg.alert('Success', 'Please Login');
-                Ext.Viewport.unmask();
-            });
-            task.delay(1000);
-
-            //  console.log(document.location.protocol + '//' + document.location.host + '/TrackingAppAPI/GeoFence/GeofenceInsert')
-        },
-        failure: function (result, request) {
-             Ext.Msg.alert('Error', request);
-        
-        }
-    });
-}
-
 
 
 
@@ -85,7 +30,7 @@ function InsertGPSuser(UserName, Password, Version, Status, AccountNo, RegisterB
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GPSUser/GPSuserInsert',
+        url: document.location.protocol + '//' + document.location.host + '/API/GPSUser/GPSuserInsert',
 
         params: {
 
@@ -135,7 +80,7 @@ function UpdateGPSuser(UserName,Password,AccountNo,UpdateBy,
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GPSUser/GPSuserUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/GPSUser/GPSuserUpdate',
 
         params: {
 
@@ -174,7 +119,7 @@ function InsertUpdateAccount(AccountNo, AccountName, AAddress, AMobilePhone, AHo
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/RegisterAccount/AccountInsertUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/RegisterAccount/AccountInsertUpdate',
 
         params: {
 
@@ -216,7 +161,7 @@ function InsertUpdateAccount(AccountNo, AccountName, AAddress, AMobilePhone, AHo
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/RegisterAccount/AccountDisabled',
+        url: document.location.protocol + '//' + document.location.host + '/API/RegisterAccount/AccountDisabled',
 
         params: {
 
@@ -259,7 +204,7 @@ function InsertUpdateAccount(AccountNo, AccountName, AAddress, AMobilePhone, AHo
 	   // alert(TrackingMode);
 	    Ext.Ajax.request({
 
-	        url: document.location.protocol + '//' + document.location.host + '/TrackingItem/TrackingItemInsertUpdate',
+	        url: document.location.protocol + '//' + document.location.host + '/API/TrackingItem/TrackingItemInsertUpdate',
 
 	        params: {
 
@@ -308,7 +253,7 @@ function InsertUpdateAccount(AccountNo, AccountName, AAddress, AMobilePhone, AHo
 	    });
 	}
 
-
+	
 
 	function TrackerDeviceInsertUpdate(ID, DeviceID, DeviceName, DeviceModel, Manufacturer, Supplier,
         CapabilityDescript, CoordinateType, SimNum, SimOperator, Status, CreatedBy, ModifiedBy, IgnitionRemotely,
@@ -316,7 +261,7 @@ function InsertUpdateAccount(AccountNo, AccountName, AAddress, AMobilePhone, AHo
 	    // alert(TrackingMode);
 	    Ext.Ajax.request({
 
-	        url: document.location.protocol + '//' + document.location.host + '/TrackerDevice/TrackerDeviceInsertUpdate',
+	        url: document.location.protocol + '//' + document.location.host + '/API/TrackerDevice/TrackerDeviceInsertUpdate',
 
 	        params: {
 
@@ -804,7 +749,7 @@ function ReaponderAlertInsertUpdate(ID, AccountNo, ResponderName, ResponderRelat
   //  console.log(document.location.protocol + '//' + document.location.host + '/ResponderAlert/ResponderAlertInsertUpdate?ID=' + ID + '?AccountNo=' + AccountNo + '?ResponderName=' + ResponderName + '?ResponderRelationShip=' + ResponderRelationShip + '?ResponderPhoneNo=' + ResponderPhoneNo + '?ResponderEmail=' + ResponderEmail + '?Status=' + Status + '?GeofenceStatus=' + GeofenceStatus + '?User=' + User);
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/ResponderAlert/ResponderAlertInsertUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/ResponderAlert/ResponderAlertInsertUpdate',
 
         params: {
 
@@ -855,7 +800,7 @@ function GeoFenceAreaInsert(AccountNo, FencePath, FenceName, Fencelenght, ShapeT
     //  console.log(document.location.protocol + '//' + document.location.host + '/ResponderAlert/ResponderAlertInsertUpdate?ID=' + ID + '?AccountNo=' + AccountNo + '?ResponderName=' + ResponderName + '?ResponderRelationShip=' + ResponderRelationShip + '?ResponderPhoneNo=' + ResponderPhoneNo + '?ResponderEmail=' + ResponderEmail + '?Status=' + Status + '?GeofenceStatus=' + GeofenceStatus + '?User=' + User);
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GeoFenceArea/GeoFenceAreaInsert',
+        url: document.location.protocol + '//' + document.location.host + '/API/GeoFenceArea/GeoFenceAreaInsert',
 
         params: {
 
@@ -891,7 +836,7 @@ function GeoFenceAreaUpdate(ID,AccountNo, FencePath, FenceName, Fencelenght, Sha
     //  console.log(document.location.protocol + '//' + document.location.host + '/ResponderAlert/ResponderAlertInsertUpdate?ID=' + ID + '?AccountNo=' + AccountNo + '?ResponderName=' + ResponderName + '?ResponderRelationShip=' + ResponderRelationShip + '?ResponderPhoneNo=' + ResponderPhoneNo + '?ResponderEmail=' + ResponderEmail + '?Status=' + Status + '?GeofenceStatus=' + GeofenceStatus + '?User=' + User);
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GeoFenceArea/GeoFenceAreaUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/GeoFenceArea/GeoFenceAreaUpdate',
 
         params: {
             ID:ID,
@@ -925,7 +870,7 @@ function GeoFenceAreaDisabled(ID, AccountNo) {
     //  console.log(document.location.protocol + '//' + document.location.host + '/ResponderAlert/ResponderAlertInsertUpdate?ID=' + ID + '?AccountNo=' + AccountNo + '?ResponderName=' + ResponderName + '?ResponderRelationShip=' + ResponderRelationShip + '?ResponderPhoneNo=' + ResponderPhoneNo + '?ResponderEmail=' + ResponderEmail + '?Status=' + Status + '?GeofenceStatus=' + GeofenceStatus + '?User=' + User);
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GeoFenceArea/GeoFenceAreaDisabled',
+        url: document.location.protocol + '//' + document.location.host + '/API/GeoFenceArea/GeoFenceAreaDisabled',
 
         params: {
             ID: ID,
@@ -957,7 +902,7 @@ function InsertUpdateSetting(AccountNo, TrackID, MarkerPoint, PanMap, AttachedLa
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/Setting/SettingInsertUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/Setting/SettingInsertUpdate',
 
         params: {
 

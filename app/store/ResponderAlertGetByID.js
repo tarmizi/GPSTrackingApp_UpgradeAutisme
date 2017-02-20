@@ -16,7 +16,7 @@ Ext.define('MyGPS.store.ResponderAlertGetByID', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/ResponderAlert/GetResponderAlertByID',
+            url: document.location.protocol + '//' + document.location.host + '/API/ResponderAlert/GetResponderAlertByID',
             actionMethods: {
                 read: 'GET'
             },

@@ -16,7 +16,7 @@ Ext.define('MyGPS.store.GPSuserStore', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/GPSUser/GetGPSuser',
+            url: document.location.protocol + '//' + document.location.host + '/API/GPSUser/GetGPSuser',
             actionMethods: {
                 read: 'GET'
             },

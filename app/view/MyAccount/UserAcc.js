@@ -577,6 +577,13 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
 
                                                      var chkvalue = Ext.getCmp('AccNo').getValue();
 
+                                                     if (chkvalue == 'C01')
+                                                     {
+                                                         Ext.Msg.alert("Demo Account..!");
+                                                         return;
+                                                     }
+
+
                                                      if (chkvalue) {
 
 
@@ -720,6 +727,13 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
 
                                       hasDisabled: false,
                                       handler: function (btn) {
+
+                                          if (GetCurrentUserAccountNo() == 'C01')
+                                          {
+                                              Ext.Msg.alert("Demo Account.!");
+                                              return;
+                                          }
+
                                           var pwdvalue = Ext.getCmp('LoginPassword').getValue();
                                           var usrnamevalue = Ext.getCmp('LoginUserName').getValue();
                                           if (pwdsts == '1') {
@@ -1081,7 +1095,10 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                                                                    // disabled: true,
                                                                    // hasDisabled: true,
                                                                    handler: function () {
-
+                                                                       if (GetCurrentUserAccountNo() == 'C01') {
+                                                                           Ext.Msg.alert("Demo Account.!");
+                                                                           return;
+                                                                       }
                                                                        Ext.Viewport.mask({ xtype: 'loadmask', message: 'Saving...' });
                                                                        var task = Ext.create('Ext.util.DelayedTask', function () {
                                                                            TrackingItemsInsertUpdate(Ext.getCmp('IDDetails').getValue(), Ext.getCmp('AccountNoDetails').getValue(),
@@ -1282,6 +1299,10 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
 
                                                                          hasDisabled: false,
                                                                          handler: function () {
+                                                                             if (GetCurrentUserAccountNo() == 'C01') {
+                                                                                 Ext.Msg.alert("Demo Account.!");
+                                                                                 return;
+                                                                             }
                                                                              if (Ext.getCmp('ResponderAlertName').getValue() == '') {
                                                                                  Ext.Msg.alert('Error', 'ResponderAlertName cannot Empty');
                                                                                  return;
@@ -1474,28 +1495,7 @@ function startReadProfileEdit(evt) {
     else {
         PatImage64 = '';
     }
-   // alert(evt);
-    //var file = document.getElementById('fileOpenProfileEdit').files[0];
-    //if (file) {
-
-    //    if (file.type.match("image.*")) {
-    //        var reader = new FileReader();
-    //        reader.readAsDataURL(file/*, "UTF-8"*/);
-    //        reader.onload = function (event) { ContentString = event.target.result; };
-
-    //        var reader2 = new FileReader();
-    //        reader2.readAsDataURL(file);
-    //        reader2.onload = addImgProfileEdit;
-
-    //        alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
-    //        loadimage();
-    //    }
-    //    else {
-    //        getAsTextProfileAdd(file);
-    //        alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
-    //        loadimage();
-    //    }
-    //}
+  
 
 
 }
@@ -1654,25 +1654,6 @@ function UserAccpwdConfirm()
              },
 
 
-
-
-
-
-
-             
-            //{
-
-            //    xtype: 'passwordfield',
-            //    name: 'IDtxt',
-            //    //  label: 'ID',
-            //    id: 'UserAccpwdConfirmtxt',
-            //    placeHolder: 'Please Re-insert Password',
-            //    autoCapitalize: true,
-            //    //required: true,
-            //    clearIcon: true
-
-
-            //},
                   {
 
                       xtype: 'toolbar',

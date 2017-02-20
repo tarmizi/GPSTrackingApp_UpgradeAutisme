@@ -54,7 +54,7 @@ Ext.define('MyGPS.store.multipletrackingsignalpoint', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/Signals/GetSignalsMultiples',
+            url: document.location.protocol + '//' + document.location.host + '/API/Signals/GetSignalsMultiples',
             actionMethods: {
                 read: 'GET'
             },

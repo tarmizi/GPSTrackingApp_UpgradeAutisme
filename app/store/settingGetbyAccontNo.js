@@ -13,7 +13,7 @@ Ext.define('MyGPS.store.settingGetbyAccontNo', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/Setting/GetsettingGetbyAccontNo',
+            url: document.location.protocol + '//' + document.location.host + '/API/Setting/GetsettingGetbyAccontNo',
             actionMethods: {
                 read: 'GET'
             },

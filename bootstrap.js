@@ -520,17 +520,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -755,6 +744,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MyGPS.view.Login": [],
   "MyGPS.view.Main": [],
   "MyGPS.view.MainMenu": [],
+  "MyGPS.view.MainMenuUpgrade": [],
   "MyGPS.view.MainPage": [],
   "MyGPS.view.MultiPleTracking.API.MultipleTrackingAPI": [],
   "MyGPS.view.MultiPleTracking.CustomePanel.MultiMapTrackingLayerNameCfmBox": [],
@@ -763,6 +753,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MyGPS.view.MultiPleTracking.CustomePanel.MultipleMapTrackingSettingLayer": [],
   "MyGPS.view.MultipleTracking.multiTrackingItemsList": [],
   "MyGPS.view.MultipleTracking.multiTrackingMap": [],
+  "MyGPS.view.MyAccount.RegistrationForm": [],
   "MyGPS.view.MyAccount.ResponderAlertList": [],
   "MyGPS.view.MyAccount.TrackieItems": [],
   "MyGPS.view.MyAccount.UserAcc": [],
@@ -781,6 +772,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MyGPS.view.SettingFence.SettingFenceListOfGeoFence": [],
   "MyGPS.view.SettingFence.SettingFenceMap": [],
   "MyGPS.view.SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu": [],
+  "MyGPS.view.SingleTracking.CustomePanel.SingleTrackingMap_PointInfo": [],
   "MyGPS.view.SingleTracking.CustomePanel.SingleTrackingWPSList": [],
   "MyGPS.view.SingleTracking.CustomePanel.SingleTrackingWPSListButton": [],
   "MyGPS.view.SingleTracking.SingleTrackingMapVirtualFence_Menus": [],
@@ -800,6 +792,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MyGPS.view.about.aboutapp": [],
   "MyGPS.view.about.abouts": [],
   "MyGPS.view.about.panelabout": [],
+  "MyGPS.view.connection": [],
   "MyGPS.view.custompanel.SingelTrackingMap_MillageCount": [],
   "MyGPS.view.custompanel.SingelTrackingMap_MillageCountInfo": [],
   "MyGPS.view.custompanel.SingleTrackingMapStreetView_Menu": [],
@@ -827,7 +820,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MyGPS.view.geoFences.holdergeofence": [],
   "MyGPS.view.geoFences.listgeofenceArea": [],
   "MyGPS.view.geoFences.listgeofenceitem": [],
-  "MyGPS.view.regAccount": []
+  "MyGPS.view.markerwithlabel": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1407,17 +1400,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -1710,6 +1692,9 @@ Ext.ClassManager.addNameAliasMappings({
   "MyGPS.view.MainMenu": [
     "widget.mainmenu"
   ],
+  "MyGPS.view.MainMenuUpgrade": [
+    "widget.mainmenu"
+  ],
   "MyGPS.view.MainPage": [
     "widget.mainPage"
   ],
@@ -1724,6 +1709,7 @@ Ext.ClassManager.addNameAliasMappings({
   "MyGPS.view.MultipleTracking.multiTrackingMap": [
     "widget.MultiTrackingMap"
   ],
+  "MyGPS.view.MyAccount.RegistrationForm": [],
   "MyGPS.view.MyAccount.ResponderAlertList": [
     "widget.ResponderAlertList"
   ],
@@ -1761,6 +1747,7 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.SettingFenceMap"
   ],
   "MyGPS.view.SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu": [],
+  "MyGPS.view.SingleTracking.CustomePanel.SingleTrackingMap_PointInfo": [],
   "MyGPS.view.SingleTracking.CustomePanel.SingleTrackingWPSList": [],
   "MyGPS.view.SingleTracking.CustomePanel.SingleTrackingWPSListButton": [],
   "MyGPS.view.SingleTracking.SingleTrackingMapVirtualFence_Menus": [],
@@ -1805,6 +1792,7 @@ Ext.ClassManager.addNameAliasMappings({
   "MyGPS.view.about.panelabout": [
     "widget.panelabouts"
   ],
+  "MyGPS.view.connection": [],
   "MyGPS.view.custompanel.SingelTrackingMap_MillageCount": [],
   "MyGPS.view.custompanel.SingelTrackingMap_MillageCountInfo": [],
   "MyGPS.view.custompanel.SingleTrackingMapStreetView_Menu": [],
@@ -1846,7 +1834,5 @@ Ext.ClassManager.addNameAliasMappings({
   "MyGPS.view.geoFences.listgeofenceitem": [
     "widget.listgeofenceitems"
   ],
-  "MyGPS.view.regAccount": [
-    "widget.regAccount"
-  ]
+  "MyGPS.view.markerwithlabel": []
 });

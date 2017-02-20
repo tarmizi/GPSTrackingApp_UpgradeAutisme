@@ -1136,7 +1136,7 @@ function AutoFenceTimerDelete(ID, AccountNo) {
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/AutoFenceTimer/AutoFenceTimerDelete',
+        url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/AutoFenceTimerDelete',
 
         params: {
 

@@ -12,7 +12,7 @@
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/Signals/GetSignalSingleTracking',
+            url: document.location.protocol + '//' + document.location.host + '/API/Signals/GetSignalSingleTracking',
             actionMethods: {
                 read: 'GET'
             },

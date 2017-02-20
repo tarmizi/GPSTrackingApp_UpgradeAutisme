@@ -341,6 +341,7 @@
     <Content Include="app\store\TrackingItemListAdjustedStore.js" />
     <Content Include="app\store\TrackingItemList\TrackingItemListsStore.js" />
     <Content Include="app\store\User\UserStore.js" />
+    <Content Include="app\util\astCommon\markerwithlabel.js" />
     <Content Include="app\util\markerwithlabel.js" />
     <Content Include="app\view\about\aboutapp.js" />
     <Content Include="app\view\about\abouts.js" />
@@ -356,7 +357,6 @@
     <Content Include="app\view\custompanel\geofence_fencingstatusAlert.js" />
     <Content Include="app\view\custompanel\geofence_rightpanel.js" />
     <Content Include="app\view\custompanel\geofence_rightpanelSettingDrawFence.js" />
-    <Content Include="app\view\custompanel\gMapHistory_BottomPanelinfo.js" />
     <Content Include="app\view\custompanel\master_usermanual.js" />
     <Content Include="app\view\custompanel\multiTracking_InfoPanel.js" />
     <Content Include="app\view\custompanel\overViewMapStreetViewLiveTracking.js" />
@@ -386,6 +386,7 @@
     <Content Include="app\view\MainMenu.js" />
     <Content Include="app\view\MainMenuUpgrade.js" />
     <Content Include="app\view\MainPage.js" />
+    <Content Include="app\view\markerwithlabel.js" />
     <Content Include="app\view\MultiPleTracking\API\MultipleTrackingAPI.js" />
     <Content Include="app\view\MultiPleTracking\CustomePanel\MultiMapTrackingLayerNameCfmBox.js" />
     <Content Include="app\view\MultiPleTracking\CustomePanel\MultipleMapTrackingMenu.js" />
@@ -394,12 +395,12 @@
     <Content Include="app\view\MultiPleTracking\multiTrackingItemsList.js" />
     <Content Include="app\view\MultiPleTracking\multiTrackingMap.js" />
     <Content Include="app\view\MyAccount\listgeofTrackingitems.js" />
+    <Content Include="app\view\MyAccount\RegistrationForm.js" />
     <Content Include="app\view\MyAccount\ResponderAlertList.js" />
     <Content Include="app\view\MyAccount\singlesummary.js" />
     <Content Include="app\view\MyAccount\singlesummarypanel.js" />
     <Content Include="app\view\MyAccount\TrackieItems.js" />
     <Content Include="app\view\MyAccount\UserAcc.js" />
-    <Content Include="app\view\regAccount.js" />
     <Content Include="app\view\SettingFence\CustomePanel\SettingFenceAddNewfence.js" />
     <Content Include="app\view\SettingFence\CustomePanel\SettingFenceDrawFenceMenu.js" />
     <Content Include="app\view\SettingFence\CustomePanel\SettingFencePanelSettingInfoSave.js" />
@@ -424,7 +425,6 @@
     <Content Include="app\view\SingleTracking\singleTrackingOverViewMap.js" />
     <Content Include="app\view\TraceAlertFence\CustomePanel\TraceAlertFenceHistoryInfo.js" />
     <Content Include="app\view\TraceAlertFence\ListOfTraceAlertFence.js" />
-    <Content Include="app\view\TraceAlertFence\listTraceAlertFence.js" />
     <Content Include="app\view\TraceAlertFence\TraceAlertFenceMap.js" />
     <Content Include="app\view\TrackingHistory\TrackingHistoryCreateria.js" />
     <Content Include="app\view\TrackingHistory\TrackingHistoryMap.js" />
@@ -1034,6 +1034,7 @@
     <Content Include="packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll" />
     <Content Include="packages\WebGrease.1.3.0\lib\WebGrease.dll" />
     <Content Include="packages\WebGrease.1.3.0\tools\WG.exe" />
+    <Content Include="resources\css\style.css" />
     <Content Include="resources\icons\BackStreetViewRound.png" />
     <Content Include="resources\sass\.sass-cache\0275d41f087da563f45935a7e8c927694e8c3245\_Slider.scssc" />
     <Content Include="resources\sass\.sass-cache\02a9759de336b91436d251b8ecb6b9a5d1b8e851\_Slider.scssc" />
@@ -4152,11 +4153,6 @@
     <Folder Include="app\model\gpsTrackingHistory\" />
     <Folder Include="app\model\gpsTracking\" />
     <Folder Include="app\profile\" />
-    <Folder Include="app\store\gpsAccount\" />
-    <Folder Include="app\store\gpsGeoFence\" />
-    <Folder Include="app\store\gpsSendCommand\" />
-    <Folder Include="app\store\gpsTrackingHistory\" />
-    <Folder Include="app\store\gpsTracking\" />
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="touch\resources\icons\" />

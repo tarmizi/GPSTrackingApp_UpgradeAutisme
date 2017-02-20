@@ -11,7 +11,7 @@
         id: 'AlertMilageCountStore_LoadByDeviceIDAccountNo',
         proxy: {
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/AlertMilageCount/AlertMilageCountLoadByDeviceIDAccNo',
+            url: document.location.protocol + '//' + document.location.host + '/API/AlertMilageCount/AlertMilageCountLoadByDeviceIDAccNo',
             actionMethods: {
                 read: 'GET'
             },

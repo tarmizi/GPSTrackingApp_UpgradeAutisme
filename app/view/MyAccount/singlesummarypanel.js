@@ -66,25 +66,6 @@
              },
 
 
-
-
-
-        //    {
-        //    docked: 'bottom',
-        //    xtype: 'toolbar',
-        //    ui: "light",
-        //    title: 'Maps page',
-        //    items: [
-        //        {
-        //            xtype: "button",
-        //            ui: "back",
-        //            text: "back",
-        //            action: 'ButtonBackToHomeClicked'
-        //        }]
-        //},
-        //    {
-        //        xtype: "googlemapscard"      
-        //        }
         ]
     }
 

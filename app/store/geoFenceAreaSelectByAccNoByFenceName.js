@@ -16,7 +16,7 @@ Ext.define('MyGPS.store.geoFenceAreaSelectByAccNoByFenceName', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/GeoFenceArea/GeoFenceAreaSelectByAccountNoByFenceName',
+            url: document.location.protocol + '//' + document.location.host + '/API/GeoFenceArea/GeoFenceAreaSelectByAccountNoByFenceName',
             actionMethods: {
                 read: 'GET'
             },

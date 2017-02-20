@@ -599,7 +599,7 @@ function SettingResponderAlert_Update(ID, AccountNo, ResponderName, ResponderRel
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/ResponderAlert/ResponderAlertUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/ResponderAlert/ResponderAlertUpdate',
 
         params: {
 

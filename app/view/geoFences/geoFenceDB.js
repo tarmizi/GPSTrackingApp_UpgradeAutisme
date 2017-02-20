@@ -11,7 +11,7 @@ function DeleteGeoFences(AccountNo, TrackID) {
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GeoFence/GeofenceDelete',
+        url: document.location.protocol + '//' + document.location.host + '/API/GeoFence/GeofenceDelete',
 
         params: {
 
@@ -58,7 +58,7 @@ function InsertGeoFences(AccountNo, TrackID, TrackItem, Fencelenght, FencePath, 
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GeoFence/GeofenceInsert',
+        url: document.location.protocol + '//' + document.location.host + '/API/GeoFence/GeofenceInsert',
 
         params: {
 
@@ -153,7 +153,7 @@ function InsertGeoFencesReinsertFenceName(AccountNo, TrackID, TrackItem, Fencele
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GeoFence/GeofenceInsert',
+        url: document.location.protocol + '//' + document.location.host + '/API/GeoFence/GeofenceInsert',
 
         params: {
 
@@ -210,7 +210,7 @@ function OutOfFence_Alert(AccountNo, TrackID, Alert) {
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GeoFence/GeofenceAlert',
+        url: document.location.protocol + '//' + document.location.host + '/API/GeoFence/GeofenceAlert',
 
         params: {
 
@@ -234,7 +234,7 @@ function Geofence_OutOfFence_Respond(AccountNo, TrackID) {
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GeoFence/GeofenceRespond',
+        url: document.location.protocol + '//' + document.location.host + '/API/GeoFence/GeofenceRespond',
 
         params: {
 
@@ -299,7 +299,7 @@ function InsertGeoFencesFromSavedArea(AccountNo, TrackID, TrackItem, Fencelenght
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/GeoFence/GeofenceInsert',
+        url: document.location.protocol + '//' + document.location.host + '/API/GeoFence/GeofenceInsert',
 
         params: {
 
@@ -366,7 +366,7 @@ function AutoFenceTimerInsertUpdate(ID, TrackItem, TrackID, AccountNo, FencePath
     console.log(ID + '//' + TrackItem + '//' + TrackID + '//' + AccountNo + '//' + FencePath + '//' + ShapeType + '//' + FenceAreaName + '//' + TimeFrom + '//' + TimeTo + '//' + DaySetting + '//' + Status + '//' + FenceLength);
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/AutoFenceTimer/AutoFenceTimerInsertUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/AutoFenceTimerInsertUpdate',
 
         params: {
 
@@ -417,7 +417,7 @@ function ReAutoFenceTimerInsertUpdate(ID, TrackItem, TrackID, AccountNo, FencePa
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/AutoFenceTimer/AutoFenceTimerInsertUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/AutoFenceTimerInsertUpdate',
 
         params: {
 
@@ -624,7 +624,7 @@ function AutoFenceTimerDeleteOverLapArea(ID, AccountNo) {
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/AutoFenceTimer/AutoFenceTimerDelete',
+        url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/AutoFenceTimerDelete',
 
         params: {
 
@@ -652,7 +652,7 @@ function AutoFenceTimerSetInActive(ID, AccountNo) {
 
     Ext.Ajax.request({
 
-        url: document.location.protocol + '//' + document.location.host + '/AutoFenceTimer/AutoFenceTimerInsertUpdate',
+        url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/AutoFenceTimerInsertUpdate',
 
         params: {
 

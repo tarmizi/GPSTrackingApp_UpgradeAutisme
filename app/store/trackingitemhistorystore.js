@@ -19,7 +19,7 @@ Ext.define('MyGPS.store.trackingitemhistorystore', {
 
             type: 'ajax',
            // url: document.location.protocol + '//' + document.location.host + '/TrackingAppAPI/Signals/GetSignalsHistory',
-            url: document.location.protocol + '//' + document.location.host + '/TrackingItem/GetTrackingItemHistoryModule',
+            url: document.location.protocol + '//' + document.location.host + '/API/TrackingItem/GetTrackingItemHistoryModule',
 
             actionMethods: {
                 read: 'GET'

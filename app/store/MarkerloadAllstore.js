@@ -8,7 +8,7 @@
         proxy: {
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/Marker/GetMarker',
+            url: document.location.protocol + '//' + document.location.host + '/API/Marker/GetMarker',
 
            // url: 'http://192.168.0.105:9007/TrackingAppAPI/Signals/GetSignals?DeviceID=MNP-1933',
          //  url: 'http://localhost:9007/TrackingAppAPI/Signals/GetSignals?DeviceID=MNP-1933',

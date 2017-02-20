@@ -8,7 +8,7 @@ var _DataStore_MilageCountAlertHistoryStore_LoadByDeviceIDAccountNo = Ext.create
     id: 'MilageCountAlertHistoryStore_LoadByDeviceIDAccountNo',
     proxy: {
         type: 'ajax',
-        url: document.location.protocol + '//' + document.location.host + '/MilageCountAlertHistory/MilageCountAlertHistoryLoadByDeviceIDAccNo',
+        url: document.location.protocol + '//' + document.location.host + '/API/MilageCountAlertHistory/MilageCountAlertHistoryLoadByDeviceIDAccNo',
         actionMethods: {
             read: 'GET'
         },

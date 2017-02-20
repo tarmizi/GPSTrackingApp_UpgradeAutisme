@@ -8,7 +8,7 @@ var _DataStore_ResponderAlert_LoadByAccountNoModule = Ext.create('Ext.data.Store
     id: 'ResponderAlert_LoadByAccountNoModuleID',
     proxy: {
         type: 'ajax',
-        url: document.location.protocol + '//' + document.location.host + '/ResponderAlert/ResponderAlertLoadbyAccountNoModule',
+        url: document.location.protocol + '//' + document.location.host + '/API/ResponderAlert/ResponderAlertLoadbyAccountNoModule',
         actionMethods: {
             read: 'GET'
         },

@@ -9,7 +9,7 @@ Ext.define('MyGPS.store.multipletrackingitemselectF', {
         proxy: {
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/TrackingItem/GetTrackingItem?AccNo=C01',
+            url: document.location.protocol + '//' + document.location.host + '/API/TrackingItem/GetTrackingItem?AccNo=C01',
 
             // url: 'http://192.168.0.105:9007/TrackingAppAPI/TrackingItem/GetTrackingItem?AccNo=C01',
             //url: 'http://localhost:9007/TrackingAppAPI/TrackingItem/GetTrackingItem?AccNo=C01',

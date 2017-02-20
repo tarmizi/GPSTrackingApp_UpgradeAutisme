@@ -54,7 +54,7 @@ Ext.define('MyGPS.store.signalhistorystore', {
 
 
             type: 'ajax',
-            url: document.location.protocol + '//' + document.location.host + '/Signals/GetSignalsHistory',
+            url: document.location.protocol + '//' + document.location.host + '/API/Signals/GetSignalsHistory',
             actionMethods: {
                 read: 'GET'
             },

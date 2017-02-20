@@ -1,3 +1,6 @@
+Ext.define('MyGPS.view.connection', {
+
+});
 
 function HtmlConnection(y, x) {
    
