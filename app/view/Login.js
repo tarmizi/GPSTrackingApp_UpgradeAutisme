@@ -67,7 +67,7 @@ Ext.define('MyGPS.view.Login', {
                 //   left:30,
                 //height: '100%',
                 //width: '100%',
-                html: '<img src="resources/icons/BgLogin.png" style="max-height:100%; max-width:100%;"/>',
+                html: '<img src="resources/icons/BgLoginOri.png" style="max-height:100%; max-width:100%;"/>',
                 //x: 60,
                 //y: 340,
 
@@ -127,30 +127,12 @@ Ext.define('MyGPS.view.Login', {
 
                items: [
 
-                    {
-                        xtype: 'button',
-                        align: 'stretch',
-                        itemId: 'loginRegButton',
-                        ui: 'action',
-                        //width: '50%',
-                        //height: '10%',
-                        padding: '10px',
-                        text: 'Register',
-                        handler: function () {
-                        
-                            RegistrationFormShow();
-                        },
-
-
-                    }
-                ,
+                 
+                
 
 
 
-                        {
-                            xtype: 'spacer',
-                            padding: '3px',
-                        },
+                       
 
                  {
 
@@ -163,29 +145,6 @@ Ext.define('MyGPS.view.Login', {
                      padding: '10px',
                      text: 'Log In',
                      handler: function () {
-                         //////////////////////////////////////////////////////////////Ext.Viewport.mask({ xtype: 'loadmask', message: 'Login....' });
-
-                         //////////////////////////////////////////////////////////////var task = Ext.create('Ext.util.DelayedTask', function () {
-
-                         //////////////////////////////////////////////////////////////    Ext.StoreMgr.get('GpsUserStore').load();
-                         //////////////////////////////////////////////////////////////    var myStore = Ext.getStore('GpsUserStore');                            
-                         //////////////////////////////////////////////////////////////    var co = myStore.getCount();
-                         //////////////////////////////////////////////////////////////    var modelRecord = myStore.getAt(0);
-                         //////////////////////////////////////////////////////////////    if (co >= 1)
-                         //////////////////////////////////////////////////////////////    {
-                         //////////////////////////////////////////////////////////////        AAccountNo = modelRecord.get('AccountNo');
-                         //////////////////////////////////////////////////////////////        var User = modelRecord.get('UserName');
-                         //////////////////////////////////////////////////////////////        Ext.getCmp('MainMenuUserLabel').setHtml('<font size="3" color="white">Welcome!<br>' + User + '</font>');                               
-                         //////////////////////////////////////////////////////////////        Ext.getCmp('mainView').setActiveItem(1);
-                         //////////////////////////////////////////////////////////////        Ext.Msg.alert("Login Success!");
-                         //////////////////////////////////////////////////////////////    } else {
-                         //////////////////////////////////////////////////////////////        Ext.Msg.alert("Failed.!");
-                         //////////////////////////////////////////////////////////////    }
-
-                         //////////////////////////////////////////////////////////////    Ext.Viewport.setMasked(false);
-                  
-                         //////////////////////////////////////////////////////////////});
-                         //////////////////////////////////////////////////////////////task.delay(1000);
                      
                          Ext.Viewport.mask({ xtype: 'loadmask', message: 'Login....' });
                          var task = Ext.create('Ext.util.DelayedTask', function () {
@@ -217,6 +176,10 @@ Ext.define('MyGPS.view.Login', {
                                      AAccountNo = GetCurrentUserAccountNo();
                                      _IsSuccessLogin = true;
                                      Ext.Msg.alert("Login Success!");
+                                 }else
+                                 {
+                                     Ext.Msg.alert("Failed.!");
+                                     _IsSuccessLogin = false;
                                  }
                              }
                              else {
@@ -234,43 +197,7 @@ Ext.define('MyGPS.view.Login', {
                      });
                     task.delay(1000);
 
-                         // loadTrackID();
-                       //  var OperatingSystem = detectos();
-                         //isreg = 'no';
-
-                         //////////////////////////////////////////////////////////////Ext.getStore('GpsUserStore').getProxy().setExtraParams({
-                         //////////////////////////////////////////////////////////////    Us: Ext.getCmp('loginuserNameTextField').getValue(),
-                         //////////////////////////////////////////////////////////////    Pw: Ext.getCmp('loginpasswordTextField').getValue(),
-                         //////////////////////////////////////////////////////////////    Bro: Ext.browser.name,
-                         //////////////////////////////////////////////////////////////    Os: detectOs(),
-                         //////////////////////////////////////////////////////////////    //IP: myip,
-                         //////////////////////////////////////////////////////////////    IP: 'MostiTrack',
-                         //////////////////////////////////////////////////////////////});
-                         
-                         //////////////////////////////////////////////////////////////Ext.StoreMgr.get('GpsUserStore').load();
-                         //////////////////////////////////////////////////////////////Ext.Viewport.mask({ xtype: 'loadmask', message: 'Login....' });
-                      
-                         //////////////////////////////////////////////////////////////var task = Ext.create('Ext.util.DelayedTask', function () {
-
-                         //////////////////////////////////////////////////////////////    Ext.StoreMgr.get('GpsUserStore').load();
-                         //////////////////////////////////////////////////////////////    var myStore = Ext.getStore('GpsUserStore');                            
-                         //////////////////////////////////////////////////////////////    var co = myStore.getCount();
-                         //////////////////////////////////////////////////////////////    var modelRecord = myStore.getAt(0);
-                         //////////////////////////////////////////////////////////////    if (co >= 1)
-                         //////////////////////////////////////////////////////////////    {
-                         //////////////////////////////////////////////////////////////        AAccountNo = modelRecord.get('AccountNo');
-                         //////////////////////////////////////////////////////////////        var User = modelRecord.get('UserName');
-                         //////////////////////////////////////////////////////////////        Ext.getCmp('MainMenuUserLabel').setHtml('<font size="3" color="white">Welcome!<br>' + User + '</font>');                               
-                         //////////////////////////////////////////////////////////////        Ext.getCmp('mainView').setActiveItem(1);
-                         //////////////////////////////////////////////////////////////        Ext.Msg.alert("Login Success!");
-                         //////////////////////////////////////////////////////////////    } else {
-                         //////////////////////////////////////////////////////////////        Ext.Msg.alert("Failed.!");
-                         //////////////////////////////////////////////////////////////    }
                         
-                         //////////////////////////////////////////////////////////////    Ext.Viewport.setMasked(false);
-                         //////////////////////////////////////////////////////////////   // loadlogin(OperatingSystem, Ext.getCmp('loginuserNameTextField').getValue(), Ext.getCmp('loginpasswordTextField').getValue());
-                         //////////////////////////////////////////////////////////////});
-                         //////////////////////////////////////////////////////////////task.delay(1000);
                      }
 
 
@@ -278,8 +205,26 @@ Ext.define('MyGPS.view.Login', {
 
 
                  },
+                  {
+                      xtype: 'spacer',
+                      padding: '3px',
+                  },
+                    {
+                        xtype: 'button',
+                        align: 'stretch',
+                        itemId: 'loginRegButton',
+                        ui: 'action',
+                        //width: '50%',
+                        //height: '10%',
+                        padding: '10px',
+                        text: 'Register',
+                        handler: function () {
+
+                            RegistrationFormShow();
+                        },
 
 
+                    }
                ]
 
 
@@ -323,7 +268,7 @@ Ext.define('MyGPS.view.Login', {
            {
                xtype: 'label',
                padding: '5px',
-               html: '<center>Version 1.0</center>'
+               html: '<center>Version 2.0</center>'
            },
     ]
 

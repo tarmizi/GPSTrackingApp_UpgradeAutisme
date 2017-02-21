@@ -88,20 +88,20 @@ Ext.define('MyGPS.view.TraceAlertFence.TraceAlertFenceMap', {
                           {
                               xtype: 'spacer'
                           },
-                                    {
-                                        xtype: 'button',
-                                        //right: -7,
-                                        //top: 1,
-                                        id: 'btnTraceAlertFenceMapAccInfo',
-                                        html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
-                                        //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',
-                                        ui: 'plain',
-                                        handler: function () {
+                                    //{
+                                    //    xtype: 'button',
+                                    //    //right: -7,
+                                    //    //top: 1,
+                                    //    id: 'btnTraceAlertFenceMapAccInfo',
+                                    //    html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
+                                    //    //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',
+                                    //    ui: 'plain',
+                                    //    handler: function () {
 
 
 
-                                        }
-                                    },
+                                    //    }
+                                    //},
 
 
                     ]

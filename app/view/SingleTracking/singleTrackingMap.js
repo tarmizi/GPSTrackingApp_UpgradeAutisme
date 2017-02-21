@@ -277,7 +277,7 @@ var SingleTrackIDRetained;
 var clickedsingleTrackingMap = false;
 var singleTrackingMapsec = 0;
 var timer = 0;
-
+var countloop = 0;
 function startsingleTrackingMaps(val, IMEI_no) {
     var valSingleTrackID = IMEI_no;
     singleTrackingMap_DeviceID = IMEI_no;
@@ -291,6 +291,10 @@ function startsingleTrackingMaps(val, IMEI_no) {
             //console.log("Running:" + singleTrackingMapsec);
             //console.log(valSingleTrackID + ':vvvvvvvvvvvvvvvXXXX');
             if (singleTrackingMapsec == 1) {
+                countloop++;
+                if (countloop == 350)
+                { Ext.Msg.alert("Reached Limit!-pls restart!"); stopClocksingleTrackingMaps(); return; }
+               
                 Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
                     TrackID: IMEI_no,
                     AccountNo: GetCurrentUserAccountNo()
@@ -625,7 +629,7 @@ function DeleteMarkersingleTrackingMap(id) {
 
 function stopClocksingleTrackingMaps() {
     startsingleTrackingMaps('stop', singleTrackingMap_DeviceID);
-    // console.log("STOPED");
+    console.log("STOPED");
     // Ext.getCmp('InfoSummDatasingle').setHtml('<table class="tblgpssummary">  <tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 13px; color: #fff; text-align: center;  valign:top; height:20%">ABC1234</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;  valign:top;  height:20% ">-UNKNOWN-</td> </tr>    <tr > <td class="tdspeedmax">000km/h</td> <td class="tdspeedmax">000km/h</td></tr> <tr > <td class="tdspeed">Curr. Speed</td> <td class="tdspeed">Max Speed</td></tr> <tr> <td colspan="2" class="tdspeedmax">00:00:00:00:00:00:00</td> </tr>  </table>');
     //  window.clearInterval(clockgeofence);
     singleTrackingMapchecklong = '000';
@@ -818,7 +822,7 @@ function SetToleranceLayer(Latitude, Longitude) {
 function DeleteToleranceLayer() {
     //Find and remove the marker from the Array
 
-    console.log("DELETEEEE");
+   
     //markerSettingFenceMap.setMap(null);
     //mapgeofenceSettinggeofence.setMap(null);
 

@@ -42,15 +42,15 @@ Ext.define('MyGPS.view.TraceAlertFence.ListOfTraceAlertFence', {
                              {
                                  xtype: 'spacer'
                              },
-                                       {
-                                           xtype: 'button',
-                                           id: 'btnListOfTraceAlertFenceAccInfo',
-                                           html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
-                                           ui: 'plain',
-                                           handler: function () {
+                                       //{
+                                       //    xtype: 'button',
+                                       //    id: 'btnListOfTraceAlertFenceAccInfo',
+                                       //    html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
+                                       //    ui: 'plain',
+                                       //    handler: function () {
 
-                                           }
-                                       },
+                                       //    }
+                                       //},
                        ]
             },
                 {
@@ -143,11 +143,13 @@ Ext.define('MyGPS.view.TraceAlertFence.ListOfTraceAlertFence', {
                                                picker:{xtype:'datepicker', slotOrder:["year"],},
                                                listeners: {
                                                    change: function () {
-
+                                                       console.log(isFirstLoadListOfTraceAlertFence);
                                                      
                                                        if (isFirstLoadListOfTraceAlertFence == 'no') {
                                                            var month = Ext.Date.format(new Date(Ext.getCmp('ListOfTraceAlertFenceMonthDate').getValue()), 'm');
                                                            var year = Ext.Date.format(new Date(Ext.getCmp('ListOfTraceAlertFenceYearDate').getValue()), 'Y');
+                                                           console.log(year);
+                                                           console.log(month);
                                                            LoadListOfTraceAlertFence(year, month);
                                                        }
 
@@ -182,11 +184,13 @@ Ext.define('MyGPS.view.TraceAlertFence.ListOfTraceAlertFence', {
                                                      change: function () {
 
                                                          // dateFromFormated = Ext.Date.format(new Date(Ext.getCmp('TrackingHistoryCreateriaFromDate').getValue()), 'Y-m-d');
-                                                       
+                                                         console.log(isFirstLoadListOfTraceAlertFence);
                                                          if (isFirstLoadListOfTraceAlertFence == 'no')
                                                          {
                                                              var month = Ext.Date.format(new Date(Ext.getCmp('ListOfTraceAlertFenceMonthDate').getValue()), 'm');
                                                              var year = Ext.Date.format(new Date(Ext.getCmp('ListOfTraceAlertFenceYearDate').getValue()), 'Y');
+                                                             console.log(year);
+                                                             console.log(month);
                                                              LoadListOfTraceAlertFence(year, month);
                                                          }
                                                       
@@ -209,7 +213,7 @@ Ext.define('MyGPS.view.TraceAlertFence.ListOfTraceAlertFence', {
                   // id: 'Queue_GetDetailQueueLabel',
                   //  width:'100%',
                   margin:'-15 0 0 0',
-                  html: '<u>__________________________________________</u>'
+                  html: '<u>_________________________________________________________________________________________________</u>'
               },
              //{
              //     xtype: 'panel',
@@ -333,7 +337,9 @@ Ext.define('MyGPS.view.TraceAlertFence.ListOfTraceAlertFence', {
 
 function LoadListOfTraceAlertFence(year,month)
 {
-    
+    console.log('LoadListOfTraceAlertFence');
+    console.log(year);
+    console.log(month);
     Ext.getStore('TraceAlertHistoryGetByAccNoYearMonth').getProxy().setExtraParams({
         AccNo: GetCurrentUserAccountNo(),
         Year: year,
@@ -360,7 +366,7 @@ function LoadListOfTraceAlertFence(year,month)
             Ext.getCmp('btnListOfTraceAlertFenceCountRecord').setHtml('<font size="3" color="white">'+ count + ' Records</font>');
 
         }, 500);
-       
+      
         Ext.Viewport.unmask();
     });
     task.delay(1000);

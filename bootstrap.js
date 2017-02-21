@@ -789,10 +789,10 @@ Ext.ClassManager.addNameAlternateMappings({
   "MyGPS.view.TrackingHistory.TrackingHistoryMapInfoPanel": [],
   "MyGPS.view.TrackingHistory.TrackingHistoryMapPlayTrackedPanel": [],
   "MyGPS.view.TrackingHistory.TrackingHistoryMapTravelRangePanel": [],
+  "MyGPS.view.UserManual": [],
   "MyGPS.view.about.aboutapp": [],
   "MyGPS.view.about.abouts": [],
   "MyGPS.view.about.panelabout": [],
-  "MyGPS.view.connection": [],
   "MyGPS.view.custompanel.SingelTrackingMap_MillageCount": [],
   "MyGPS.view.custompanel.SingelTrackingMap_MillageCountInfo": [],
   "MyGPS.view.custompanel.SingleTrackingMapStreetView_Menu": [],
@@ -1783,6 +1783,7 @@ Ext.ClassManager.addNameAliasMappings({
   "MyGPS.view.TrackingHistory.TrackingHistoryMapInfoPanel": [],
   "MyGPS.view.TrackingHistory.TrackingHistoryMapPlayTrackedPanel": [],
   "MyGPS.view.TrackingHistory.TrackingHistoryMapTravelRangePanel": [],
+  "MyGPS.view.UserManual": [],
   "MyGPS.view.about.aboutapp": [
     "widget.aboutapp"
   ],
@@ -1792,7 +1793,6 @@ Ext.ClassManager.addNameAliasMappings({
   "MyGPS.view.about.panelabout": [
     "widget.panelabouts"
   ],
-  "MyGPS.view.connection": [],
   "MyGPS.view.custompanel.SingelTrackingMap_MillageCount": [],
   "MyGPS.view.custompanel.SingelTrackingMap_MillageCountInfo": [],
   "MyGPS.view.custompanel.SingleTrackingMapStreetView_Menu": [],

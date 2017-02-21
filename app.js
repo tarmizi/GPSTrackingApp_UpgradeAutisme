@@ -50,7 +50,7 @@ Ext.application({
    'MultipleTracking.multiTrackingItemsList', 'MultipleTracking.multiTrackingMap', 'MultiPleTracking.CustomePanel.MultipleMapTrackingMenu', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSettingLayer', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSearchLocation', 'MultiPleTracking.API.MultipleTrackingAPI',
     'MultiPleTracking.CustomePanel.MultiMapTrackingLayerNameCfmBox', 'Config.User.UserConfig', 'Config.TrackingItems.TrackingItemsConfig', 'Config.TrackingHistoryMap.TrackingHistoryMapConfig',
    'SettingFence.CustomePanel.SettingFenceSearchLocation', 'SettingFence.CustomePanel.SettingFenceDrawFenceMenu', 'SettingFence.CustomePanel.SettingFenceAddNewfence', 'SettingFence.CustomePanel.SettingFencePanelSettingInfo', 'SingleTracking.CustomePanel.SingleTrackingWPSList','SingleTracking.CustomePanel.SingleTrackingMap_PointInfo',
-   'SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu', 'SingleTracking.CustomePanel.SingleTrackingWPSListButton', 'SingleTracking.SingleTrackingMapVirtualFence_Menus', 'connection', 'markerwithlabel'],
+   'SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu', 'SingleTracking.CustomePanel.SingleTrackingWPSListButton', 'SingleTracking.SingleTrackingMapVirtualFence_Menus', 'markerwithlabel', 'UserManual'],
 
 
 

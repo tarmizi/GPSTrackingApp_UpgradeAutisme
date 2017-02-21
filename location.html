@@ -63,7 +63,7 @@ body,
 
     </style>
 
-    <script type="text/javascript" src="app/view/connection.js"></script>
+    <!--<script type="text/javascript" src="app/view/connection.js"></script>-->
 </head>
 <body>
     <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>-->
@@ -108,8 +108,9 @@ body,
          bounds.extend(place.geometry.location);
 var latitude = place.geometry.location.lat();
 var longitude = place.geometry.location.lng();  
-HtmlConnection(latitude,longitude);
-
+//HtmlConnection(latitude,longitude);
+localStorage.setItem("coorX", longitude);
+localStorage.setItem("coorY", latitude);
        }(place));
 
      }

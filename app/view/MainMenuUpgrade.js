@@ -128,18 +128,18 @@
                         id: 'btnMainMenuIconNotification',
                         height: 45,
                         width: 45,
-                        html: '<div ><img src="resources/icons/Notification.png" width="35" height="35" alt="Company Name"></div>',
+                        html: '<div ><img src="resources/icons/UogradeAutismeIcon/AboutUpgrade.png" width="35" height="35" alt="Company Name"></div>',
                         ui: 'plain',
                     },
-                    {
-                        xtype: 'button',
-                        id: 'btnMainMenuIconNotificationText',
-                        height: 25,
-                        width: 25,
-                        text: '10',
-                        //html: '<div ><img src="resources/icons/notificationIcon.png" width="45" height="45" alt="Company Name"></div>',
-                        ui: 'decline',
-                    }
+                    //{
+                    //    xtype: 'button',
+                    //    id: 'btnMainMenuIconNotificationText',
+                    //    height: 25,
+                    //    width: 25,
+                    //    text: '10',
+                    //    //html: '<div ><img src="resources/icons/notificationIcon.png" width="45" height="45" alt="Company Name"></div>',
+                    //    ui: 'decline',
+                    //}
 
                 ]
             },
@@ -317,7 +317,7 @@
                     var day = currentTime.getDate();
                     var year = currentTime.getFullYear();
                     LoadListOfTraceAlertFence(year, month);
-
+                    isFirstLoadListOfTraceAlertFence = 'no';
 
                 }
             },
@@ -443,7 +443,7 @@
 
           {
               xtype: 'button',
-              id: 'btnMainMenuLogOut',
+              id: 'btnMainMenuUserManual',
               //  margin: '0 -134 115 0',
               height: 105,
               width: 100,
@@ -452,7 +452,7 @@
 
               ui: 'plain',
               handler: function () {
-                  Ext.getCmp('mainView').setActiveItem(0);
+                  AttractUserManualShow();
               }
           },
           {
@@ -461,15 +461,15 @@
           },
              {
                  xtype: 'button',
-                 id: 'btnMainMenuAboutSystem',
-                 // margin: '0 -215 153 0',
-                 height: 90,
-                 width: 80,
-                 html: '<div ><img src="resources/icons/UogradeAutismeIcon/AboutSystem.png" width="70" height="80" alt="Company Name"></div>',
+                 id: 'btnMainMenuLogOut',
+                  margin: '-8 0 0 0',
+                 height: 105,
+                 width: 85,
+                 html: '<div ><img src="resources/icons/UogradeAutismeIcon/LogOut2.png" width="75" height="95" alt="Company Name"></div>',
                  ui: 'plain',
                  handler: function () {
-
-                  
+                     stopClocksingleTrackingMaps();
+                     Ext.getCmp('mainView').setActiveItem(0);
 
 
                  }
