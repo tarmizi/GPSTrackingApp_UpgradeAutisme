@@ -278,6 +278,8 @@ var clickedsingleTrackingMap = false;
 var singleTrackingMapsec = 0;
 var timer = 0;
 var countloop = 0;
+var WPSMode = 'OFF';
+var singleTrackingAPN;
 function startsingleTrackingMaps(val, IMEI_no) {
     var valSingleTrackID = IMEI_no;
     singleTrackingMap_DeviceID = IMEI_no;
@@ -292,8 +294,8 @@ function startsingleTrackingMaps(val, IMEI_no) {
             //console.log(valSingleTrackID + ':vvvvvvvvvvvvvvvXXXX');
             if (singleTrackingMapsec == 1) {
                 countloop++;
-                if (countloop == 350)
-                { Ext.Msg.alert("Reached Limit!-pls restart!"); stopClocksingleTrackingMaps(); return; }
+                if (countloop >= 750)
+                { Ext.Msg.alert("Reached Limit!-pls re-track!"); stopClocksingleTrackingMaps(); countloop = 0; singleTrackingMapsec = 0;return; }
                
                 Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
                     TrackID: IMEI_no,
@@ -313,6 +315,10 @@ function startsingleTrackingMaps(val, IMEI_no) {
                         var BatteryReading = modelRecord.get('BatteryReading');
                         var DateDT = modelRecord.get('DateDT');
                         var Direction = modelRecord.get('Direction');
+                        var Altitude = modelRecord.get('Altitude');
+                        var GSMSignalReading = modelRecord.get('GSMSignalReading');
+                        var TerminalState = modelRecord.get('TerminalState');
+                        var APN = modelRecord.get('APN');
                         var TrackID = modelRecord.get('TrackID');
                         var TrackItem = modelRecord.get('TrackItem');
                         var TrackItemType = modelRecord.get('TrackItemType');
@@ -336,7 +342,12 @@ function startsingleTrackingMaps(val, IMEI_no) {
                         var Spare10 = modelRecord.get('Spare10');
                         var Spare11 = modelRecord.get('Spare11');
                         var Spare12 = modelRecord.get('Spare12');
-
+                    
+                       
+                        singleTrackingAPN = APN;
+                        var VBoundaryName = 'Wait..';
+                        var VBoundaryStatus = 'Wait..';
+                        SetbtnsingleTrackingOverViewMapPointInfoTbl(TrackItem, DateDT, APN, TrackID, Speed, Altitude, BatteryReading, VBoundaryStatus);
 
                         Direction = parseFloat(modelRecord.get('Direction'));
                         _TrackingItemsConfigDeviceID = IMEIno;
@@ -407,15 +418,55 @@ function startsingleTrackingMaps(val, IMEI_no) {
                             }, 2000);
                         }
 
+                        var strAPN = APN;
+                        var n = strAPN.length;
+                        if (n > 1) {
+                            WPSMode = 'ON';
 
+
+                            Ext.getCmp('btnSingleTrackingWPSListButtondetectedMode').setHtml('<font size="2" color="blue"><b>WPS MODE-ON</b></font>');
+                            if (_isWPSpanelshow == 'yes') {
+                                Ext.getCmp('btnSingleTrackingWPSListdetectedMode').setHtml('<font size="2" color="blue"><b>WPS MODE-ON</b></font>');
+                                var str = APN;
+                                var str_array = str.split(',');
+                                var str_result = '';
+                              //  console.log(str_array.length);
+                                for (var i = 0; i < str_array.length; i++) {
+
+                                  //  str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+                                    if (str_array.length == 2)
+                                    {
+                                        
+                                        str_result += str_array[i];
+                                        //console.log(str_result);
+                                    }
+                                    if (str_array.length > 2) {
+                                        str_result+= str_array[str_array.length - i]+'<br>';
+                                    }
+                                   
+
+                                 
+
+                                }
+                             //   console.log(str_result);
+                                Ext.getCmp('SingleTrackingWPSListAPNdetected').setHtml('<font size="2" color="white"><b>' + str_result.replace(/^\s*/, "").replace(/\s*$/, "").replace("undefined", "").replace("<br><br>","") + '</b></font>');
+                            }
+
+                        } else {
+                            WPSMode = 'OFF';
+                            Ext.getCmp('btnSingleTrackingWPSListButtondetectedMode').setHtml('<font size="2" color="black"><b>WPS MODE-OFF</b></font>');
+                            DeleteToleranceLayer();
+                        }
 
 
 
                        
                         if (singleTrackingMapchecklong == Longitude)
                         { return }
-                        
                         SetToleranceLayer(Latitude, Longitude);
+
+                       
+                        
 
 
 
@@ -821,7 +872,8 @@ function SetToleranceLayer(Latitude, Longitude) {
 
 function DeleteToleranceLayer() {
     //Find and remove the marker from the Array
-
+    console.log('DeleteToleranceLayer');
+    
    
     //markerSettingFenceMap.setMap(null);
     //mapgeofenceSettinggeofence.setMap(null);

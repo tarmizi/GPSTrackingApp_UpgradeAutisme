@@ -659,3 +659,19 @@ function HideAllSingleTrackinMapStreetViewHome_CustomePanel()
   
     Ext.getCmp('mainView').setActiveItem(1);
 }
+
+var PreviousLatitutde = '000';
+function SetbtnsingleTrackingOverViewMapPointInfoTbl(TrackItem, DateDT, APN, TrackID, Speed, Altitude, BatteryReading, VBoundaryStatus)
+{
+    //if (APN.length)
+    var PointMode='GPS';
+    var strAPN = APN;
+    var n = strAPN.length;
+
+    if (n > 1)
+    {
+        PointMode = 'WPS';
+    } 
+    Ext.getCmp('btnsingleTrackingOverViewMapPointInfoTbl').setHtml('<div class="transbox"><table class="tblgpssummary">  <tr> <td colspan="2" style="background-color: transparent;  font-size: 12px; color: #fff; text-align: center;  valign:top; height:20%">' + TrackItem + '</td><td  style="background-color: transparent;  font-size: 12px; color: #fff; text-align: center;  valign:top; height:20%">' + DateDT + '</td> <td  style="background-color: transparent;  font-size: 12px; color: #fff; text-align: center;  valign:top; height:20%">' + PointMode + '</td></tr><tr> <td colspan="2" style="background-color: transparent;  font-size: 9px; color: #fff; text-align: center;  valign:top;  height:20% ">' + TrackID + '</td> <td  style="background-color: transparent;  font-size: 9px; color: #fff; text-align: center;  valign:top; height:20%">Signal Time</td>   <td  style="background-color: transparent;  font-size: 9px; color: #fff; text-align: center;  valign:top; height:20%">Point Mode</td>   </tr>   <tr > <td class="tdstreetViewTblInfo">' + Speed + 'KM/H</td> <td class="tdstreetViewTblInfo">' + BatteryReading + '%</td> <td class="tdstreetViewTblInfo">' + VBoundaryStatus + '</td><td class="tdstreetViewTblInfo3">' + VBoundaryStatus + '</td></tr> <tr > <td class="tdstreetViewTblInfo1">Curr. Speed</td> <td class="tdstreetViewTblInfo1">Battery Level</td> <td class="tdstreetViewTblInfo1">V/Boundary Area</td><td class="tdstreetViewTblInfo1">V/Boundary Status&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>  </table></div>');
+
+}

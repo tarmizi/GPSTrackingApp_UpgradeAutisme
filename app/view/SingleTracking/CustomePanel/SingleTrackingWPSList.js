@@ -89,39 +89,91 @@ function SingleTrackingWPSList() {
                      //    handler: function () {
                      //    }
                      //},
+                         
+
+                       //{
+                       //    xtype: 'button',
+                       //    id: 'btnSingleTrackingWPSListAPNdetected',
+                       //    height: 180,
+                       //    width: 210,
+                       //    margin: '-190 0 0 -15',
+                       //    html: '<font size="1.5" color="red"><b>BitGuestWifi<br>FeldaWifi<br>PufyBuffyRestorent<br>Che Mat Restorent Wifi</b></font>',
+                       //    //   html: '<div ><img src="resources/icons/DetailsPoint.png" width="45" height="45" alt="Company Name"></div>',
+                       //    ui: 'plain',
+                       //    handler: function () {
+                       //        _isWPSpanelshow = 'no';
+                       //        SingleTrackingWPSListHide();
+                       //        SingleTrackingWPSListButtonShow();
+                       //    }
+                       //},
+
+                         {
+                             xtype: 'container',
+                             height: 110,
+                               zIndex:20,       
+                             width: 166,
+                             margin: '-145 0 0 10',
+                             //style: 'background-color:#57A0DC color: #fff',
+                             style: 'background-color:#57A0DC',
+                             layout: {
+
+                                 type: 'vbox',
+
+                             },
+                             scrollable: {
+                                 direction: 'vertical',
+                                 directionLock: true
+                             },
+
+                             items: [
+                                  {
+                                      margin: '0 0 0 10',
+                                      html: '<font size="1.5" color="white"><b>BitGuestWifi<br>FeldaWifi<br>PufyBuffyRestorent<br>Che Mat Restorent Wifi</b></font>',
+                                      //xtype: 'textareafield',
+                                      id: 'SingleTrackingWPSListAPNdetected',
+                                      //width: 130,
+                                      //height:130,
+                                      //placeHolder: 'Tom Roy',
+                                      //autoCapitalize: true,
+                                      ////required: true,
+                                      //clearIcon: true
+                                  },
+
+                             ]
 
 
-                       {
-                           xtype: 'button',
-                           id: 'btnSingleTrackingWPSListAPNdetected',
-                           height: 180,
-                           width: 210,
-                           margin: '-190 0 0 -15',
-                           html: '<font size="1.5" color="red"><b>BitGuestWifi<br>FeldaWifi<br>PufyBuffyRestorent<br>Che Mat Restorent Wifi</b></font>',
-                           //   html: '<div ><img src="resources/icons/DetailsPoint.png" width="45" height="45" alt="Company Name"></div>',
-                           ui: 'plain',
-                           handler: function () {
-                               _isWPSpanelshow = 'no';
-                               SingleTrackingWPSListHide();
-                               SingleTrackingWPSListButtonShow();
-                           }
-                       },
 
 
 
+
+
+                         },
+                           //{
+                           //    xtype: 'button',
+                           //    id: 'btnSingleTrackingWPSListAPNCountdetected',
+                           //    height: 180,
+                           //    width: 210,
+                           //    margin: '-103 0 0 35',
+                           //    html: '<font size="2" color="black"><b>APN Detected</b></font>',
+                           //    //   html: '<div ><img src="resources/icons/DetailsPoint.png" width="45" height="45" alt="Company Name"></div>',
+                           //    ui: 'plain',
+                           //    handler: function () {
+                           //        _isWPSpanelshow = 'no';
+                           //        SingleTrackingWPSListHide();
+                           //        SingleTrackingWPSListButtonShow();
+                           //    }
+                           //},
                            {
                                xtype: 'button',
-                               id: 'btnSingleTrackingWPSListAPNCountdetected',
+                               id: 'btnSingleTrackingWPSListdetectedMode',
                                height: 180,
                                width: 210,
-                               margin: '-103 0 0 35',
-                               html: '<font size="2.5" color="black"><b>(4)</b></font>',
+                               margin: '-213 0 0 11',
+                               html: '<font size="2" color="black"><b>WPS MODE-OFF</b></font>',
                                //   html: '<div ><img src="resources/icons/DetailsPoint.png" width="45" height="45" alt="Company Name"></div>',
                                ui: 'plain',
                                handler: function () {
-                                   _isWPSpanelshow = 'no';
-                                   SingleTrackingWPSListHide();
-                                   SingleTrackingWPSListButtonShow();
+                                 
                                }
                            },
 

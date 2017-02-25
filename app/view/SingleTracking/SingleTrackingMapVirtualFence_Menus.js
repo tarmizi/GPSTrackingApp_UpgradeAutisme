@@ -280,18 +280,51 @@ function SingleTrackingMapVirtualFence_Menu() {
                             SingleTrackingMapVirtualFence_BurgerMenuShow();
                             _isSingleTrackingMapVirtualFence_MenuInitialized = 'yes';
                             _singleTrackingMapVirtualFence_BurgerMenuIsInitialized = 'yes';
+
+                          
+                          
+                            
+
+
                             if (_isWPSpanelshow == 'no')
                             {
                                 SingleTrackingWPSListButtonHide();
                                 SingleTrackingWPSListShow();
                                 _isWPSpanelshow = 'yes';
+                                if(WPSMode == 'ON')
+                                {
+                                    Ext.getCmp('btnSingleTrackingWPSListdetectedMode').setHtml('<font size="2" color="blue"><b>WPS MODE-ON</b></font>');
+
+
+                                    //var str_array = singleTrackingAPN.split(',');
+                                    //for (var i = 0; i < str_array.length; i++) {
+
+                                    //    str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "") + '<br>';
+                                    //    // Add additional code here, such as:
+                                    //    Ext.getCmp('SingleTrackingWPSListAPNdetected').setHtml('<font size="1.5" color="white"><b>' + str_array[i] + '</b></font>');
+
+                                    //}
+
+
+
+
+                                }  if (WPSMode == 'OFF') {
+                                    Ext.getCmp('btnSingleTrackingWPSListdetectedMode').setHtml('<font size="2" color="black"><b>WPS MODE-OFF</b></font>');
+                                    Ext.getCmp('SingleTrackingWPSListAPNdetected').setHtml('<font size="1.5" color="white"><b>NO APN Detected</b></font>');
+                                }
                                 return;
                             }
                             if (_isWPSpanelshow == 'yes') {
                                 SingleTrackingWPSListButtonShow();
                                 SingleTrackingWPSListHide();
                                 _isWPSpanelshow = 'no';
+                                if (WPSMode == 'ON') {
+                                    Ext.getCmp('btnSingleTrackingWPSListButtondetectedMode').setHtml('<font size="2" color="blue"><b>WPS MODE-ON</b></font>');
+                                } if (WPSMode == 'OFF') {
+                                    Ext.getCmp('btnSingleTrackingWPSListButtondetectedMode').setHtml('<font size="2" color="black"><b>WPS MODE-OFF</b></font>');
+                                }
                                 return;
+                              
                             }
                         }
                     },

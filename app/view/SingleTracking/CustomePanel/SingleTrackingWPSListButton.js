@@ -77,6 +77,21 @@ function SingleTrackingWPSListButton() {
                              //SingleTrackingWPSListShow();
                          }
                      },
+
+
+                              {
+                                  xtype: 'button',
+                                  id: 'btnSingleTrackingWPSListButtondetectedMode',
+                                  height: 180,
+                                  width: 210,
+                                  margin: '-115 0 0 11',
+                                  html: '<font size="2" color="black"><b>WPS MODE-OFF</b></font>',
+                                  //   html: '<div ><img src="resources/icons/DetailsPoint.png" width="45" height="45" alt="Company Name"></div>',
+                                  ui: 'plain',
+                                  handler: function () {
+
+                                  }
+                              },
               
 
           ]

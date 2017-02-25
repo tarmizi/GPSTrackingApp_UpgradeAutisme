@@ -345,6 +345,12 @@ namespace TrackingInfo.Models
             get;
             set;
         }
+
+        public string APN
+        {
+            get;
+            set;
+        }
         public static List<SignalsModel> Get_SignalsSingleTracking(string TrackID, string AccountNo)
         {
 
@@ -395,6 +401,19 @@ namespace TrackingInfo.Models
                             _result.BatteryReading = _SQLDataReader["BatteryReading"].ToString();
                             _result.DateDT = _SQLDataReader["DateDT"].ToString();
                             _result.Direction = _SQLDataReader["Direction"].ToString();
+                            _result.Altitude = _SQLDataReader["Altitude"].ToString();
+                            _result.GSMSignalReading = _SQLDataReader["GSMSignalReading"].ToString();
+                            _result.TerminalState = _SQLDataReader["TerminalState"].ToString();
+                            _result.APN = _SQLDataReader["APN"].ToString();
+
+
+
+
+
+
+
+
+
                             _result.TrackID = _SQLDataReader["TrackID"].ToString();                          
                             _result.TrackItem = _SQLDataReader["TrackItem"].ToString();
                             _result.TrackItemType = _SQLDataReader["TrackItemType"].ToString();
@@ -795,6 +814,11 @@ namespace TrackingInfo.Models
                             _result.BatteryReading = _SQLDataReader["BatteryReading"].ToString();
                             _result.DateDT = _SQLDataReader["DateDT"].ToString();
                             _result.Direction = _SQLDataReader["Direction"].ToString();
+                            _result.Altitude = _SQLDataReader["Altitude"].ToString();
+                            _result.GSMSignalReading = _SQLDataReader["GSMSignalReading"].ToString();
+                            _result.TerminalState = _SQLDataReader["TerminalState"].ToString();
+                            _result.APN = _SQLDataReader["APN"].ToString();
+
                             _result.TrackID = _SQLDataReader["TrackID"].ToString();
                             _result.TrackItem = _SQLDataReader["TrackItem"].ToString();
                             _result.TrackItemType = _SQLDataReader["TrackItemType"].ToString();
