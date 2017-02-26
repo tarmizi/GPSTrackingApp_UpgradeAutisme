@@ -28,7 +28,8 @@ function SettingMultipleMapTracking() {
       id: '_settingMultipleMapTrackingID',
       draggable: false,
       right: -5,
-      bottom: 301,
+      // bottom: 260,
+      bottom: 64,
       zIndex: 10,
       // bottom: 165,
 
@@ -62,6 +63,7 @@ function SettingMultipleMapTracking() {
                       id: 'btnsettingMultipleMapTrackingChangeMaps',
                       height: 62,
                       width: 65,
+                      hidden:true,
                       html: '<div ><img src="resources/icons/ChangeMapRound.png" width="55" height="55" alt="Company Name"></div>',
                       ui: 'plain',
                       handler: function () {
@@ -103,6 +105,7 @@ function SettingMultipleMapTracking() {
                     width: 65,
                     html: '<div ><img src="resources/icons/StreetViewRound.png" width="55" height="55" alt="Company Name"></div>',
                     ui: 'plain',
+                    hidden: true,
                     handler: function () {
                     
 
@@ -115,6 +118,7 @@ function SettingMultipleMapTracking() {
                    width: 65,
                    html: '<div ><img src="resources/icons/NearMeRound.png" width="55" height="55" alt="Company Name"></div>',
                    ui: 'plain',
+                   hidden: true,
                    handler: function () {
                      
 
@@ -125,6 +129,7 @@ function SettingMultipleMapTracking() {
                          id: 'btnsettingMultipleMapTrackingSearchPatientList',
                          height: 62,
                          width: 65,
+                         hidden: true,
                          html: '<div ><img src="resources/icons/LocateRound.png" width="55" height="55" alt="Company Name"></div>',
                          ui: 'plain',
                          handler: function () {
@@ -137,6 +142,7 @@ function SettingMultipleMapTracking() {
                   id: 'btnsettingMultipleMapTrackingShowLayer',
                   height: 62,
                   width: 65,
+                  hidden: true,
                   html: '<div ><img src="resources/icons/SearchRound.png" width="55" height="55" alt="Company Name"></div>',
                   ui: 'plain',
                   handler: function () {
@@ -150,10 +156,10 @@ function SettingMultipleMapTracking() {
                   xtype: 'button',
 
                   id: 'btnsettingMultipleMapTrackingBack',
-                  height: 62,
-                  width: 65,
-                  margin: '-61 63 0 0',
-                  html: '<div ><img src="resources/icons/BackStreetViewRound.png" width="55" height="55" alt="Company Name"></div>',
+                  height: 75,
+                  width: 75,
+                  //margin: '-61 63 0 0',
+                  html: '<div ><img src="resources/icons/BackStreetViewRound.png" width="65" height="65" alt="Company Name"></div>',
 
                   ui: 'plain',
                   handler: function (btn) {

@@ -142,7 +142,7 @@ Ext.define('MyGPS.view.MultipleTracking.multiTrackingMap', {
                {
 
                    xtype: 'toolbar',
-                   title: 'Live Tracking',
+                   title: 'Multi Point Live Tracking',
                    docked: 'top',
                    id: 'toolbarMultiTrackingTop',
                    //  hidden:true,
@@ -160,17 +160,17 @@ Ext.define('MyGPS.view.MultipleTracking.multiTrackingMap', {
                                       Ext.getCmp('mainView').setActiveItem(1);
                                   }
                               },
-                              {
-                                  xtype: 'spacer'
-                              },
-                              {
-                                  xtype: 'button',
-                                  id: 'btnMultiTrackingTopAccInfo',
-                                  html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
-                                  ui: 'plain',
-                                  handler: function () {
-                                  }
-                              },
+                              //{
+                              //    xtype: 'spacer'
+                              //},
+                              //{
+                              //    xtype: 'button',
+                              //    id: 'btnMultiTrackingTopAccInfo',
+                              //    html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
+                              //    ui: 'plain',
+                              //    handler: function () {
+                              //    }
+                              //},
 
                           ]
                },
@@ -790,7 +790,7 @@ function CheckMarkersMultipleID(arr, findValue) {
 
 function startmultiTrackingMaps(val, countmultiple, ImeiNo) {
     SettingMultipleMapTrackingShow();
-    MultipleMapTrackingSettingLayerShow();
+  //  MultipleMapTrackingSettingLayerShow();
     markersMultipleID.length = 0;
     checkinMultipoint = '000';
     
@@ -879,7 +879,7 @@ function startmultiTrackingMaps(val, countmultiple, ImeiNo) {
 
                         var boundreboundlatlongmultiTrackingMap = new google.maps.LatLng(Latitude, Longitude);
                         var image = {
-                            url: ip + '7.gif', // url
+                            url: ip + 'pulseRed.gif', // url
                             scaledSize: new google.maps.Size(80, 80), // scaled size
                             //  origin: new google.maps.Point(0, 0), // origin
                             anchor: new google.maps.Point(40, 40) // anchor
@@ -900,24 +900,24 @@ function startmultiTrackingMaps(val, countmultiple, ImeiNo) {
                         var markermultiTrackingMap = new MarkerWithLabel({
                             position: boundreboundlatlongmultiTrackingMap,
                         
-                            flat: true,
-                            icon: {
-                                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                                scale: 10,
-                                rotation: Direction,
-                                strokeColor: '#FFFFFF',
-                                fillColor: '#57A0DC',
-                                fillOpacity: 1,
-                                strokeWeight: 4
-                            },
+                            //flat: true,
+                            //icon: {
+                            //    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                            //    scale: 10,
+                            //    rotation: Direction,
+                            //    strokeColor: '#FFFFFF',
+                            //    fillColor: '#57A0DC',
+                            //    fillOpacity: 1,
+                            //    strokeWeight: 4
+                            //},
 
                             draggable: false,
-                            labelContent: TrackID,
-                            labelAnchor: new google.maps.Point(70, 13),
-                            labelClass: "labelsMark",// the CSS class for the label
+                          //  labelContent: TrackItem,
+                          //  labelAnchor: new google.maps.Point(70, 13),
+                         //   labelClass: "labelsMark",// the CSS class for the label
                             map: multiTrackingMap,
                             id: Latitude + TrackID,
-                          //  title: Latitude + TrackID
+                            title: Latitude + TrackID
                         });
 
 
@@ -1212,7 +1212,7 @@ function stopClockmultiTrackingMaps() {
     geocoderMultiLiveTrackingisFirstLoad = 'yes';
     DeleteAllMultiMarker();
     markersMulti.length = 0;
-    MultipleMapTrackingSettingHide();
+ //   MultipleMapTrackingSettingHide();
     SettingMultipleMapTrackingHide();
     Ext.getCmp('btnMultiCountLiveTracking').setText( '0 Signal(s) Running');
     // console.log("STOPED");

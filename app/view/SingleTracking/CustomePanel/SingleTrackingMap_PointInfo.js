@@ -79,10 +79,11 @@ function SingleTrackingMapPointIfo() {
       html: '<div ><img src="resources/icons/ClosePointInfo.png" width="52" height="52" alt="Company Name"></div>',
       ui: 'plain',
       handler: function () {
-          reclosePointInfo = 'yes';
-          var IMEI_no = GetCurrentDeviceID();
-          loadmarkerSingleTrackingMap(IMEI_no);
           SingleTrackingMap_PointInfoHide();
+          var IMEI_no = GetCurrentDeviceID();
+          //   loadmarkerSingleTrackingMap(IMEI_no);
+          startsingleTrackingMaps('start', IMEI_no);
+     
       }
 
   },

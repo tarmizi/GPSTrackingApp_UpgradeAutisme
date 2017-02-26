@@ -258,10 +258,10 @@ function loadmarkerSingleTrackingMap(IMEI_no) {
         var Latitude = modelRecord.get('Latitude');
         var Longitude = modelRecord.get('Longitude');
 
-        var position = new google.maps.LatLng(Latitude, Longitude);
+        //var position = new google.maps.LatLng(Latitude, Longitude);
 
-        singleTrackingMap.setCenter(position)
-        singleTrackingMap.setZoom(10);
+        //singleTrackingMap.setCenter(position)
+        //singleTrackingMap.setZoom(10);
         Ext.Viewport.unmask();
 
     });
@@ -280,10 +280,11 @@ var timer = 0;
 var countloop = 0;
 var WPSMode = 'OFF';
 var singleTrackingAPN;
+var isToleranceLayerCreated = 'no';
 function startsingleTrackingMaps(val, IMEI_no) {
     var valSingleTrackID = IMEI_no;
     singleTrackingMap_DeviceID = IMEI_no;
-    console.log(singleTrackingMap_DeviceID + ':singleTrackingMap_DeviceID');
+   // console.log(singleTrackingMap_DeviceID + ':singleTrackingMap_DeviceID');
     //this.overlay = Ext.Viewport.add(SingleTrackingMapPointIfo())
     //this.overlay.show();
     singleTrackingMapchecklong = '000';
@@ -294,7 +295,7 @@ function startsingleTrackingMaps(val, IMEI_no) {
             //console.log(valSingleTrackID + ':vvvvvvvvvvvvvvvXXXX');
             if (singleTrackingMapsec == 1) {
                 countloop++;
-                if (countloop >= 750)
+                if (countloop >= 1050)
                 { Ext.Msg.alert("Reached Limit!-pls re-track!"); stopClocksingleTrackingMaps(); countloop = 0; singleTrackingMapsec = 0;return; }
                
                 Ext.getStore('singlesignalTrackingstore').getProxy().setExtraParams({
@@ -347,7 +348,7 @@ function startsingleTrackingMaps(val, IMEI_no) {
                         singleTrackingAPN = APN;
                         var VBoundaryName = 'Wait..';
                         var VBoundaryStatus = 'Wait..';
-                        SetbtnsingleTrackingOverViewMapPointInfoTbl(TrackItem, DateDT, APN, TrackID, Speed, Altitude, BatteryReading, VBoundaryStatus);
+                        SetbtnsingleTrackingOverViewMapPointInfoTbl(TrackItem, DateDT, APN, TrackID, Speed, Altitude, BatteryReading, VBoundaryStatus, Interval, GSMSignalReading);
 
                         Direction = parseFloat(modelRecord.get('Direction'));
                         _TrackingItemsConfigDeviceID = IMEIno;
@@ -377,13 +378,13 @@ function startsingleTrackingMaps(val, IMEI_no) {
                         }
 
                         if (geolocationisOn == 'yes') {
-                            console.log(geolocationisOn);
+                         //   console.log(geolocationisOn);
 
 
 
 
                             var geoLocation = new google.maps.LatLng(geolocationY, geolocationX);
-                            console.log('geolocationisOn:' + geolocationY);
+                          //  console.log('geolocationisOn:' + geolocationY);
                             imagegeoLocationIcon = {
                                 url: ip + '714blue.gif', // url
                                 scaledSize: new google.maps.Size(80, 80), // scaled size
@@ -417,24 +418,28 @@ function startsingleTrackingMaps(val, IMEI_no) {
                                 }
                             }, 2000);
                         }
-
+                      //  console.log(APN);
                         var strAPN = APN;
                         var n = strAPN.length;
                         if (n > 1) {
                             WPSMode = 'ON';
 
-
+                            if (isToleranceLayerCreated =='no') {
+                                console.log('SetToleranceLayer');
+                                SetToleranceLayerWPS(Latitude, Longitude);
+                            }
                             Ext.getCmp('btnSingleTrackingWPSListButtondetectedMode').setHtml('<font size="2" color="blue"><b>WPS MODE-ON</b></font>');
                             if (_isWPSpanelshow == 'yes') {
+                              //  console.log(strAPN);
                                 Ext.getCmp('btnSingleTrackingWPSListdetectedMode').setHtml('<font size="2" color="blue"><b>WPS MODE-ON</b></font>');
-                                var str = APN;
+                                var str =','+ APN;
                                 var str_array = str.split(',');
                                 var str_result = '';
-                              //  console.log(str_array.length);
+                              // console.log(str_array.length);
                                 for (var i = 0; i < str_array.length; i++) {
 
                                   //  str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
-                                    if (str_array.length == 2)
+                                    if (str_array.length <= 2)
                                     {
                                         
                                         str_result += str_array[i];
@@ -449,12 +454,24 @@ function startsingleTrackingMaps(val, IMEI_no) {
 
                                 }
                              //   console.log(str_result);
-                                Ext.getCmp('SingleTrackingWPSListAPNdetected').setHtml('<font size="2" color="white"><b>' + str_result.replace(/^\s*/, "").replace(/\s*$/, "").replace("undefined", "").replace("<br><br>","") + '</b></font>');
+                                Ext.getCmp('SingleTrackingWPSListAPNdetected').setHtml('<font size="2" color="white"><b>' + str_result.replace(/^\s*/, "").replace(/\s*$/, "").replace("undefined", "").replace("<br><br>", "") + '</b></font>');
+                              
+                               
                             }
 
                         } else {
                             WPSMode = 'OFF';
                             Ext.getCmp('btnSingleTrackingWPSListButtondetectedMode').setHtml('<font size="2" color="black"><b>WPS MODE-OFF</b></font>');
+
+
+
+                            if (_isWPSpanelshow == 'yes') {
+                               
+                                Ext.getCmp('btnSingleTrackingWPSListdetectedMode').setHtml('<font size="2" color="blue"><b>WPS MODE-OFF</b></font>');
+                              
+                                Ext.getCmp('SingleTrackingWPSListAPNdetected').setHtml('<font size="2" color="white"><b>NO APN Detected.</b></font>');
+                            }
+
                             DeleteToleranceLayer();
                         }
 
@@ -463,7 +480,7 @@ function startsingleTrackingMaps(val, IMEI_no) {
                        
                         if (singleTrackingMapchecklong == Longitude)
                         { return }
-                        SetToleranceLayer(Latitude, Longitude);
+                      
 
                        
                         
@@ -487,26 +504,8 @@ function startsingleTrackingMaps(val, IMEI_no) {
 
                             if (AttachedLabelOnMarker == '1') {
 
-                                //markersingleTrackingMapTop = new google.maps.Marker({
-                                //    position: boundreboundlatlongsingleTrackingMap,
-                                //    icon: image,
-                                //    flat: true,
-                                //    // labelAnchor: new google.maps.Point(20, 27),
-
-                                //    draggable: false,
-                                //    optimized: false,
-                                //    //  labelClass: "labelsMark",// the CSS class for the label
-                                //    map: singleTrackingMap,
-                                //    title: valSingleTrackID
-                                //});
-
-
-
-
-
-                                markersingleTrackingMap = new MarkerWithLabel({
+                                markersingleTrackingMapTop = new google.maps.Marker({
                                     position: boundreboundlatlongsingleTrackingMap,
-                                  //  position: boundreboundlatlongsingleTrackingMap,
                                     icon: image,
                                     flat: true,
                                     // labelAnchor: new google.maps.Point(20, 27),
@@ -515,6 +514,24 @@ function startsingleTrackingMaps(val, IMEI_no) {
                                     optimized: false,
                                     //  labelClass: "labelsMark",// the CSS class for the label
                                     map: singleTrackingMap,
+                                    title: valSingleTrackID
+                                });
+
+
+
+
+
+                                markersingleTrackingMap = new MarkerWithLabel({
+                                    position: boundreboundlatlongsingleTrackingMap,
+                                  //  position: boundreboundlatlongsingleTrackingMap,
+                                  //  icon: image,
+                                 //   flat: true,
+                                    // labelAnchor: new google.maps.Point(20, 27),
+
+                                    draggable: false,
+                                    optimized: false,
+                                    //labelClass: "labelsMark",// the CSS class for the label
+                                  //  map: singleTrackingMap,
 
                                     ////  icon: image,
                                     //flat: true,
@@ -532,9 +549,9 @@ function startsingleTrackingMaps(val, IMEI_no) {
                                     //},
 
                                     //draggable: false,
-                                    //  labelContent: TrackID,
-                                    labelAnchor: new google.maps.Point(70, 13),
-                                    labelClass: "labelsMark",// the CSS class for the label
+                                 //  // labelContent: TrackItem,
+                                //  //  labelAnchor: new google.maps.Point(70, 13),
+                                 //  // labelClass: "labelsMark",// the CSS class for the label
                                     map: singleTrackingMap,
                                     // title: valSingleTrackID
                                 });
@@ -574,17 +591,17 @@ function startsingleTrackingMaps(val, IMEI_no) {
 
                         singleTrackingMapchecklong = Longitude;
                         markersingleTrackingMap.id = uniqueId;
-                        //   markersingleTrackingMapTop.id = uniqueId;
+                          markersingleTrackingMapTop.id = uniqueId;
                         if (uniqueId > 1) {
                             DeleteMarkersingleTrackingMap(markersingleTrackingMap.id - 1);
-                            //   DeleteMarkersingleTrackingMap(markersingleTrackingMapTop.id - 1);
+                              DeleteMarkersingleTrackingMap(markersingleTrackingMapTop.id - 1);
                         }
 
                         uniqueId++;
 
 
                         markers.push(markersingleTrackingMap);
-                        //    markers.push(markersingleTrackingMapTop);
+                           markers.push(markersingleTrackingMapTop);
                         checkingimgMarker = SelectedMarker;
                         checkingAttachedLblOnMarker = AttachedLabelOnMarker;
 
@@ -625,7 +642,7 @@ function startsingleTrackingMaps(val, IMEI_no) {
                 if (PanMapAfterPointChange == '1') {
 
                     singleTrackingMap.setCenter(boundreboundlatlongsingleTrackingMap)
-                    singleTrackingMap.setZoom(16);
+                    singleTrackingMap.setZoom(18);
                 }
 
             }
@@ -755,7 +772,7 @@ var geoLocationArr = [];
 
 
 function DeleteMarkerGeolocation(id) {
-    console.log('DeleteMarkerGeolocation:' + id);
+   // console.log('DeleteMarkerGeolocation:' + id);
     for (var i = 0; i < geoLocationArr.length; i++) {
         if (geoLocationArr[i].id == id) {
             //Remove the marker from Map                  
@@ -810,7 +827,7 @@ function setTrackingInfoPanel(strTrackID, strTrackItem, strSpeed, strTime, strTr
     if (currentSpeed > maxSpeed)
     { maxSpeed = currentSpeed }
 
-    console.log(strMillage);
+  //  console.log(strMillage);
     //    Ext.getCmp('TrackingInfopanelTbl').setHtml('<table class="tblgpssummary2">  <tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 18px; color: #fff; text-align: center;  valign:top; height:20%">' + strTrackID + '</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 14px; color: #fff; text-align: center;  valign:top;  height:20% ">' + strTrackItem + '</td> </tr>    <tr > <td class="tdspeedmax">' + strSpeed + ' KM/H</td> <td class="tdspeedmax">' + maxSpeed + ' KM/H</td></tr> <tr > <td class="tdspeed">Curr. Speed</td> <td class="tdspeed">Max Speed</td></tr> <tr> <td colspan="2" class="tdspeedmax">' + strTime + '</td> </tr>  </table>');
     //Ext.getCmp('btnsingleTrackingOverViewMapPointInfolblRightPhone').setHtml('<table class="tblgpssummary">  <tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 13px; color: #fff; text-align: center;  valign:top; height:20%">' + strTrackID + '</td> </tr><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center;  valign:top;  height:20% ">' + strTrackItem + '</td> </tr>    <tr > <td class="tdspeedmax">' + strSpeed + ' KM/H</td> <td class="tdspeedmax">' + maxSpeed + ' KM/H</td></tr> <tr > <td class="tdspeed">Curr. Speed</td> <td class="tdspeed">Max Speed</td></tr> <tr> <td colspan="2" class="tdspeedmax">' + strTime + '</td> </tr>  </table>');
 
@@ -849,8 +866,11 @@ function SetToleranceLayer(Latitude, Longitude) {
     }
 
     if (reclosePointInfo == 'yes')
-    { console.log('reclosePointInfo DeletebToleranceLayer'); reclosePointInfo = 'no'; DeleteToleranceLayer(); }
-    console.log('setToleranceLayer');
+    {
+       
+         reclosePointInfo = 'no'; DeleteToleranceLayer();
+    }
+   
 
     var center = new google.maps.LatLng(Latitude, Longitude);
     var draw_circle = new google.maps.Circle({
@@ -872,8 +892,8 @@ function SetToleranceLayer(Latitude, Longitude) {
 
 function DeleteToleranceLayer() {
     //Find and remove the marker from the Array
-    console.log('DeleteToleranceLayer');
-    
+   // console.log('DeleteToleranceLayer');
+    isToleranceLayerCreated = 'no';
    
     //markerSettingFenceMap.setMap(null);
     //mapgeofenceSettinggeofence.setMap(null);
@@ -886,4 +906,29 @@ function DeleteToleranceLayer() {
         //markerSettingFenceMapArr.splice(i, 1);
 
     }
+}
+
+function SetToleranceLayerWPS(Latitude, Longitude) {
+    if (isSetToleranceLayerFirst == 'no') {
+        DeleteToleranceLayer();
+        
+    }
+
+   
+
+    var center = new google.maps.LatLng(Latitude, Longitude);
+    var draw_circle = new google.maps.Circle({
+        center: center,
+        radius: 50,
+        strokeColor: "#81CCF2",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#81CCF2",
+        fillOpacity: 0.35,
+        map: singleTrackingMap
+    });
+    ToleranceLayerArr.length = 0;
+    ToleranceLayerArr.push(draw_circle);
+    isSetToleranceLayerFirst = 'no';
+    isToleranceLayerCreated = 'yes';
 }
