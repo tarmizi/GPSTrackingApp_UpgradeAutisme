@@ -612,8 +612,7 @@ function startsingleTrackingMaps(val, IMEI_no) {
                
                  stopClocksingleTrackingMaps();
                  SingleTrackingMap_PointInfoShow();
-
-               
+                
                  Ext.Viewport.mask({ xtype: 'loadmask', message: 'Loading Picture...' });
                  var task = Ext.create('Ext.util.DelayedTask', function () {
 
@@ -842,6 +841,8 @@ function setTrackingInfoPanel(strTrackID, strTrackItem, strSpeed, strTime, strTr
 
     Ext.getCmp('LiveTrackingInfoPanel1').setHtml('<table class="tabledetail"><tr> <td class="tde">' + strTrackItem + '</td> <td class="tde">' + strTrackID + '</td></tr> <tr > <td class="tdk">Track Item</td> <td class="tdk">Track ID</td></tr><tr > <td class="tde">' + strStatus + '</td> <td class="tde">' + strVersion + '</td></tr> <tr > <td class="tdk">Account Status</td> <td class="tdk">Version</td></tr><tr > <td class="tde">{Speed}</td> <td class="tde">160km/h</td></tr> <tr > <td class="tdk">Current Speed</td> <td class="tdk">Max Speed</td></tr><tr > <td class="tde">{BatteryReading}</td> <td class="tde">BATTERY</td></tr> <tr > <td class="tdk">Batery Status</td> <td class="tdk">Power Mode</td></tr><tr > <td class="tde">{GPSModel}</td> <td class="tde">Standard</td></tr> <tr > <td class="tdk">GPS Tracker Model</td> <td class="tdk">Tracking Mode</td></tr><tr > <td class="tde">{GPSSimNumber}</td> <td class="tde">68 meter</td></tr> <tr > <td class="tdk">Sim Number</td> <td class="tdk">Max Elevation</td></tr></table>');
     Ext.getCmp('LiveTrackingInfoPanel3').setHtml('<table class="tabledetail"><tr> <td class="tde">' + strTrackerModel + '</td> <td class="tde">' + strInterval + ' </td></tr> <tr > <td class="tdk">GPS Tracker Model</td> <td class="tdk">Interval</td></tr> <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"</td> <td class="tdk"></td></tr></table>');
+
+
     Ext.getCmp('LiveTrackingInfoPanel4').setHtml('<table class="tabledetail"><tr> <td class="tde">' + strBatteryReading + '</td> <td class="tde">' + strGPSSimNumber + '</td></tr> <tr > <td class="tdk">Battery Reading</td> <td class="tdk">SimCard Number</td></tr> <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"</td> <td class="tdk"></td></tr></table>');
     Ext.getCmp('LiveTrackingInfoPanel5').setHtml('<table class="tabledetail"><tr> <td class="tde">' + strCreatedDate + '</td> <td class="tde">' + strExpiredDate + '</td></tr> <tr > <td class="tdk">Date Registered</td> <td class="tdk">Expired Date</td></tr> <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"</td> <td class="tdk"></td></tr></table>');
 
@@ -859,34 +860,6 @@ var previousLatitute='000';
 var isSetToleranceLayerFirst = 'yes';
 var ToleranceLayerArr = [];
 var reclosePointInfo = 'no';
-function SetToleranceLayer(Latitude, Longitude) {
-    if (previousLatitute != Latitude && isSetToleranceLayerFirst == 'no') {
-        DeleteToleranceLayer();
-        previousLatitute = Latitude;
-    }
-
-    if (reclosePointInfo == 'yes')
-    {
-       
-         reclosePointInfo = 'no'; DeleteToleranceLayer();
-    }
-   
-
-    var center = new google.maps.LatLng(Latitude, Longitude);
-    var draw_circle = new google.maps.Circle({
-        center: center,
-        radius: 50,
-        strokeColor: "#81CCF2",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: "#81CCF2",
-        fillOpacity: 0.35,
-        map: singleTrackingMap
-    });
-    ToleranceLayerArr.length = 0;
-    ToleranceLayerArr.push(draw_circle);
-    isSetToleranceLayerFirst = 'no';
-}
 
 
 
@@ -932,3 +905,5 @@ function SetToleranceLayerWPS(Latitude, Longitude) {
     isSetToleranceLayerFirst = 'no';
     isToleranceLayerCreated = 'yes';
 }
+
+

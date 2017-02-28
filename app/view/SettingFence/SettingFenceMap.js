@@ -1163,3 +1163,62 @@ function AutoFenceTimerDelete(ID, AccountNo) {
         }
     });
 }
+
+
+
+var ATCreatedDate;
+var ATTrackItem;
+var ATTrackID;
+var ATAccountNo;
+var ATFencePath;
+var ATShapeType;
+var ATFenceAreaName = 'noneName';
+var ATTimeFrom = 'noTime';
+var ATTimeTo;
+var ATDaySetting;
+var ATStatus;
+var ATFenceLength;
+
+
+function GetVirtualFenceActive() {
+
+
+    Ext.getStore('AutoFenceTimerGetByAccNoDeviceHour').getProxy().setExtraParams({
+
+        AccountNo: GetCurrentUserAccountNo(),
+        DeviceID: GetCurrentDeviceID(),
+    });
+    Ext.StoreMgr.get('AutoFenceTimerGetByAccNoDeviceHour').load();
+    //var myStore = Ext.getStore('AutoFenceTimerGetByAccNoDeviceHour');
+    //var cou = myStore.getCount();
+
+
+    var task = Ext.create('Ext.util.DelayedTask', function () {
+        Ext.getStore('AutoFenceTimerGetByAccNoDeviceHour').getProxy().setExtraParams({
+
+            AccountNo: GetCurrentUserAccountNo(),
+            DeviceID: GetCurrentDeviceID(),
+        });
+        Ext.StoreMgr.get('AutoFenceTimerGetByAccNoDeviceHour').load();
+        var myStore = Ext.getStore('AutoFenceTimerGetByAccNoDeviceHour');
+        var modelRecord = myStore.getAt(0);
+        ATCreatedDate = modelRecord.get('CreatedDate');
+        ATTrackItem = modelRecord.get('TrackItem');
+        ATTrackID = modelRecord.get('TrackID');
+        ATAccountNo = modelRecord.get('AccountNo');
+        ATFencePath = modelRecord.get('FencePath');
+        ATShapeType = modelRecord.get('ShapeType');
+        ATFenceAreaName = modelRecord.get('FenceAreaName');
+        ATTimeFrom = modelRecord.get('TimeFrom');
+        ATTimeTo = modelRecord.get('TimeTo');
+        ATDaySetting = modelRecord.get('DaySetting');
+        ATStatus = modelRecord.get('Status');
+        ATFenceLength = modelRecord.get('FenceLength');
+    });
+    task.delay(1000);
+
+
+
+
+
+}

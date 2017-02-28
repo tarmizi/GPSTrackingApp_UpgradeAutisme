@@ -35,7 +35,24 @@ namespace TrackingInfo.Controllers
 
             return Json(new { success = success, message = _Message, total = data.Count, results = data }, JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public JsonResult GetAutoFenceTimerGetByAccNoDeviceIDHour( string AccNo,string TrackID)
+        {
+            bool success = true;
+            string _Message = string.Empty;
+            List<AutoFenceTimerModel> data = new List<AutoFenceTimerModel>();
+            try
+            {
+                data = AutoFenceTimerModel.Get_AutoFenceTimerGetByAccNoDeviceIDHour(AccNo, TrackID);
+            }
+            catch (Exception ex)
+            {
+                _Message = ex.Message;
+                success = false;
+            }
 
+            return Json(new { success = success, message = _Message, total = data.Count, results = data }, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
         public JsonResult GetAutoFenceTimerGetByTrackID(string TrackID, string AccNo)
         {

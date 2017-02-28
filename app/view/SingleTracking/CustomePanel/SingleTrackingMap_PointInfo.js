@@ -181,6 +181,7 @@ function SingleTrackingMap_PointInfoShow() {
     Ext.Viewport.remove(_singleTrackingMap_PointInfo);
     this.overlay = Ext.Viewport.add(SingleTrackingMapPointIfo());
     this.overlay.show();
+   
 }
 
 function SingleTrackingMap_PointInfoHide() {
@@ -229,9 +230,192 @@ function LoadPointInfoPicture()
         }
 
 
-
+        loadResponderAlertByAccount();
+     
 
         Ext.Viewport.unmask();
     });
     task.delay(1000);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+var iCount;
+var ResponderNameAlertbyAccArry = [];
+var ResponderRelationsAlertbyAccArry = [];
+var ResponderPhoneNoAlertbyAccArry = [];
+var ResponderName1;
+var ResponderRelationShip1;
+var ResponderPhoneNo1;
+var ResponderName2;
+var ResponderRelationShip2;
+var ResponderPhoneNo2;
+var ResponderName3;
+var ResponderRelationShip3;
+var ResponderPhoneNo3;
+var ResponderName4;
+var ResponderRelationShip4;
+var ResponderPhoneNo4;
+function loadResponderAlertByAccount() {
+
+
+    ResponderNameAlertbyAccArry.length = 0;
+    ResponderRelationsAlertbyAccArry.length = 0;
+    ResponderPhoneNoAlertbyAccArry.length = 0;
+    Ext.getStore('ResponderAlertGetByAcc').getProxy().setExtraParams({
+
+        AccNo: GetCurrentUserAccountNo(),
+    });
+    Ext.StoreMgr.get('ResponderAlertGetByAcc').load();
+    //var myStore = Ext.getStore('ResponderAlertGetByAcc');
+    //var count = myStore.getCount();
+
+    var task = Ext.create('Ext.util.DelayedTask', function () {
+        Ext.getStore('ResponderAlertGetByAcc').getProxy().setExtraParams({
+            AccNo: GetCurrentUserAccountNo(),
+        });
+        Ext.StoreMgr.get('ResponderAlertGetByAcc').load();
+        var myStore = Ext.getStore('ResponderAlertGetByAcc');
+        var count = myStore.getCount();
+      
+        for (iCount = 0; iCount < count; iCount++) {
+            var modelRecord = myStore.getAt(iCount);
+            ResponderNameAlertbyAccArry.push(modelRecord.get('ResponderName'));
+            ResponderRelationsAlertbyAccArry.push(modelRecord.get('ResponderRelationShip'));
+            ResponderPhoneNoAlertbyAccArry.push(modelRecord.get('ResponderPhoneNo'));
+        }
+        ResponderName1 = ResponderNameAlertbyAccArry[0];
+                            ResponderName2 = ResponderNameAlertbyAccArry[1];
+                            ResponderName3 = ResponderNameAlertbyAccArry[2];
+                            ResponderName4 = ResponderNameAlertbyAccArry[3];
+
+
+        ResponderRelationShip1 = ResponderRelationsAlertbyAccArry[0]; ResponderRelationShip2 = ResponderRelationsAlertbyAccArry[1]; ResponderRelationShip3 = ResponderRelationsAlertbyAccArry[2]; ResponderRelationShip4 = ResponderRelationsAlertbyAccArry[3];
+        ResponderPhoneNo1 = ResponderPhoneNoAlertbyAccArry[0]; ResponderPhoneNo2 = ResponderPhoneNoAlertbyAccArry[1]; ResponderPhoneNo3 = ResponderPhoneNoAlertbyAccArry[2]; ResponderPhoneNo4 = ResponderPhoneNoAlertbyAccArry[3];
+
+        setResponder();
+
+
+        //alert(ResponderName1);
+
+        //alert(ResponderRelationShip1);
+        //alert(ResponderPhoneNo1);
+    });
+    task.delay(1000);
+                        
+ 
+                       
+    //_DataStore_ResponderAlertGetByAcc.getProxy().setExtraParam('AccNo', GetCurrentUserAccountNo());
+    //_DataStore_ResponderAlertGetByAcc.load({
+
+    //    callback: function (record, operation, success) {
+
+
+    //        if (success) {
+    //            var store2 = _DataStore_ResponderAlertGetByAcc.getAt(0);
+
+
+    //            if (store2 != null) {
+
+
+    //            }
+    //        }
+    //    }
+    //});
+
+
+
+
+
+
+
+
+
+
+
+    //////////_DataStore_ResponderAlertGetByAcc.getProxy().setExtraParams({
+    //////////    AccNo: GetCurrentUserAccountNo(),
+    //////////});
+
+    //////////_DataStore_ResponderAlertGetByAcc.load({
+
+    //////////    callback: function (record, operation, success) {
+
+
+    //////////        if (success) {
+    //////////            var store = _DataStore_ResponderAlertGetByAcc.getAt(0);
+
+
+    //////////            if (store != null) {
+    //////////                var count=_DataStore_ResponderAlertGetByAcc.getCount();
+    //////////                console.log(store.get('ResponderPhoneNo'));
+    //////////                alert(store.get('ResponderRelationShip'));
+
+
+    //////////                    for (iCount = 0; iCount < count; iCount++) {
+    //////////                        var modelRecord=  _DataStore_ResponderAlertGetByAcc.getAt(iCount);
+    //////////                        ResponderNameAlertbyAccArry.push(modelRecord.get('ResponderName'));
+    //////////                        //ResponderRelationsAlertbyAccArry.push(modelRecord.get('ResponderRelationShip'));
+    //////////                        //ResponderPhoneNoAlertbyAccArry.push(modelRecord.get('ResponderPhoneNo'));
+    //////////                    }
+    //////////                    ResponderName1 = ResponderNameAlertbyAccArry[0];
+    //////////                    ResponderName2 = ResponderNameAlertbyAccArry[1];
+    //////////                    ResponderName3 = ResponderNameAlertbyAccArry[2];
+    //////////                    ResponderName4 = ResponderNameAlertbyAccArry[3];
+    //////////                    alert(ResponderName1);
+    //////////                    alert(ResponderName2);
+    //////////                    alert(ResponderName3);
+    //////////                    alert(ResponderName4);
+                  
+    //////////            } else {
+    //////////                alert('no Data');
+    //////////            }
+    //////////        }
+    //////////        else {
+    //////////            alert('Fail');
+    //////////        }
+
+
+
+    //////////    }
+    //})
+
+   
+    //ResponderRelationShip1 = ResponderRelationsAlertbyAccArry[0]; ResponderRelationShip2 = ResponderRelationsAlertbyAccArry[1]; ResponderRelationShip3 = ResponderRelationsAlertbyAccArry[2]; ResponderRelationShip4 = ResponderRelationsAlertbyAccArry[3];
+    //ResponderPhoneNo1 = ResponderPhoneNoAlertbyAccArry[0]; ResponderPhoneNo2 = ResponderPhoneNoAlertbyAccArry[1]; ResponderPhoneNo3 = ResponderPhoneNoAlertbyAccArry[2]; ResponderPhoneNo4 = ResponderPhoneNoAlertbyAccArry[3];
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function setResponder()
+{
+  //  alert(ResponderName1);
+    Ext.getCmp('LiveTrackingInfoPanel3').setHtml('<table class="tabledetail"><tr> <td class="tde">' + ResponderName1 + '-' + ResponderPhoneNo1 + ' (' + ResponderRelationShip1 + ')</td> <td class="tde">' + ResponderName2 + '-' + ResponderPhoneNo2 + ' (' + ResponderRelationShip2 + ')</td></tr> <tr > <td class="tdk">Responder 1</td> <td class="tdk">Responder 2</td></tr> <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"</td> <td class="tdk"></td></tr></table>');
+    Ext.getCmp('LiveTrackingInfoPanel4').setHtml('<table class="tabledetail"><tr> <td class="tde">' + ResponderName3 + '-' + ResponderPhoneNo3 + ' (' + ResponderRelationShip3 + ')</td> <td class="tde">' + ResponderName4 + '-' + ResponderPhoneNo4 + ' (' + ResponderRelationShip4 + ')</td></tr> <tr > <td class="tdk">Responder 1</td> <td class="tdk">Responder 2</td></tr> <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"</td> <td class="tdk"></td></tr></table>');
+
+}
+
+
+
+

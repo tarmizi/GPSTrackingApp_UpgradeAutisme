@@ -294,6 +294,7 @@
     <Content Include="app\store\AlertMilageCount\AlertMilageCountStore.js" />
     <Content Include="app\store\AutoFenceTimerGetByAcc.js" />
     <Content Include="app\store\AutoFenceTimerGetByID.js" />
+    <Content Include="app\store\AutoFenceTimer\AutoFenceTimerGetByAccNoDeviceHour.js" />
     <Content Include="app\store\Building\BuildingStore.js" />
     <Content Include="app\store\Floor\FloorStore.js" />
     <Content Include="app\store\geoFenceActiveStore.js" />

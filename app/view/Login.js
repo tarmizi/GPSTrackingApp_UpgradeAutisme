@@ -171,11 +171,12 @@ Ext.define('MyGPS.view.Login', {
                                  if (store != null) {
 
                                    
-                                     Ext.getCmp('MainMenuUserLabel').setHtml('<font size="3" color="white">Welcome!<br>' + store.get('UserName') + '</font>');
+                                     Ext.getCmp('MainMenuUserLabel').setHtml('<font size="3" color="white">Welcome!<br>' + Ext.getCmp('loginuserNameTextField').getValue() + '</font>');
                                      Ext.getCmp('mainView').setActiveItem(1);
                                      AAccountNo = GetCurrentUserAccountNo();
                                      _IsSuccessLogin = true;
                                      Ext.Msg.alert("Login Success!");
+                                   
                                  }else
                                  {
                                      Ext.Msg.alert("Failed.!");
