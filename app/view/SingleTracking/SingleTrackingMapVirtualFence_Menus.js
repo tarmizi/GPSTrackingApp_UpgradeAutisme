@@ -351,6 +351,7 @@ function SingleTrackingMapVirtualFence_Menu() {
                       stopClocksingleTrackingMaps();
                       markersingleTrackingMap.setMap(null);
                       DeleteToleranceLayer();
+                      DeleteVirtualBoundaryLayer();
                       Ext.getCmp('mainView').setActiveItem(1);
 
                       if(_isSingleTrackingWPSListButtonClicked=='yes')

@@ -314,88 +314,7 @@ function loadResponderAlertByAccount() {
     task.delay(1000);
                         
  
-                       
-    //_DataStore_ResponderAlertGetByAcc.getProxy().setExtraParam('AccNo', GetCurrentUserAccountNo());
-    //_DataStore_ResponderAlertGetByAcc.load({
-
-    //    callback: function (record, operation, success) {
-
-
-    //        if (success) {
-    //            var store2 = _DataStore_ResponderAlertGetByAcc.getAt(0);
-
-
-    //            if (store2 != null) {
-
-
-    //            }
-    //        }
-    //    }
-    //});
-
-
-
-
-
-
-
-
-
-
-
-    //////////_DataStore_ResponderAlertGetByAcc.getProxy().setExtraParams({
-    //////////    AccNo: GetCurrentUserAccountNo(),
-    //////////});
-
-    //////////_DataStore_ResponderAlertGetByAcc.load({
-
-    //////////    callback: function (record, operation, success) {
-
-
-    //////////        if (success) {
-    //////////            var store = _DataStore_ResponderAlertGetByAcc.getAt(0);
-
-
-    //////////            if (store != null) {
-    //////////                var count=_DataStore_ResponderAlertGetByAcc.getCount();
-    //////////                console.log(store.get('ResponderPhoneNo'));
-    //////////                alert(store.get('ResponderRelationShip'));
-
-
-    //////////                    for (iCount = 0; iCount < count; iCount++) {
-    //////////                        var modelRecord=  _DataStore_ResponderAlertGetByAcc.getAt(iCount);
-    //////////                        ResponderNameAlertbyAccArry.push(modelRecord.get('ResponderName'));
-    //////////                        //ResponderRelationsAlertbyAccArry.push(modelRecord.get('ResponderRelationShip'));
-    //////////                        //ResponderPhoneNoAlertbyAccArry.push(modelRecord.get('ResponderPhoneNo'));
-    //////////                    }
-    //////////                    ResponderName1 = ResponderNameAlertbyAccArry[0];
-    //////////                    ResponderName2 = ResponderNameAlertbyAccArry[1];
-    //////////                    ResponderName3 = ResponderNameAlertbyAccArry[2];
-    //////////                    ResponderName4 = ResponderNameAlertbyAccArry[3];
-    //////////                    alert(ResponderName1);
-    //////////                    alert(ResponderName2);
-    //////////                    alert(ResponderName3);
-    //////////                    alert(ResponderName4);
-                  
-    //////////            } else {
-    //////////                alert('no Data');
-    //////////            }
-    //////////        }
-    //////////        else {
-    //////////            alert('Fail');
-    //////////        }
-
-
-
-    //////////    }
-    //})
-
    
-    //ResponderRelationShip1 = ResponderRelationsAlertbyAccArry[0]; ResponderRelationShip2 = ResponderRelationsAlertbyAccArry[1]; ResponderRelationShip3 = ResponderRelationsAlertbyAccArry[2]; ResponderRelationShip4 = ResponderRelationsAlertbyAccArry[3];
-    //ResponderPhoneNo1 = ResponderPhoneNoAlertbyAccArry[0]; ResponderPhoneNo2 = ResponderPhoneNoAlertbyAccArry[1]; ResponderPhoneNo3 = ResponderPhoneNoAlertbyAccArry[2]; ResponderPhoneNo4 = ResponderPhoneNoAlertbyAccArry[3];
-
-
-
 }
 
 
@@ -413,6 +332,12 @@ function setResponder()
   //  alert(ResponderName1);
     Ext.getCmp('LiveTrackingInfoPanel3').setHtml('<table class="tabledetail"><tr> <td class="tde">' + ResponderName1 + '-' + ResponderPhoneNo1 + ' (' + ResponderRelationShip1 + ')</td> <td class="tde">' + ResponderName2 + '-' + ResponderPhoneNo2 + ' (' + ResponderRelationShip2 + ')</td></tr> <tr > <td class="tdk">Responder 1</td> <td class="tdk">Responder 2</td></tr> <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"</td> <td class="tdk"></td></tr></table>');
     Ext.getCmp('LiveTrackingInfoPanel4').setHtml('<table class="tabledetail"><tr> <td class="tde">' + ResponderName3 + '-' + ResponderPhoneNo3 + ' (' + ResponderRelationShip3 + ')</td> <td class="tde">' + ResponderName4 + '-' + ResponderPhoneNo4 + ' (' + ResponderRelationShip4 + ')</td></tr> <tr > <td class="tdk">Responder 1</td> <td class="tdk">Responder 2</td></tr> <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"></td> <td class="tdk"></td></tr><tr > <td class="tde"></td> <td class="tde"></td></tr> <tr > <td class="tdk"</td> <td class="tdk"></td></tr></table>');
+    setVirtualFenceInfo();
+}
+
+function setVirtualFenceInfo()
+{
+    Ext.getCmp('LiveTrackingInfoPanel1').setHtml('<table class="tabledetail"><tr> <td class="tde">' + VirtualFenceCurrentHourFenceAreaName + '</td> <td class="tde">' + VirtualFenceCurrentHourTimeFromConverted + ' - ' + VirtualFenceCurrentHourTimeToConverted + '</td></tr> <tr > <td class="tdk">V.Boundary Name</td> <td class="tdk">V.Boundary Time</td></tr><tr > <td class="tde">' + VirtualFenceCurrentHourTimeStatus + '</td> <td class="tde">' + VirtualFenceCurrentHourFenceLength + '</td></tr> <tr > <td class="tdk">V.Boundary Status</td> <td class="tdk">Fence Length/radius</td></tr><tr > <td class="tde">{Speed}</td> <td class="tde">160km/h</td></tr> <tr > <td class="tdk">Current Speed</td> <td class="tdk">Max Speed</td></tr><tr > <td class="tde">{BatteryReading}</td> <td class="tde">BATTERY</td></tr> <tr > <td class="tdk">Batery Status</td> <td class="tdk">Power Mode</td></tr><tr > <td class="tde">{GPSModel}</td> <td class="tde">Standard</td></tr> <tr > <td class="tdk">GPS Tracker Model</td> <td class="tdk">Tracking Mode</td></tr><tr > <td class="tde">{GPSSimNumber}</td> <td class="tde">68 meter</td></tr> <tr > <td class="tdk">Sim Number</td> <td class="tdk">Max Elevation</td></tr></table>');
 
 }
 

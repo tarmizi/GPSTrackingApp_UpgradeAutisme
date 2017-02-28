@@ -102,8 +102,16 @@ function ConvertTime(Timer)
         convertedTime = '10:00-PM';
     } else if (Timer == '23') {
         convertedTime = '11:00-PM';
-    } else if (Timer == '24') {
+    } else if (Timer == '0') {
         convertedTime = '12:00-AM';
+    } else if (Timer == '1') {
+        convertedTime = '01:00-AM';
+    } else if (Timer == '2') {
+        convertedTime = '02:00-AM';
+    } else if (Timer == '3') {
+        convertedTime = '03:00-AM';
+    } else if (Timer == '4') {
+        convertedTime = '04:00-AM';
     }
 
 

@@ -604,7 +604,8 @@ function startsingleTrackingMaps(val, IMEI_no) {
                            markers.push(markersingleTrackingMapTop);
                         checkingimgMarker = SelectedMarker;
                         checkingAttachedLblOnMarker = AttachedLabelOnMarker;
-
+                        DeleteVirtualBoundaryLayer();
+                        prepareVirtualFenceCurrentHour();
 
 
                         google.maps.event.addListener(markersingleTrackingMap, 'mousedown',
@@ -881,6 +882,29 @@ function DeleteToleranceLayer() {
     }
 }
 
+var VirtualBoundaryLayer = [];
+function DeleteVirtualBoundaryLayer() {
+    //Find and remove the marker from the Array
+    // console.log('DeleteToleranceLayer');
+  //  isToleranceLayerCreated = 'no';
+
+    //markerSettingFenceMap.setMap(null);
+    //mapgeofenceSettinggeofence.setMap(null);
+
+    for (var i = 0; i < VirtualBoundaryLayer.length; i++) {
+
+        VirtualBoundaryLayer[i].setMap(null);
+
+        //Remove the marker from array.
+        //markerSettingFenceMapArr.splice(i, 1);
+
+    }
+}
+
+
+
+
+
 function SetToleranceLayerWPS(Latitude, Longitude) {
     if (isSetToleranceLayerFirst == 'no') {
         DeleteToleranceLayer();
@@ -907,3 +931,161 @@ function SetToleranceLayerWPS(Latitude, Longitude) {
 }
 
 
+
+
+var VirtualFenceCurrentHourFenceAreaName;
+var VirtualFenceCurrentHourTimeFromConverted;
+var VirtualFenceCurrentHourTimeToConverted;
+var VirtualFenceCurrentHourTimeStatus;
+var VirtualFenceCurrentHourFenceLength;
+function prepareVirtualFenceCurrentHour()
+{
+    Ext.getStore('AutoFenceTimerGetByAccNoDeviceHour').getProxy().setExtraParams({
+        AccNo: GetCurrentUserAccountNo(),
+        TrackID: GetCurrentDeviceID()
+    });
+    Ext.StoreMgr.get('AutoFenceTimerGetByAccNoDeviceHour').load();
+
+    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Create Fence ...Please Wait' });
+    var task = Ext.create('Ext.util.DelayedTask', function () {
+        var PictureLength = 0;
+        Ext.getStore('AutoFenceTimerGetByAccNoDeviceHour').getProxy().setExtraParams({
+            AccNo: GetCurrentUserAccountNo(),
+            TrackID: GetCurrentDeviceID()
+        });
+        Ext.StoreMgr.get('AutoFenceTimerGetByAccNoDeviceHour').load();
+        var myStore = Ext.getStore('AutoFenceTimerGetByAccNoDeviceHour');
+        var count = myStore.getCount();
+
+
+        if (count <= 0)
+        {
+            VirtualFenceCurrentHourTimeToConverted = 'No Time';
+            VirtualFenceCurrentHourTimeFromConverted = 'No Time';
+            VirtualFenceCurrentHourFenceAreaName = 'No Area';
+            VirtualFenceCurrentHourTimeStatus = 'No Fence';
+            Ext.Viewport.unmask();
+            return;
+        }
+
+
+
+        var modelRecord = myStore.getAt(0);  
+        VirtualFenceCurrentHourFenceAreaName = modelRecord.get('FenceAreaName');
+        VirtualFenceCurrentHourTimeFromConverted = modelRecord.get('TimeFromConverted');
+        VirtualFenceCurrentHourTimeToConverted = modelRecord.get('TimeToConverted');
+        VirtualFenceCurrentHourFenceLength = modelRecord.get('FenceLength');
+        var typeshape = modelRecord.get('ShapeType');
+        var pathxy = modelRecord.get('FencePath');
+        var pathlenght = modelRecord.get('FenceLength');
+        var status = modelRecord.get('Status');
+        if (count == 1 && status == 'Active')
+        {
+            VirtualFenceCurrentHourTimeStatus = 'Active';
+
+            SetVirtualFenceCurrentHour(typeshape, pathxy, pathlenght);
+        }
+       else if (count == 1 && status == 'InActive')
+        {
+            VirtualFenceCurrentHourTimeStatus = 'InActive';
+        }
+        else
+        {
+            VirtualFenceCurrentHourTimeStatus = 'No Fence';
+        }
+      
+        Ext.Viewport.unmask();
+    });
+    task.delay(1000);
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+var draw_polygonVirtualFenceCurrentHour;
+var draw_circleVirtualFenceCurrentHour;
+var arrVirtualFenceCurrentHour = [];
+
+function SetVirtualFenceCurrentHour(typeshape, pathxy, pathlenght) {
+ 
+    VirtualBoundaryLayer.length = 0;
+    arrVirtualFenceCurrentHour.length = 0;
+    if (typeshape == 'circle') {
+        var globalFileTypeId = pathxy.split(',');
+        var b = parseInt(pathlenght);
+        var ctr = new google.maps.LatLng(globalFileTypeId[0], globalFileTypeId[1]);
+    
+        draw_circleVirtualFenceCurrentHour = new google.maps.Circle({
+            center: ctr,
+            radius: b,
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            map: singleTrackingMap
+        });
+      
+        VirtualBoundaryLayer.push(draw_circleVirtualFenceCurrentHour);
+
+    }
+    if (typeshape == 'polygon') {
+
+        var polysplit = pathxy.split('),');
+
+
+
+
+        var index, len;
+        var a = polysplit;
+        var polyX;
+        var polyY;
+        for (index = 0, len = a.length; index < len; ++index) {
+            //alert(a[index] + ')');
+
+            var splitresult = a[index] + ')'.split(',');
+            var text = splitresult.replace(/[\])}[{(]/g, '');
+            var pathpoly = text.split(',');
+
+            arrVirtualFenceCurrentHour.push(new google.maps.LatLng(pathpoly[0], pathpoly[1]));
+            polyY = pathpoly[0];
+            polyX = pathpoly[1];
+        }
+    
+        draw_polygonVirtualFenceCurrentHour = new google.maps.Polygon({
+            paths: arrVirtualFenceCurrentHour,
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            // strokeColor: "#FF8800",            
+            //strokeOpacity: 0.8,
+            //strokeWeight: 3,
+            //fillColor: "#FF8800",
+            //fillOpacity: 0.35
+        });
+        draw_polygonVirtualFenceCurrentHour.setMap(singleTrackingMap);
+
+        VirtualBoundaryLayer.push(draw_polygonVirtualFenceCurrentHour);
+
+
+
+    }
+
+
+
+}
