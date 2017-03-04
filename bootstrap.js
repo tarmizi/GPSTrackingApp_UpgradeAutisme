@@ -688,6 +688,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MyGPS.model.singlesignalmodel": [],
   "MyGPS.model.testlist": [],
   "MyGPS.store.AlertMilageCount.AlertMilageCountStore": [],
+  "MyGPS.store.AutoFenceTimer.AutoFenceTimerGetByAccNoDeviceHour": [],
   "MyGPS.store.AutoFenceTimerGetByAcc": [],
   "MyGPS.store.AutoFenceTimerGetByID": [],
   "MyGPS.store.Building.BuildingStore": [],
@@ -743,7 +744,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "MyGPS.view.Config.User.UserConfig": [],
   "MyGPS.view.Login": [],
   "MyGPS.view.Main": [],
-  "MyGPS.view.MainMenu": [],
   "MyGPS.view.MainMenuUpgrade": [],
   "MyGPS.view.MainPage": [],
   "MyGPS.view.MultiPleTracking.API.MultipleTrackingAPI": [],
@@ -1580,6 +1580,7 @@ Ext.ClassManager.addNameAliasMappings({
   "MyGPS.model.singlesignalmodel": [],
   "MyGPS.model.testlist": [],
   "MyGPS.store.AlertMilageCount.AlertMilageCountStore": [],
+  "MyGPS.store.AutoFenceTimer.AutoFenceTimerGetByAccNoDeviceHour": [],
   "MyGPS.store.AutoFenceTimerGetByAcc": [],
   "MyGPS.store.AutoFenceTimerGetByID": [],
   "MyGPS.store.Building.BuildingStore": [],
@@ -1688,9 +1689,6 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "MyGPS.view.Main": [
     "widget.main"
-  ],
-  "MyGPS.view.MainMenu": [
-    "widget.mainmenu"
   ],
   "MyGPS.view.MainMenuUpgrade": [
     "widget.mainmenu"

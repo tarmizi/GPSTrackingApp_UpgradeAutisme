@@ -649,3 +649,303 @@ function SettingFencePanelSettingInfoHide() {
     //  Ext.getCmp('TrackingHistoryMapInfoPanelDetails').setHtml('<table class="tblheadetrackedhistory"><tr > <td class="tdgpsdatahistory"><u>Tracking ID :  N/A </u></td></tr></table>                           <br>   <table class="tblmasterhistory"> <tr> <td class="tdgpslabel">Date From</td> <td class="tdgpslabel"> TODAY :' + now + '</td></tr><tr> <td class="tdgpslabel">Date To</td> <td class="tdgpslabel"> N/A </td></tr><tr> <td class="tdgpslabel">Travel range(KM)</td> <td class="tdgpslabel"> N/A | Point: N/A  </td></tr><tr> <td class="tdgpslabel">Tracking Item</td> <td class="tdgpslabel"> N/A </td></tr></table>');
     _settingFencePanelSettingInfo.hide();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+function AutoFenceTimerInsertUpdate(ID, TrackItem, TrackID, AccountNo, FencePath, ShapeType, FenceAreaName, TimeFrom, TimeTo, DaySetting, Status, FenceLength) {
+
+
+    console.log(ID + '//' + TrackItem + '//' + TrackID + '//' + AccountNo + '//' + FencePath + '//' + ShapeType + '//' + FenceAreaName + '//' + TimeFrom + '//' + TimeTo + '//' + DaySetting + '//' + Status + '//' + FenceLength);
+    Ext.Ajax.request({
+
+        url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/AutoFenceTimerInsertUpdate',
+
+        params: {
+
+            ID: ID,
+            TrackID: TrackID,
+            TrackItem: TrackItem,
+            TrackID: TrackID,
+            AccountNo: AccountNo,
+            FencePath: FencePath,
+            ShapeType: ShapeType,
+            FenceAreaName: FenceAreaName,
+            TimeFrom: TimeFrom,
+            TimeTo: TimeTo,
+            DaySetting: DaySetting,
+            Status: Status,
+            FenceLength: FenceLength
+        },
+        success: function (result, request) {
+
+            Ext.getStore('AutoFenceTimerGetByAcc').getProxy().setExtraParams({
+                AccNo: GetCurrentUserAccountNo(),
+            });
+            Ext.StoreMgr.get('AutoFenceTimerGetByAcc').load();
+            Ext.Viewport.mask({ xtype: 'loadmask', message: 'Please Wait...' });
+            var task = Ext.create('Ext.util.DelayedTask', function () {
+                Ext.getStore('AutoFenceTimerGetByAcc').getProxy().setExtraParams({
+                    AccNo: GetCurrentUserAccountNo(),
+                });
+                Ext.StoreMgr.get('AutoFenceTimerGetByAcc').load();
+                CheckingAutoTimerDuplicate(ID, 'IDK', TrackID, AccountNo, FencePath, ShapeType, FenceAreaName, TimeFrom, TimeTo, DaySetting, Status, FenceLength)
+                Ext.Viewport.unmask();
+            });
+            task.delay(1500);
+        },
+        failure: function (result, request) {
+            Ext.Msg.alert('Error', request);
+            //if ((messageboxss())) {
+            //    Ext.Viewport.add(messageboxss('Error,' + request));
+            //}
+        }
+    });
+
+
+
+
+}
+function ReAutoFenceTimerInsertUpdate(ID, TrackItem, TrackID, AccountNo, FencePath, ShapeType, FenceAreaName, TimeFrom, TimeTo, DaySetting, Status, FenceLength) {
+
+    Ext.Ajax.request({
+
+        url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/AutoFenceTimerInsertUpdate',
+
+        params: {
+
+            ID: ID,
+            TrackID: TrackID,
+            TrackItem: TrackItem,
+            TrackID: TrackID,
+            AccountNo: AccountNo,
+            FencePath: FencePath,
+            ShapeType: ShapeType,
+            FenceAreaName: FenceAreaName,
+            TimeFrom: TimeFrom,
+            TimeTo: TimeTo,
+            DaySetting: DaySetting,
+            Status: 'InActive-Duplicate',
+            FenceLength: FenceLength
+        },
+        success: function (result, request) {
+            Ext.Msg.alert('Save', 'Detected SAME/TWICE Time From And Time to in different fence Area !<br>Time From and Time To only valid in one fence area<br>The Row will be InActive');
+
+
+        },
+        failure: function (result, request) {
+            Ext.Msg.alert('Error', request);
+            //if ((messageboxss())) {
+            //    Ext.Viewport.add(messageboxss('Error,' + request));
+            //}
+        }
+    });
+
+
+
+
+}
+
+function CheckingAutoTimerDuplicate(ID, IDK, TrackID, AccountNo, FencePath, ShapeType, FenceAreaName, TimeFrom, TimeTo, DaySetting, Status, FenceLength) {
+    var TimeFrom;
+    var TimeTo;
+    var Status;
+    var AccountNo;
+    var checkDuplicate = 'False';
+    var IDduplicate;
+    var arr = [];
+    var arrTimeFrom = [];
+    var arrTimeTo = [];
+    var ii;
+    var lastTimeFrom;
+    var lastTimeTo;
+    var TimeFromNext;
+    var TimeToNext;
+    var StatusNext;
+    var areaOverlap;
+    var TrackIDnext;
+    var previousArea;
+    var previousTrackID;
+
+    var IDnext;
+    var countForCheck = 1;
+    var timefromNextActive;
+    var timeToActive;
+    Ext.getStore('AutoFenceTimerGetByAcc').getProxy().setExtraParams({
+        AccNo: GetCurrentUserAccountNo(),
+    });
+    Ext.StoreMgr.get('AutoFenceTimerGetByAcc').load();
+    var myStore = Ext.getStore('AutoFenceTimerGetByAcc');
+    var myStore1 = Ext.getStore('AutoFenceTimerGetByAcc');
+    var count = myStore.getCount();
+
+    console.log('count is:' + count);
+    console.log(ID);
+
+
+
+    if (count == 1) {
+        Ext.Msg.alert('Success', 'Record has been saved!');
+        var modelRecord = myStore.getAt(0);
+        Ext.getCmp('SettingDrawFence_ID').setValue(modelRecord.get('ID'));
+        return;
+    } else
+        if (count > 1) {
+            for (ii = 0; ii < count - 1; ii++) {
+                console.log('ii:' + ii);
+                console.log('countForCheck:' + countForCheck);
+                var modelRecord = myStore.getAt(ii);
+                var modelRecord1 = myStore1.getAt(countForCheck);
+                countForCheck = countForCheck + 1;
+                TimeFromNext = parseInt(modelRecord1.get('TimeFrom'));
+                TimeToNext = modelRecord1.get('TimeTo');
+                StatusNext = modelRecord1.get('Status');
+                areaOverlap = modelRecord1.get('FenceAreaName');
+                IDnext = modelRecord1.get('ID');
+                TrackIDnext = modelRecord1.get('TrackID');
+                Ext.getCmp('SettingDrawFence_ID').setValue(modelRecord1.get('ID'));
+
+                previousTrackID = modelRecord.get('TrackID');
+                AccountNo = modelRecord.get('AccountNo');
+                TimeFrom = modelRecord.get('TimeFrom');
+                TimeTo = parseInt(modelRecord.get('TimeTo'));
+                Status = modelRecord.get('RowStatus');
+                IDduplicate = modelRecord.get('ID');
+                previousArea = modelRecord.get('FenceAreaName');
+                console.log('TimeFromNext:' + TimeFromNext);
+                console.log('TimeTo:' + TimeTo);
+
+
+                //if (Status == 'Active' && StatusNext == 'InActive') {
+                //    StatusNext = 'Active';
+                //}
+                //if (Status == 'InActive' && StatusNext == 'Active') {
+                //    Status = 'Active';
+                //}
+                //if (Status == 'Active' && StatusNext == 'Active') {
+
+
+                if (previousTrackID != TrackIDnext) {
+                    Ext.Msg.alert('Success', 'Record has been saved!');
+                    return;
+                } else {
+
+
+
+                    console.log(IDnext);
+                    console.log("StatusNext:" + StatusNext);
+                    console.log("Status:" + Status);
+                    if (Status == 'Active') {
+                        timeToActive = parseInt(TimeTo);
+
+                    }
+                    if (StatusNext == 'Active') {
+                        timefromNextActive = parseInt(TimeFromNext);
+
+
+                        if (timefromNextActive <= timeToActive) {
+                            AutoFenceTimerSetInActive(IDnext, AccountNo);
+                            Ext.Msg.alert('Warning !!', 'System detected overlap Time  In Area (' + areaOverlap + ') with Existing area . Please Check your Time From and Time To range ,Data will not be Activated');
+                            return;
+                        }
+
+                    }
+
+
+
+                }
+                //  Ext.Msg.alert('Success', 'Record has been saved!');
+                // arr.push(AccountNo + TimeFrom + TimeTo + Status);
+                //  }
+
+            }
+
+
+        
+
+            Ext.Msg.alert('Success', 'Record has been saved!');
+        }
+}
+
+
+
+
+function AutoFenceTimerDeleteOverLapArea(ID, AccountNo) {
+
+    Ext.Ajax.request({
+
+        url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/AutoFenceTimerDelete',
+
+        params: {
+
+            ID: ID,
+            AccountNo: AccountNo,
+
+
+        },
+        success: function (result, request) {
+
+            Ext.getCmp('SettingDrawFence_ID').setValue('0');
+
+        },
+        failure: function (result, request) {
+            Ext.Msg.alert('Error', request);
+            //if ((messageboxss())) {
+            //    Ext.Viewport.add(messageboxss('Error,' + request));
+            //}
+        }
+    });
+}
+
+
+function AutoFenceTimerSetInActive(ID, AccountNo) {
+
+    Ext.Ajax.request({
+
+        url: document.location.protocol + '//' + document.location.host + '/API/AutoFenceTimer/AutoFenceTimerInsertUpdate',
+
+        params: {
+
+            ID: ID,
+            TrackID: null,
+            TrackItem: null,
+            TrackID: null,
+            AccountNo: AccountNo,
+            FencePath: null,
+            ShapeType: null,
+            FenceAreaName: null,
+            TimeFrom: null,
+            TimeTo: null,
+            DaySetting: null,
+            Status: 'InActive-Duplicate',
+            FenceLength: null
+        },
+        success: function (result, request) {
+
+            Ext.getStore('AutoFenceTimerGetByAcc').getProxy().setExtraParams({
+                AccNo: AAccountNo,
+            });
+            Ext.StoreMgr.get('AutoFenceTimerGetByAcc').load();
+
+        },
+        failure: function (result, request) {
+            Ext.Msg.alert('Error', request);
+            //if ((messageboxss())) {
+            //    Ext.Viewport.add(messageboxss('Error,' + request));
+            //}
+        }
+    });
+
+
+
+
+}

@@ -450,7 +450,7 @@ function loadListOfGeofence()
         _CountDevice = count;
         Ext.getCmp('mainView').setActiveItem(4);
 
-        Ext.getCmp('btnSettingFenceCountRecord').setHtml('<font size="2" color="white">' + count + ' Record(s)</font>');
+        Ext.getCmp('btnSettingFenceCountRecord').setHtml('<font size="2" color="white">' + count + ' Record.(s)</font>');
 
 
 

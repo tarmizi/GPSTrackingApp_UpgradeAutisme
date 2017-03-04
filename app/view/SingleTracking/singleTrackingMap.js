@@ -163,6 +163,7 @@ Ext.define('MyGPS.view.SingleTracking.singleTrackingMap', {
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 panControl: false,
                 scaleControl: false,
+                gestureHandling: 'greedy',
                 //overviewMapControl: true,
                 //overviewMapControlOptions: {opened: true},
 

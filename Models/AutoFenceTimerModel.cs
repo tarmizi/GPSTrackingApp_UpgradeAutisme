@@ -86,6 +86,12 @@ namespace TrackingInfo.Models
             set;
         }
 
+        public string RowStatus
+        {
+            get;
+            set;
+        }
+        
 
         public static List<AutoFenceTimerModel> Get_AutoFenceTimerByAccNo(string AccNo)
         {
@@ -143,6 +149,7 @@ namespace TrackingInfo.Models
                             _result.DaySetting = _SQLDataReader["DaySetting"].ToString();
                             _result.Status = _SQLDataReader["Status"].ToString();
                             _result.FenceLength = _SQLDataReader["FenceLength"].ToString();
+                            _result.RowStatus = _SQLDataReader["RowStatus"].ToString();
                             _Value.Add(_result);
 
                         }

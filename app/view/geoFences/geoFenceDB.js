@@ -358,7 +358,7 @@ function InsertGeoFencesFromSavedArea(AccountNo, TrackID, TrackItem, Fencelenght
 }
 
 
-
+/*
 
 function AutoFenceTimerInsertUpdate(ID, TrackItem, TrackID, AccountNo, FencePath, ShapeType, FenceAreaName, TimeFrom, TimeTo, DaySetting, Status, FenceLength) {
 
@@ -690,3 +690,5 @@ function AutoFenceTimerSetInActive(ID, AccountNo) {
 
 
 }
+
+*/

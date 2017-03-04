@@ -20,13 +20,13 @@ function SingleTrackingMapPointIfo() {
             //bottom: 50,
             //left: 0,
 
-            height: 370,
+            height: 400,
             width: 276,
             // width: '70%',
             // height: '50%',
             modal: true,
             zIndex: 20,
-            //  style: "background-color: #57A0DC; color:white;",
+            // style: "background-color: #57A0DC; color:white;",
            // hideOnMaskTap: true,
             showAnimation: {
                 type: 'popIn',
@@ -38,7 +38,7 @@ function SingleTrackingMapPointIfo() {
                 duration: 250,
               //  easing: 'ease-out'
             },
-
+            //style: 'background-color: #57A0DC',
             items: [
 
 
@@ -47,7 +47,7 @@ function SingleTrackingMapPointIfo() {
                     // xtype: 'carousel',
                     xtype: 'panel',
                     height: 330,
-
+                    style: 'background-color: #57A0DC',
                     // height: 148,
                     items: [
 
@@ -89,17 +89,56 @@ function SingleTrackingMapPointIfo() {
   },
 
                                         {
-                                            margin: '-35 0 0 0',
+                                            margin: '-33 0 0 0',
                                             id: 'LiveTrackingInfoPanelpanelHeader',
                                              // <tr> <td colspan="2" font-weight: bold; style="background-color: #57A0DC;  font-size: 15px; color: #fff; text-align: center;">Status:Static (11h20m24s)</td> </tr>
                                             html: '<table width=100%><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center; border: 1px solid #fff;"><img src="/resources/icons/loadingImage4.png" style="width:242px;height:223px;"></td> </tr></table>',
                                            // html: '<table width=100%><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center; border: 1px solid #fff;">LOADING IMAGE.......</td> </tr></table>',
-
+                                          
 
                                         },
 
                                         
+                                        
+                                     {
+                                         xtype: 'container',
+                                         height: 30,
+                                      
+                                         width: 264,
 
+                                         //style: 'background-color:#57A0DC color: #fff',
+                                         style: 'background-color: #57A0DC',
+                                         layout: {
+
+                                             type: 'hbox',
+
+                                         },
+                                         items: [
+
+
+                                               {
+                                                   xtype: 'button',
+                                                  
+                                                   id: 'SingleTrackingMap_PointInfoVBInfo',
+                                                   //ui: 'action',
+                                                 //  text: "Virtual Fence Info",
+                                                   //height: 62,
+                                                   //width: 62,
+                                                   margin:'-3 0 0 0',
+                                                   text: '<font size="2" color="white"><b>Virtual Fence Info</b></font>',
+                                                
+                                                   ui: 'plain',
+                                                   handler: function () {
+                                                      
+
+                                                   }
+
+                                               },
+                                         ]
+
+
+
+                                     },
 
 
 
@@ -221,11 +260,11 @@ function LoadPointInfoPicture()
         console.log(PictureLength);
         if (PictureLength > 1)
         {
-            Ext.getCmp('LiveTrackingInfoPanelpanelHeader').setHtml('<table width=100%><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center; border: 1px solid #fff;"><img src=' + Picture + ' style="width:242px;height:223px;"></td> </tr></table>');
+            Ext.getCmp('LiveTrackingInfoPanelpanelHeader').setHtml('<table width=100%><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center; border: 1px solid #fff;"><img src=' + Picture + ' style="width:242px;height:243px;"></td> </tr></table>');
 
         }
         if (PictureLength < 1) {
-            Ext.getCmp('LiveTrackingInfoPanelpanelHeader').setHtml('<table width=100%><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center; border: 1px solid #fff;"><img src="/resources/icons/NoImage4.png" style="width:242px;height:223px;"></td> </tr></table>');
+            Ext.getCmp('LiveTrackingInfoPanelpanelHeader').setHtml('<table width=100%><tr> <td colspan="2" style="background-color: #57A0DC;  font-size: 10px; color: #fff; text-align: center; border: 1px solid #fff;"><img src="/resources/icons/NoImage4.png" style="width:242px;height:243px;"></td> </tr></table>');
 
         }
 

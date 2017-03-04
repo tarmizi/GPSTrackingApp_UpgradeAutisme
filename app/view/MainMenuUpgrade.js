@@ -63,7 +63,7 @@
 
             {
                 xtype: 'container',
-             
+               
                 layout: {
                     type: 'vbox',
                     pack: 'left'
@@ -71,15 +71,16 @@
                 },
                 items: [
                     {
-                        //xtype: 'button',
+                      //  xtype: 'button',
                         //id: 'btnMainMenuIconNotification',
                         //height: 55,
                         //width: 55,
-                        // html: '<font size="3" color="white">Welcome!<br>Tarmizi@Hotmail.my<br>Last Login:19/3/1983 12:14AM</font>',
-                        id: 'MainMenuUserLabel',
+                      
+                        id: 'MainMenuUserLabelUpgrade1',
                         html: '<font size="3" color="white">Welcome!<br>Mizi</font>',
-                        //ui: 'plain',
+                       
                     },
+                    
             //{
             //    xtype: 'button',
             //    id: 'btnMainMenuMainMenuTitleicture',
@@ -208,7 +209,43 @@
 
 
 
+                        {
+                            xtype: 'container',
+                            margin: '-45 -160 0 0',
+                            hidden:true,
+                            layout: {
+                                type: 'vbox',
+                                pack: 'center',
+                                align: 'center'
 
+                            },
+                            items:[
+
+                                 //{
+
+                                 //    xtype: 'panel',
+                                 //    //  bodyPadding: 10,
+                                 //    height: 400,
+                                 //    width: 350,
+                                   
+                                 //    //   left:30,
+                                 //    //height: '100%',
+                                 //    //width: '100%',
+                                 //    html: '<img src="resources/icons/MostiTrackICon1.png" style="max-height:100%; max-width:100%;"/>',
+                                 //    //x: 60,
+                                 //    //y: 340,
+
+
+                                 //    //xtype: 'image',
+                                 //    //height: '60%',
+                                 //    //width: '90%',
+
+                                 //    //src: Ext.Viewport.getOrientation() == 'portrait' ? document.location.protocol + '//' + document.location.host + '/resources/icons/BgLogin.png' : document.location.protocol + '//' + document.location.host + '/resources/icons/BgLogin.png',
+                                 //},
+
+
+                            ]
+                        },
 
 
 
@@ -220,7 +257,7 @@
 
                     {
                         xtype: 'container',
-                        //  top:100,
+                        margin: '-250 0 0 0',
                         layout: {
                             type: 'hbox',
                             pack: 'center',

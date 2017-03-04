@@ -37,6 +37,7 @@
             { name: 'DaySetting' },
              { name: 'Status' },
             { name: 'FenceLength' },
+              { name: 'RowStatus' },
      //            'ID',
      //            'CreatedDate',
      //             'TrackItem',

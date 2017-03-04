@@ -1256,6 +1256,7 @@
     <Content Include="resources\layer\FloorPlan.kmz" />
     <Content Include="resources\layer\LatestFloorPlan.kml" />
     <Content Include="resources\layer\NewFloorPlan.kml" />
+    <None Include="Properties\PublishProfiles\UpgradeAutism.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="obj\Debug\TrackingInfo.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\TrackingInfo.dll" />

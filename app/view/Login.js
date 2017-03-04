@@ -19,7 +19,7 @@ Ext.define('MyGPS.view.Login', {
                 height: '100%',
                 width: '100%',
                 layout: {
-                    flex: 1,
+                    //flex: 1,
                     type: 'vbox',
                     pack: 'center',
                     align: 'center',
@@ -47,7 +47,7 @@ Ext.define('MyGPS.view.Login', {
                 margin: '0 0 0 0',
                 //  margin: '10 0 0 0',
                 layout: {
-                    flex: 1,
+                    //flex: 1,
                     type: 'vbox',
                     pack: 'center',
                     align: 'center',
@@ -61,13 +61,13 @@ Ext.define('MyGPS.view.Login', {
 
                 xtype: 'panel',
                 //  bodyPadding: 10,
-                height: 280,
-                width: 320,
-                margin: '0 -40 0 0',
+                height: 400,
+                width: 350,
+             //   margin: '60 100 0 0',
                 //   left:30,
                 //height: '100%',
                 //width: '100%',
-                html: '<img src="resources/icons/BgLoginOri.png" style="max-height:100%; max-width:100%;"/>',
+                html: '<img src="resources/icons/MostiTrackICon1.png" style="max-height:100%; max-width:100%;"/>',
                 //x: 60,
                 //y: 340,
 
@@ -84,7 +84,7 @@ Ext.define('MyGPS.view.Login', {
 
             xtype: 'fieldset',
             width: '90%',
-            margin: '-50 0 0 0',
+            margin: '-300 0 0 0',
             title: '<font size=2px color=white>User Login</font>',
             items: [
                 {
@@ -156,7 +156,7 @@ Ext.define('MyGPS.view.Login', {
                              //IP: myip,
                              IPADD: 'MostiTrack',
                          });
-
+                       
                            //  _DataStore_GPSUserLogin.getProxy().setUrl(document.location.protocol + '//' + document.location.host + '/GPSUser/GPSuserLoginR');
 
                          _DataStore_User_Login.load({
@@ -171,11 +171,15 @@ Ext.define('MyGPS.view.Login', {
                                  if (store != null) {
 
                                    
-                                     Ext.getCmp('MainMenuUserLabel').setHtml('<font size="3" color="white">Welcome!<br>' + Ext.getCmp('loginuserNameTextField').getValue() + '</font>');
+                                   
                                      Ext.getCmp('mainView').setActiveItem(1);
                                      AAccountNo = GetCurrentUserAccountNo();
+                                   
                                      _IsSuccessLogin = true;
-                                     Ext.Msg.alert("Login Success!");
+                                     Ext.Msg.alert("Login Success..!");
+                                     var UserName = Ext.getCmp('loginuserNameTextField').getValue();
+                                     Ext.getCmp('MainMenuUserLabelUpgrade1').setHtml('<font size="3" color="white">Welcome!<br>' + UserName + '</font>');
+
                                    
                                  }else
                                  {
@@ -193,12 +197,11 @@ Ext.define('MyGPS.view.Login', {
                               
                          }
                      })
-
+                       
                          Ext.Viewport.setMasked(false);                  
                      });
                     task.delay(1000);
-
-                        
+                  
                      }
 
 
@@ -385,4 +388,22 @@ function detectOs() {
 
     return OS;
 
+}
+
+
+function setUserName(UserName)
+{
+   
+    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Login....' });
+    var task = Ext.create('Ext.util.DelayedTask', function () {
+
+
+
+       
+   
+    Ext.Viewport.setMasked(false);
+});
+
+
+task.delay(1000);
 }
