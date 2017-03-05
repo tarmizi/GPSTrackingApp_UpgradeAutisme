@@ -382,6 +382,7 @@
     <Content Include="app\view\geoFences\listgeofenceArea.js" />
     <Content Include="app\view\geoFences\listgeofenceitem.js" />
     <Content Include="app\view\Login.js" />
+    <Content Include="app\view\LoginUpgrade.js" />
     <Content Include="app\view\Main.js" />
     <Content Include="app\view\MainMenu.js" />
     <Content Include="app\view\MainMenuUpgrade.js" />

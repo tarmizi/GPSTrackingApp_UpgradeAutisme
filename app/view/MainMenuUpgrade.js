@@ -212,7 +212,7 @@
                         {
                             xtype: 'container',
                             margin: '-45 -160 0 0',
-                            hidden:true,
+                            //hidden:true,
                             layout: {
                                 type: 'vbox',
                                 pack: 'center',
@@ -221,27 +221,27 @@
                             },
                             items:[
 
-                                 //{
+                                 {
 
-                                 //    xtype: 'panel',
-                                 //    //  bodyPadding: 10,
-                                 //    height: 400,
-                                 //    width: 350,
+                                     xtype: 'panel',
+                                     //  bodyPadding: 10,
+                                     height: 400,
+                                     width: 350,
                                    
-                                 //    //   left:30,
-                                 //    //height: '100%',
-                                 //    //width: '100%',
-                                 //    html: '<img src="resources/icons/MostiTrackICon1.png" style="max-height:100%; max-width:100%;"/>',
-                                 //    //x: 60,
-                                 //    //y: 340,
+                                     //   left:30,
+                                     //height: '100%',
+                                     //width: '100%',
+                                   //  html: '<img src="resources/icons/MostiTrackICon1.png" style="max-height:100%; max-width:100%;"/>',
+                                     //x: 60,
+                                     //y: 340,
 
 
-                                 //    //xtype: 'image',
-                                 //    //height: '60%',
-                                 //    //width: '90%',
+                                     //xtype: 'image',
+                                     //height: '60%',
+                                     //width: '90%',
 
-                                 //    //src: Ext.Viewport.getOrientation() == 'portrait' ? document.location.protocol + '//' + document.location.host + '/resources/icons/BgLogin.png' : document.location.protocol + '//' + document.location.host + '/resources/icons/BgLogin.png',
-                                 //},
+                                     //src: Ext.Viewport.getOrientation() == 'portrait' ? document.location.protocol + '//' + document.location.host + '/resources/icons/BgLogin.png' : document.location.protocol + '//' + document.location.host + '/resources/icons/BgLogin.png',
+                                 },
 
 
                             ]

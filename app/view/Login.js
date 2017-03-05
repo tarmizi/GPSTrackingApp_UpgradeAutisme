@@ -67,7 +67,7 @@ Ext.define('MyGPS.view.Login', {
                 //   left:30,
                 //height: '100%',
                 //width: '100%',
-                html: '<img src="resources/icons/MostiTrackICon1.png" style="max-height:100%; max-width:100%;"/>',
+                html: '<img src="resources/icons/MostiTrackICon2.png" style="max-height:100%; max-width:100%;"/>',
                 //x: 60,
                 //y: 340,
 

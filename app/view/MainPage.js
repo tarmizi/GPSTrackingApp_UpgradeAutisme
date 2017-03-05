@@ -20,7 +20,7 @@
 
             {
                 //0
-                xtype: 'loginpage'
+                xtype: 'LoginUpgrade'
             },
              
         {
