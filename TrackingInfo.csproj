@@ -226,9 +226,6 @@
     <Compile Include="Models\SQLConnectionString.cs" />
     <Compile Include="Models\TrackerDeviceModel.cs" />
     <Compile Include="Models\TrackingItemModel.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -382,10 +379,12 @@
     <Content Include="app\view\geoFences\listgeofenceArea.js" />
     <Content Include="app\view\geoFences\listgeofenceitem.js" />
     <Content Include="app\view\Login.js" />
+    <Content Include="app\view\Logins\LoginInfoPanel.js" />
     <Content Include="app\view\LoginUpgrade.js" />
     <Content Include="app\view\Main.js" />
     <Content Include="app\view\MainMenu.js" />
     <Content Include="app\view\MainMenuUpgrade.js" />
+    <Content Include="app\view\MainMenuUpgradeLatest.js" />
     <Content Include="app\view\MainPage.js" />
     <Content Include="app\view\markerwithlabel.js" />
     <Content Include="app\view\MultiPleTracking\API\MultipleTrackingAPI.js" />
@@ -474,8 +473,12 @@
     <Content Include="bin\Microsoft.Web.Mvc.FixedDisplayModes.dll" />
     <Content Include="bin\Microsoft.Web.WebPages.OAuth.dll" />
     <Content Include="bin\Microsoft.Web.WebPages.OAuth.xml" />
+    <Content Include="bin\Mono.Math.dll" />
+    <Content Include="bin\Mono.Math.xml" />
     <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\Org.Mentalis.Security.Cryptography.dll" />
+    <Content Include="bin\Org.Mentalis.Security.Cryptography.xml" />
     <Content Include="bin\ru\Microsoft.Data.Edm.resources.dll" />
     <Content Include="bin\ru\Microsoft.Data.OData.resources.dll" />
     <Content Include="bin\ru\System.Spatial.resources.dll" />
@@ -503,6 +506,7 @@
     <Content Include="bin\System.Web.WebPages.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\TrackingInfo.dll" />
+    <Content Include="bin\TrackingInfo.dll.config" />
     <Content Include="bin\TrackingInfo.pdb" />
     <Content Include="bin\WebGrease.dll" />
     <Content Include="bin\WebMatrix.Data.dll" />
@@ -788,12 +792,8 @@
     <Content Include="app\Readme.md" />
     <Content Include="app\store\Readme.md" />
     <Content Include="app\view\Readme.md" />
-    <Content Include="bin\TrackingInfo.dll.config" />
     <Content Include="index.html" />
     <Content Include="location.html" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\TrackingInfo.csprojResolveAssemblyReference.cache" />
     <Content Include="packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net40-full\DotNetOpenAuth.AspNet.dll" />
     <Content Include="packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net40-full\DotNetOpenAuth.AspNet.xml" />
     <Content Include="packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net45-full\DotNetOpenAuth.AspNet.dll" />
@@ -1259,9 +1259,6 @@
     <Content Include="resources\layer\NewFloorPlan.kml" />
     <None Include="Properties\PublishProfiles\UpgradeAutism.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="obj\Debug\TrackingInfo.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\TrackingInfo.dll" />
-    <Content Include="obj\Debug\TrackingInfo.pdb" />
     <Content Include="resources\css\app.css" />
     <Content Include="resources\icons\7.GIF" />
     <Content Include="resources\icons\714blue.GIF" />
@@ -4157,7 +4154,6 @@
     <Folder Include="app\model\gpsTracking\" />
     <Folder Include="app\profile\" />
     <Folder Include="App_Data\" />
-    <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="touch\resources\icons\" />
     <Folder Include="touch\src\chart\" />
     <Folder Include="touch\src\draw\" />

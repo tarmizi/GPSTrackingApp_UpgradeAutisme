@@ -945,14 +945,14 @@ function ReversegeocodeAddress(Longituded, Latitude) {
 
               //  Ext.getCmp('btnsingleTrackingOverViewMapGeocodeAddressWeb').setHtml('<div class="transbox"><p><font size="2">' + results[1].formatted_address + '</font></p></div>');
                 Ext.getCmp('btnsingleTrackingOverViewMapGeocodeAddress').setHtml('<div class="transbox"><p><font size="2"><u>' + results[1].formatted_address + '</u></font></p></div>');
-                Ext.getCmp('btnsingleTrackingStreetViewMapgeocodeAddress').setHtml('<div class="transbox"><p><font size="2">' + results[1].formatted_address + '</font></p></div>');
+             //// disable for MSI project   Ext.getCmp('btnsingleTrackingStreetViewMapgeocodeAddress').setHtml('<div class="transbox"><p><font size="2">' + results[1].formatted_address + '</font></p></div>');
 
                 //infowindow.setContent(results[1].formatted_address);
                // infowindow.open(map, marker);
             } else {
               //  Ext.getCmp('btnsingleTrackingOverViewMapGeocodeAddressWeb').setHtml('<div class="transbox"><p><font size="2">No results found</font></p></div>');
                 Ext.getCmp('btnsingleTrackingOverViewMapGeocodeAddress').setHtml('<div class="transbox2"><p><font size="2"><u>No Address found</u></font></p></div>');
-                Ext.getCmp('btnsingleTrackingStreetViewMapgeocodeAddress').setHtml('<div class="transbox"><p><font size="2"><u>No Address found</u></font></p></div>');
+                /////disable for MSI project   Ext.getCmp('btnsingleTrackingStreetViewMapgeocodeAddress').setHtml('<div class="transbox"><p><font size="2"><u>No Address found</u></font></p></div>');
 
                // alert("No results found");
             }
@@ -960,7 +960,7 @@ function ReversegeocodeAddress(Longituded, Latitude) {
            // alert("Geocoder failed due to: " + status);
          //   Ext.getCmp('btnsingleTrackingOverViewMapGeocodeAddressWeb').setHtml('<div class="transbox"><p><font size="2">Geocoder failed due to:' + status + '</font></p></div>');
             Ext.getCmp('btnsingleTrackingOverViewMapGeocodeAddress').setHtml('<div class="transbox2"><p><font size="2"><u>Geocoder failed due to:' + status + '</u></font></p></div>');
-            Ext.getCmp('btnsingleTrackingStreetViewMapgeocodeAddress').setHtml('<div class="transbox"><p><font size="2"><u>Geocoder failed due to:' + status + '</u></font></p></div>');
+            ////disable for MSI project    Ext.getCmp('btnsingleTrackingStreetViewMapgeocodeAddress').setHtml('<div class="transbox"><p><font size="2"><u>Geocoder failed due to:' + status + '</u></font></p></div>');
 
         }
     });

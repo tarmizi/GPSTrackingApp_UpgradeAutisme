@@ -5,7 +5,7 @@
 var _floatingPanelPDF;
 var filepdf;
 function AttractUserManual() {
-    filepdf = "UserManual-MOSTI-TRACK-AUTISM.pdf";
+    filepdf = "UserManual-MOSTI-TRACK-AUTISM.jpg";
     _floatingPanelPDF = Ext.create('Ext.Panel', {
         draggable: false,
         centered: true,

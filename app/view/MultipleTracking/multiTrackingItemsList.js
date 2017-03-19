@@ -37,6 +37,7 @@ Ext.define('MyGPS.view.MultipleTracking.multiTrackingItemsList', {
                           SingleTrackingMap_MillageCountHide();
                           SingleTrackingMap_SpeedMeterHide();
                           Ext.getCmp('mainView').setActiveItem(1);
+                          startChangeBackground('start');
                       }
 
 

@@ -67,6 +67,7 @@ Ext.define('MyGPS.view.SingleTracking.singleTrackingOverViewMap', {
                                    markersingleTrackingMap.setMap(null);
                                    DeleteToleranceLayer();
                                    DeleteVirtualBoundaryLayer();
+                                   startChangeBackground('start');
                                    Ext.getCmp('mainView').setActiveItem(1);
 
                                    if (_isSingleTrackingWPSListButtonClicked == 'yes') {

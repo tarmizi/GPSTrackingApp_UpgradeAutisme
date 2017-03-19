@@ -47,11 +47,11 @@ Ext.application({
        'geoFences.holdergeofence', 'geoFences.geofence', 'geoFences.listgeofenceitem', 'geoFences.geoFenceDB', 'SettingFence.SettingFenceMap', 'SettingFence.SettingFenceListOfGeoFence',   
        'TraceAlertFence.TraceAlertFenceMap', 'TraceAlertFence.ListOfTraceAlertFence', 'TraceAlertFence.CustomePanel.TraceAlertFenceHistoryInfo', 'custompanel.master_usermanual', 
    'SingleTracking.singleTrackingMap', 'SingleTracking.listSingleTrackingitem', 'SingleTracking.singleTrackingOverViewMap', 'custompanel.singleTrackingMap_Search',
-   'LoginUpgrade', 'MainMenuUpgrade', 'MainPage',
+   'LoginUpgrade', 'MainMenuUpgradeLatest', 'MainPage', 'Logins.LoginInfoPanel',
    'MultipleTracking.multiTrackingItemsList', 'MultipleTracking.multiTrackingMap', 'MultiPleTracking.CustomePanel.MultipleMapTrackingMenu', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSettingLayer', 'MultiPleTracking.CustomePanel.MultipleMapTrackingSearchLocation', 'MultiPleTracking.API.MultipleTrackingAPI',
     'MultiPleTracking.CustomePanel.MultiMapTrackingLayerNameCfmBox', 'Config.User.UserConfig', 'Config.TrackingItems.TrackingItemsConfig', 'Config.TrackingHistoryMap.TrackingHistoryMapConfig',
    'SettingFence.CustomePanel.SettingFenceSearchLocation', 'SettingFence.CustomePanel.SettingFenceDrawFenceMenu', 'SettingFence.CustomePanel.SettingFenceAddNewfence', 'SettingFence.CustomePanel.SettingFencePanelSettingInfo', 'SingleTracking.CustomePanel.SingleTrackingWPSList','SingleTracking.CustomePanel.SingleTrackingMap_PointInfo',
-   'SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu', 'SingleTracking.CustomePanel.SingleTrackingWPSListButton', 'SingleTracking.SingleTrackingMapVirtualFence_Menus', 'markerwithlabel', 'UserManual'],
+   'SingleTracking.CustomePanel.SingleTrackingMapVirtualFence_BurgerMenu', 'SingleTracking.CustomePanel.SingleTrackingWPSListButton', 'SingleTracking.SingleTrackingMapVirtualFence_Menus', 'markerwithlabel', 'UserManual', 'TrackingHistory.TrackingHistoryCreateria', 'TrackingHistory.TrackingHistoryMap', 'TrackingHistory.TrackingHistoryMapInfoPanel', 'TrackingHistory.TrackingHistoryMapPlayTrackedPanel', 'TrackingHistory.TrackingHistoryMapTravelRangePanel'],
 
 
 
@@ -79,12 +79,26 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
    
-    launch: function() {
-        // Destroy the #appLoadingIndicator element
-     //   Ext.fly('appLoadingIndicator').destroy();
-       // Ext.Msg.defaultAllowedConfig.showAnimation = false;
-        // Initialize the main view
-       Ext.Viewport.add(Ext.create('MyGPS.view.MainPage'));
+    launch: function () {
+
+        var isOnline = window.navigator.onLine;
+        if (isOnline) {
+            Ext.Viewport.add(Ext.create('MyGPS.view.MainPage'));
+            //if (Ext.os.is('Windows')) {
+
+            //    window.location = "http://www.google.com";
+            //    return;
+            //} else if (Ext.os.is('Linux')) {
+            //    window.location = "http://www.google.com";
+            //    return;
+            //} else {
+            //    Ext.Viewport.add(Ext.create('MyGPS.view.MainPage'));
+            //}
+        } else {
+            alert('Please Check Internet Connection!!');
+        }
+       
+      
        
     
 

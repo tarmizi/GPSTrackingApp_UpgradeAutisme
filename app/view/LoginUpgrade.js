@@ -1,4 +1,7 @@
-﻿Ext.define('MyGPS.view.LoginUpgrade', {
+﻿
+var UserName;
+var LastLoginDate;
+Ext.define('MyGPS.view.LoginUpgrade', {
     extend: 'Ext.Container',
     //  extend: 'Ext.Panel',
     xtype: 'LoginUpgrade',
@@ -64,15 +67,18 @@
 
 
                      {
-                         xtype: 'panel',
+                      //   xtype: 'panel',
                          //  bodyPadding: 10,
                          //height: 180,
                          //width: 350,
                         
                             //margin: '-100 0 0 0',
                       
-                      //   html: '<img src="resources/icons/MostiTrackICon2.png"/>',
-                        html: '<img src="resources/icons/MostiTrackICon2.png" style="max-height:100%; max-width:100%;"/>',
+                         //   html: '<img src="resources/icons/MostiTrackICon2.png"/>',
+
+                         html: '<img src="resources/icons/ooiweihanLogo12.png" width="280" height="160"/>',
+                        
+                      //  html: '<img src="resources/icons/MostiTrackICon2.png" style="max-height:100%; max-width:100%;"/>',
                         
 
                      },
@@ -85,9 +91,10 @@
 
 
                      {
-                          xtype: 'fieldset',
-                          width: '90%',
-                         margin: '-60 0 0 0',
+                         xtype: 'fieldset',
+                       //  width: '90%',
+                          width: '100%',
+                         margin: '-20 0 0 0',
                           title: '<font size=2px color=white>User Login</font>',
                           items: [
                               {
@@ -122,8 +129,8 @@
                    
                    {
                        xtype: 'container',
-                       //height: '100%',
-                       width: '90%',
+                     //  width: '90%',
+                       width: '100%',
                        margin: '10 0 0 0',
                        layout: {
                            // flex: 1,
@@ -183,8 +190,11 @@
 
                                                      _IsSuccessLogin = true;
                                                      Ext.Msg.alert("Login Success..!");
-                                                     var UserName = Ext.getCmp('loginuserNameTextField').getValue();
-                                                     Ext.getCmp('MainMenuUserLabelUpgrade1').setHtml('<font size="3" color="white">Welcome!<br>' + UserName + '</font>');
+                                                     UserName = Ext.getCmp('loginuserNameTextField').getValue();
+                                                     LastLoginDate = store.get('LastLoginDate');
+                                                     startChangeBackground('start');
+                                                     CheckHeigtWidthMainMenu();
+                                                   //  Ext.getCmp('MainMenuUserLabelUpgrade1').setHtml('<font size="3" color="white">Welcome!<br>' + UserName + '</font>');
 
 
                                                  } else {
@@ -268,7 +278,7 @@
 
               
             {
-                html: '<font size=2px color=white>MOSTI Social Innovation Program-2017</font>',
+                html: '<font size=2px color=white>MOSTI Social Innovation Program</font>',
             },
             {
                 xtype: 'panel',
@@ -282,9 +292,15 @@
                // margin: '30 0 0 0',
                // margin: '-100 0 0 0',
              
-                html: '<img src="resources/icons/MostiTrackLogo1.png" height="80" width="300"/>',
+                html: '<img src="resources/icons/MostiLogoNew7.png" height="100" width="250"/>',
                // html: '<img src="resources/icons/MostiTrackLogo1.png" style="max-height:100%; max-width:100%;"/>',
             },
+              //{
+              //    html: '<font size=2px color=white><b>KEMENTERIAN SAINS,TEKNOLOGI DAN INOVASI</b></font>',
+              //},
+              //{
+              //    html: '<font size=1px color=white><i>MINISTRY SCIENCE,TECHNOLOGY AND INNOVATION</i></font>',
+              //},
           //  {
           //      xtype: 'spacer',
           //      width: 75

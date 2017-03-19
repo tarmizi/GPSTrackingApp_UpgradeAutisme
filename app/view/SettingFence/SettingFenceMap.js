@@ -74,6 +74,7 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceMap', {
                                    Ext.getCmp('mainView').setActiveItem(1);
                                    SettingFencePanelSettingInfoHide();
                                    SettingFenceDrawFenceMenuHide();
+                                   startChangeBackground('start');
                                }
 
 
@@ -975,9 +976,9 @@ function loadSettingFenceDrawMap(ID, TrackItem, TrackID, AccountNo, FencePath, S
         Ext.getCmp('SettingDrawFence_ID').setValue(ID);
 
         Ext.getCmp('SettingDrawFence_TrackItem').setHidden(true);
-
-        Ext.getCmp('SettingDrawFence_TrackItem_loadDB').setValue(TrackItem);
         Ext.getCmp('SettingDrawFence_TrackItem_loadDB').setHidden(false);
+        Ext.getCmp('SettingDrawFence_TrackItem_loadDB').setValue(SettingDrawFence_TrackItem);
+
 
         Ext.getCmp('SettingDrawFence_AccountNo').setValue(AccountNo);
         Ext.getCmp('SettingDrawFence_FencePath').setValue(FencePath);

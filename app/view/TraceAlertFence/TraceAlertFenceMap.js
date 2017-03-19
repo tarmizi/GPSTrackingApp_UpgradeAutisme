@@ -78,7 +78,7 @@ Ext.define('MyGPS.view.TraceAlertFence.TraceAlertFenceMap', {
                             ui: 'plain',
                             handler: function () {
                                 Ext.getCmp('mainView').setActiveItem(1);
-                                
+                                startChangeBackground('start');
                             }
 
 

@@ -284,11 +284,14 @@ function SettingFenceDrawFenceMenuHide() {
 
 function CheckHeigtWidth()
 {
+  
     
     var x = parseInt(screen.width);
     var y = parseInt(screen.height);
+  
     if (x <= 320 && y <=534)
     {
-        Ext.getCmp('btnsettingFenceDrawFenceMenuAlertOutOfFence').setHidden(true);
+     
+        Ext.getCmp('btnsettingFenceDrawFenceMenuFindGPSTrackitem').setHidden(true);
     }
 }

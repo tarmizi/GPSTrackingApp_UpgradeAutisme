@@ -126,12 +126,94 @@ function SettingFencePanelSettingInfo() {
 
 
                            },
+
+
                            {
                                xtype: 'button',
 
                                height: 38,
                                width: 38,
-                               id: 'btnSettingFencePanelSettingInfoSave',
+                               id: 'btnSettingFencePanelSettingInfoSaveEdit',
+                               //   text: '<font size="2" color="white">Virtual Boundary Setting</font>',
+
+                               html: '<div ><img src="resources/icons/WhiteSaveIcon.png" width="28" height="28" alt="Company Name"></div>',
+                               ui: 'plain',
+                               handler: function () {
+                                   var ID = Ext.getCmp('SettingDrawFence_ID').getValue();
+
+                                   var TrackID = SettingDrawFence_TrackID;
+                                   //Ext.getCmp('SettingDrawFence_AccountNo').setValue(AAccountNo);
+                                   var AccountNo = GetCurrentUserAccountNo();
+                                   var FencePath = Ext.getCmp('SettingDrawFence_FencePath').getValue();
+                                   var ShapeType = Ext.getCmp('SettingDrawFence_ShapeType').getValue();
+                                   var FenceAreaName = Ext.getCmp('SettingDrawFence_FenceName').getValue();
+                                   var TimeFrom = parseInt(Ext.getCmp('SettingDrawFence_TimeFrom').getValue());
+                                   var TimeTo = parseInt(Ext.getCmp('SettingDrawFence_TimeTo').getValue());
+                                   var DaySetting = Ext.getCmp('SettingDrawFence_DaySetting').getValue();
+                                   var Status = Ext.getCmp('SettingDrawFence_Status').getValue();
+                                   var FenceLength = Ext.getCmp('SettingDrawFence_Length').getValue();
+                                   //  alert(checkDuplicateTimeToStatus);
+                                   Ext.Viewport.mask({ xtype: 'loadmask', message: 'Saving Edit..Please Wait' });
+
+
+
+                                   var task = Ext.create('Ext.util.DelayedTask', function () {
+
+
+
+                                       //  alert(TimeFrom +'----'+ TimeTo);
+                                       Ext.Viewport.unmask();
+                                       if (TrackID == '-1')
+                                       { Ext.Msg.alert('ERROR', 'Track Item Not Valid !'); return; }
+                                       else if (AccountNo == '')
+                                       { Ext.Msg.alert('ERROR', 'Account No Not Valid !'); return; }
+                                       else if (FencePath == 'null')
+                                       { Ext.Msg.alert('ERROR', 'Fence Path Not Valid !'); return; }
+                                       else if (FenceAreaName == 'Enter Fence Area Name' || FenceAreaName == '')
+                                       { Ext.Msg.alert('ERROR', 'Fence Area Name Not Valid !'); return; }
+                                       else if (TimeFrom == '-1')
+                                       { Ext.Msg.alert('ERROR', 'TimeFrom Not Valid !'); return; }
+                                       else if (TimeFrom >= TimeTo)
+                                       { Ext.Msg.alert('ERROR', 'TimeFrom Not Valid ,TimeFrom >= TimeTo !'); return; }
+                                       else if (TimeTo == '-1')
+                                       { Ext.Msg.alert('ERROR', 'TimeTo Not Valid !'); return; }
+                                       else if (TimeTo <= TimeFrom)
+                                       { Ext.Msg.alert('ERROR', 'TimeTo Not Valid !,TimeTo <= TimeFrom'); return; }
+                                           //  else if (DaySetting == '-1')
+                                           //{ Ext.Msg.alert('ERROR', 'Day Setting Not Valid !'); return; }
+                                       else if (Status == '-1')
+                                       { Ext.Msg.alert('ERROR', 'Fence Status Not Valid !'); return; }
+                                       else if (FenceLength == '-1')
+                                       { Ext.Msg.alert('ERROR', 'FenceLength Not Valid !'); return; }
+
+                                       else
+                                       {
+                                           
+                                           AutoFenceTimerInsertUpdate(ID, 'IDK', TrackID, AccountNo, FencePath, ShapeType, FenceAreaName, TimeFrom, TimeTo, DaySetting, Status, FenceLength);
+
+                                       }
+
+                                       // InsertUpdateSetting(AAccountNo, 'null', Ext.getCmp('SelectedMarker').getValue(), Ext.getCmp('PanMapAfterPointChange').getValue(), Ext.getCmp('AttachedLabelOnMarker').getValue(), Ext.getCmp('Geo_Setting_CIGPS').getValue());
+
+                                   });
+                                   task.delay(1000);
+
+                               }
+
+
+
+
+                           },
+
+
+
+
+                           {
+                               xtype: 'button',
+
+                               height: 38,
+                               width: 38,
+                               id: 'btnSettingFencePanelSettingInfoSaveAdd',
                                //   text: '<font size="2" color="white">Virtual Boundary Setting</font>',
 
                                html: '<div ><img src="resources/icons/WhiteSaveIcon.png" width="28" height="28" alt="Company Name"></div>',
@@ -852,7 +934,7 @@ function CheckingAutoTimerDuplicate(ID, IDK, TrackID, AccountNo, FencePath, Shap
                         timefromNextActive = parseInt(TimeFromNext);
 
 
-                        if (timefromNextActive <= timeToActive) {
+                        if (timefromNextActive < timeToActive) {
                             AutoFenceTimerSetInActive(IDnext, AccountNo);
                             Ext.Msg.alert('Warning !!', 'System detected overlap Time  In Area (' + areaOverlap + ') with Existing area . Please Check your Time From and Time To range ,Data will not be Activated');
                             return;

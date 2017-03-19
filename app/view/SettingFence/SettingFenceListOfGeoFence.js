@@ -1,6 +1,7 @@
 ﻿
 
 var SettingDrawFence_ID = '0';
+var SettingDrawFence_TrackID= '-1';
 var SettingDrawFence_TrackItem = '-1';
 var SettingDrawFence_FencePath = 'null';
 var SettingDrawFence_FenceName = 'Enter Area Name';
@@ -49,6 +50,7 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                    handler: function () {
                        Ext.getCmp('mainView').setActiveItem(1);
                        SettingFencePanelSettingInfoHide();
+                       startChangeBackground('start');
                    }
 
 
@@ -176,6 +178,7 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                        isFirstSettingFenceMapLoad = 'yes';
                        isClickAddNewSettingFenceButton = 'yes';
                        SettingFenceBtnAddNew_or_ListofGeofence = 'BtnAddNew';
+                     
                        SettingFencePanelSettingInfoShow();
                        SettingFenceDrawFenceMenuShow();
                      //  SettingFencePanelSettingInfoSaveShow();
@@ -199,7 +202,8 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                        Ext.getCmp('SettingDrawFence_DaySetting').setValue(SettingDrawFence_DaySetting);
                        Ext.getCmp('SettingDrawFence_Status').setValue(SettingDrawFence_Status);
                        Ext.getCmp('SettingDrawFence_Length').setValue(SettingDrawFence_Length);
-
+                       Ext.getCmp('btnSettingFencePanelSettingInfoSaveEdit').setHidden(true);
+                       Ext.getCmp('btnSettingFencePanelSettingInfoSaveAdd').setHidden(false);
                    
                      
 
@@ -337,6 +341,9 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                         // });
                         // Ext.StoreMgr.get('singlesignalstore').load();
                         // TrackItem, TrackID, AccountNo, FencePath, ShapeType, FenceAreaName, TimeFrom, TimeTo, DaySetting, Status
+
+
+                      
                         SettingFenceBtnAddNew_or_ListofGeofence = 'ListofGeofence';
                         Ext.getCmp('mainView').setActiveItem(13);
                         var ID = (records.get('ID'));
@@ -356,7 +363,8 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                         isClickAddNewSettingFenceButton = 'no';
                         _CurrentImeiNo = ImeiNo;
 
-                         SettingDrawFence_ID = ID;
+                        SettingDrawFence_ID = ID;
+                        SettingDrawFence_TrackID = TrackID;
                          SettingDrawFence_TrackItem = TrackItem;
                          SettingDrawFence_FencePath = FencePath;
                          SettingDrawFence_FenceName = FenceAreaName;
@@ -365,6 +373,7 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                          SettingDrawFence_DaySetting = DaySetting;
                          SettingDrawFence_Status = Status;
                          SettingDrawFence_Length = FenceLength;
+                        
 
                         loadSettingFenceDrawMap(ID, TrackItem, TrackID, AccountNo, FencePath, ShapeType, FenceAreaName, TimeFrom, TimeTo, DaySetting, Status, FenceLength);
 
@@ -373,23 +382,11 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
                         SettingFenceDrawFenceMenuShow();
 
 
-                        //Ext.getCmp('SettingDrawFence_ShowDetailPanelbtn').setHidden(true);
-                        //Ext.getCmp('SettingDrawFence_HideDetailPanelbtn').setHidden(false);
-                        //Ext.getCmp('SettingAutoFenceAddNewbtn').setHidden(true);
-                        //Ext.getCmp('SettingAutoFenceBackbtn').setHidden(false);
-                        //Ext.getCmp('AutoFenceSettingSavebtn').setHidden(false);
-                        //if (!this.overlay) {
-                        //    this.overlay = Ext.Viewport.add(_geofence_rightpanelSettingDrawFence
-                        //);
-                        //}
-                        //this.overlay.show();
-
-                        //var cntr = Ext.ComponentQuery.query("#geoFencesSettingholderID")[0];
-                        //cntr.setActiveItem(1);
 
                         setTimeout(function () {
                             list.deselectAll();
-
+                            Ext.getCmp('btnSettingFencePanelSettingInfoSaveEdit').setHidden(false);
+                            Ext.getCmp('btnSettingFencePanelSettingInfoSaveAdd').setHidden(true);
                         }, 500);
                     },
                     deselect: function (list, records) {
@@ -408,23 +405,6 @@ Ext.define('MyGPS.view.SettingFence.SettingFenceListOfGeoFence', {
 });
 
 
-//function loadforImage()
-//{
-//    var task = Ext.create('Ext.util.DelayedTask', function () {
-//        Ext.getStore('TrackingItemDetailstore').getProxy().setExtraParams({
-//            AccNo: AAccountNo,
-//            TrackID: SingleTrackID,
-//            DeviceID: DeviceID
-//        });
-//        Ext.StoreMgr.get('TrackingItemDetailstore').load();
-//        var myStore = Ext.getStore('TrackingItemDetailstore');
-//        var modelRecord = myStore.getAt(0);
-//        bPicture = (modelRecord.get('Picture'));
-//        console.log(bPicture);
-//    });
-//    task.delay(1000);
-//}
-
 
 function loadListOfGeofence()
 {
@@ -435,7 +415,7 @@ function loadListOfGeofence()
     });
     Ext.StoreMgr.get('AutoFenceTimerGetByAcc').load();
 
-    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Loadind Data...Please Wait' });
+    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Loading Data...Please Wait' });
     var task = Ext.create('Ext.util.DelayedTask', function () {
 
         Ext.getStore('AutoFenceTimerGetByAcc').getProxy().setExtraParams({

@@ -158,6 +158,7 @@ Ext.define('MyGPS.view.MultipleTracking.multiTrackingMap', {
                                       MultipleGeocodeAdd.length = 0;
                                       stopClockmultiTrackingMaps();
                                       Ext.getCmp('mainView').setActiveItem(1);
+                                      startChangeBackground('start');
                                   }
                               },
                               //{

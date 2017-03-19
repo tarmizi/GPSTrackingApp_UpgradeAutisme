@@ -743,8 +743,11 @@ Ext.ClassManager.addNameAlternateMappings({
   "MyGPS.view.Config.TrackingItems.TrackingItemsConfig": [],
   "MyGPS.view.Config.User.UserConfig": [],
   "MyGPS.view.Login": [],
+  "MyGPS.view.LoginUpgrade": [],
+  "MyGPS.view.Logins.LoginInfoPanel": [],
   "MyGPS.view.Main": [],
   "MyGPS.view.MainMenuUpgrade": [],
+  "MyGPS.view.MainMenuUpgradeLatest": [],
   "MyGPS.view.MainPage": [],
   "MyGPS.view.MultiPleTracking.API.MultipleTrackingAPI": [],
   "MyGPS.view.MultiPleTracking.CustomePanel.MultiMapTrackingLayerNameCfmBox": [],
@@ -1687,10 +1690,17 @@ Ext.ClassManager.addNameAliasMappings({
   "MyGPS.view.Login": [
     "widget.loginpage"
   ],
+  "MyGPS.view.LoginUpgrade": [
+    "widget.LoginUpgrade"
+  ],
+  "MyGPS.view.Logins.LoginInfoPanel": [],
   "MyGPS.view.Main": [
     "widget.main"
   ],
   "MyGPS.view.MainMenuUpgrade": [
+    "widget.mainmenu"
+  ],
+  "MyGPS.view.MainMenuUpgradeLatest": [
     "widget.mainmenu"
   ],
   "MyGPS.view.MainPage": [

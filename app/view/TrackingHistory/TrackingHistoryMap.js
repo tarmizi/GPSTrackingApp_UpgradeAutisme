@@ -108,8 +108,7 @@ Ext.define('MyGPS.view.TrackingHistory.TrackingHistoryMap', {
                           },
                            {
                                xtype: 'button',
-                               //right: -7,
-                               //top: 1,
+                             hidden:true,
                                id: 'btnHistoryMapTopAccInfo',
                                html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
                                //  html: '<div ><img src="resources/icons/hideGeofence.png" width="30" height="20" alt="Company Name"></div>',

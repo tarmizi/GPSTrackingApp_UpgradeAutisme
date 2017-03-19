@@ -13,50 +13,7 @@
 
         items: [
 
-            //{
-
-            //    xtype: 'toolbar',
-            //   // title: '<font size="4.5" color="white">Virtual Boundary Map</font>',
-            //    docked: 'top',
-            //    id: 'toolbarMainMenuUpgradeTop',
-            //    //  hidden:true,
-            //    items:
-            //           [
-
-
-            //               {
-            //                   xtype: 'button',
-            //                   id: 'MainMenuUserLabel',
-            //                   html: '<font size="3" color="white">Welcome!<br>Mizi</font>',
-            //                   ui: 'plain',
-
-            //               },
-            //                  {
-            //                      xtype: 'spacer'
-            //                  },
-            //            {
-            //                xtype: 'button',
-            //                id: 'btnMainMenuIconNotification',
-            //                height: 45,
-            //                width: 45,
-            //                html: '<div ><img src="resources/icons/Notification.png" width="35" height="35" alt="Company Name"></div>',
-            //                ui: 'plain',
-            //            },
-            //        {
-            //            xtype: 'button',
-            //            id: 'btnMainMenuIconNotificationText',
-            //            height: 25,
-            //            width: 25,
-            //            text: '10',
-            //            //html: '<div ><img src="resources/icons/notificationIcon.png" width="45" height="45" alt="Company Name"></div>',
-            //            ui: 'decline',
-            //        }
-
-
-
-            //           ]
-
-            //},
+        
 
 
 
@@ -71,92 +28,41 @@
                 },
                 items: [
                     {
-                      //  xtype: 'button',
+                        xtype: 'button',
                         //id: 'btnMainMenuIconNotification',
                         //height: 55,
                         //width: 55,
-                      
-                        id: 'MainMenuUserLabelUpgrade1',
-                        html: '<font size="3" color="white">Welcome!<br>Mizi</font>',
+                      margin:'10 0 0 0',
+                        id: 'btnMainMenuBurgerMenu',
+                        height: 25,
+                        width: 35,
+                        //   html: '<div ><img src="resources/icons/MainMenuHistoryRoute.png" width="90" height="90" alt="Company Name"></div>',
+                        html: '<div ><img src="resources/icons/BurgerMenuIcon.png" width="25" height="15" alt="Company Name"></div>',
+
+                        ui: 'plain',
+
+                        handler: function () {
+                            LoginInfoPanelShow();
+                            Ext.getCmp('loginInfoPanelUserName').setHtml('<font size="5" color="black"><b>' + UserName + '</b></font>');
+                            Ext.getCmp('loginInfoPanelLastLogin').setHtml('<font size="3" color="black"><i>' + LastLoginDate + '</i></font>');
+                        
+                        }
+                        
                        
                     },
                     
-            //{
-            //    xtype: 'button',
-            //    id: 'btnMainMenuMainMenuTitleicture',
-            //    height: 120,
-            //    width: 120,
-            //    top: 90,
-            //    left: 21,
-            //    html: '<div ><img src="resources/icons/MainMenuTitleicture.png" width="110" height="110" alt="Company Name"></div>',
-            //    ui: 'plain',
-            //},
-
-            //            {
-            //                top: 110,
-            //                left: 135,
-            //                html: '<font size="5" color="white">ALZHEMIER GPS Tracking<br>Application v 1.0</font>',
-
-
-            //            },
+           
                   
 
                 ]
             },
 
-            {
-                xtype: 'container',
-            
-                layout: {
-                    type: 'hbox',
-                    pack: 'right'
-
-                },
-                items: [
-                     //{
-                     //    xtype: 'button',
-                     //    id: 'btnMainMenuIconPictureProfile',
-                     //    height: 55,
-                     //    width: 55,
-                     //    html: '<div ><img src="resources/icons/MainMenuPictureProfile.png" width="45" height="45" alt="Company Name"></div>',
-                     //    ui: 'plain',
-                     //    handler: function () {
-
-                     //    }
-                     //},
-                    {
-                        xtype: 'button',
-                        id: 'btnMainMenuIconNotification',
-                        height: 45,
-                        width: 45,
-                        html: '<div ><img src="resources/icons/UogradeAutismeIcon/AboutUpgrade.png" width="35" height="35" alt="Company Name"></div>',
-                        ui: 'plain',
-                    },
-                    //{
-                    //    xtype: 'button',
-                    //    id: 'btnMainMenuIconNotificationText',
-                    //    height: 25,
-                    //    width: 25,
-                    //    text: '10',
-                    //    //html: '<div ><img src="resources/icons/notificationIcon.png" width="45" height="45" alt="Company Name"></div>',
-                    //    ui: 'decline',
-                    //}
-
-                ]
-            },
-
-            {
-             
-                margin:'30 0 0 0',
-                id: 'MainMenuUserLabelLIne',
-                html: '<font size="1" color="white">_______________________________________________________________________________________________________________</font>',
-                //ui: 'plain',
-            },
+       
 
             {
                 xtype: 'container',
                 //  top:100,
-                margin:'0 0 0 -5',
+                //margin:'0 0 0 -5',
                 layout: {
                     type: 'vbox',
                     pack: 'center',
@@ -167,97 +73,10 @@
 
 
 
-                     {
-                         xtype: 'container',
-                        //   top:100,
-                         layout: {
-                             type: 'hbox',
-                             pack: 'center',
-                             align: 'center'
-
-                         },
-
-
-                         items: [
-
-
-    //{
-    //    xtype: 'button',
-    //    id: 'btnMainMenuMainMenuTitleicture',
-    //    height: 120,
-    //    width: 120,
-    //    //top: 90,
-    //    //left: 21,
-    //    html: '<div ><img src="resources/icons/MainMenuTitleicture.png" width="110" height="110" alt="Company Name"></div>',
-    //    ui: 'plain',
-    //},
-
-                        {
-                         //   top: 110,
-                            //left: 135,
-                            hidden:true,
-                            margin:'-70 0 0 10',
-                            html: '<font size="3" color="white">MOSTI TRACK AUTISM <br>GPS Tracking Application<br> v 2.0</font>',
-
-
-                        },
-                         ]
-
-                     },
-
-
-
-
-
-                        {
-                            xtype: 'container',
-                            margin: '-45 -160 0 0',
-                            //hidden:true,
-                            layout: {
-                                type: 'vbox',
-                                pack: 'center',
-                                align: 'center'
-
-                            },
-                            items:[
-
-                                 {
-
-                                     xtype: 'panel',
-                                     //  bodyPadding: 10,
-                                     height: 400,
-                                     width: 350,
-                                   
-                                     //   left:30,
-                                     //height: '100%',
-                                     //width: '100%',
-                                   //  html: '<img src="resources/icons/MostiTrackICon1.png" style="max-height:100%; max-width:100%;"/>',
-                                     //x: 60,
-                                     //y: 340,
-
-
-                                     //xtype: 'image',
-                                     //height: '60%',
-                                     //width: '90%',
-
-                                     //src: Ext.Viewport.getOrientation() == 'portrait' ? document.location.protocol + '//' + document.location.host + '/resources/icons/BgLogin.png' : document.location.protocol + '//' + document.location.host + '/resources/icons/BgLogin.png',
-                                 },
-
-
-                            ]
-                        },
-
-
-
-
-
-
-
-
 
                     {
                         xtype: 'container',
-                        margin: '-250 0 0 0',
+                        //margin: '-250 0 0 0',
                         layout: {
                             type: 'hbox',
                             pack: 'center',

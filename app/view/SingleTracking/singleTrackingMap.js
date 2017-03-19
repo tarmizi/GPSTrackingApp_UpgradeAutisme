@@ -489,7 +489,7 @@ function startsingleTrackingMaps(val, IMEI_no) {
 
 
                         //temp disabled
-                        ///   ReversegeocodeAddress(longitude, latitude);
+                          ReversegeocodeAddress(longitude, latitude);
                         if (SelectedMarker == 'Standard') {
 
                             image = {
@@ -947,7 +947,7 @@ function prepareVirtualFenceCurrentHour()
     });
     Ext.StoreMgr.get('AutoFenceTimerGetByAccNoDeviceHour').load();
 
-    Ext.Viewport.mask({ xtype: 'loadmask', message: 'Create Fence ...Please Wait' });
+   // Ext.Viewport.mask({ xtype: 'loadmask', message: 'Create Fence ...Please Wait' });
     var task = Ext.create('Ext.util.DelayedTask', function () {
         var PictureLength = 0;
         Ext.getStore('AutoFenceTimerGetByAccNoDeviceHour').getProxy().setExtraParams({

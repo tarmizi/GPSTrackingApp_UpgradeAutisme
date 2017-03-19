@@ -55,13 +55,18 @@
           
            {
                //ORI/5//TrackingHistoryCreateria
-               xtype: 'mainmenu',
+               //  xtype: 'mainmenu',
+               xtype: 'TrackingHistoryCreateria',
+               //style: "background-color: #FF9900; color:white;",
+               //html: '<center>Item 2</center>'
              
            },
           
            {
                //ORI/6//sendcommandsmain
-               xtype: 'mainmenu',
+               //xtype: 'mainmenu',
+               style: "background-color: #FF9900; color:white;",
+               html: '<center>Item 2</center>'
             
            },
 
@@ -91,7 +96,9 @@
            },
         {
             //ORI/11//HistoryMap
-            xtype: 'mainmenu',
+            xtype: 'HistoryMap',
+            //style: "background-color: #FF9900; color:white;",
+            //html: '<center>Item 2</center>'
         },
 
           { //12
@@ -107,7 +114,7 @@
          },
 
          //{ //15
-         //    xtype: 'TraceAlertFenceMap',
+         //    xtype: 'ListOfTraceAlertFence',
          //},
 
 

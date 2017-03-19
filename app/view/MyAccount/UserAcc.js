@@ -70,6 +70,7 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                    ui: 'plain',
                    handler: function () {
                        Ext.getCmp('mainView').setActiveItem(1);
+                       startChangeBackground('start');
                    }
 
 
@@ -584,7 +585,7 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                                                      }
 
 
-                                                     if (chkvalue) {
+                                                     if (chkvalue != 'C01') {
 
 
 
@@ -1218,11 +1219,12 @@ Ext.define('MyGPS.view.MyAccount.UserAcc', {
                                                                          xtype: 'textfield',
                                                                          id: 'ResponderAlertPhoneNo',
                                                                          label: 'Phone Number',
-                                                                         //placeHolder: 'Tom Roy',
-                                                                         autoCapitalize: true,
-                                                                         disabled: true,
-                                                                         //required: true,
-                                                                         clearIcon: true
+                                                                         component: {
+                                                                             xtype: 'input',
+                                                                             type: 'tel'
+                                                                         },
+                                                                       
+                                                                         placeHolder: 'cell #'
                                                                      },
                                                                      {
                                                                          // xtype: 'textfield',

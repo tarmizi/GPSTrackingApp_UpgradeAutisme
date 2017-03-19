@@ -16,6 +16,7 @@ Ext.define('MyGPS.view.TraceAlertFence.ListOfTraceAlertFence', {
         'Ext.dataview.List',
         'Ext.data.Store'
     ],
+    zIndex:20,
     config: {
         style: ' background-color:white;',
         layout: 'vbox', //  add a layout
@@ -36,7 +37,9 @@ Ext.define('MyGPS.view.TraceAlertFence.ListOfTraceAlertFence', {
                                iconCls: 'home',
                                ui: 'plain',
                                handler: function () {
+
                                    Ext.getCmp('mainView').setActiveItem(1);
+                                   startChangeBackground('start');
                                }
                            },
                              {
